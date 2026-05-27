@@ -273,7 +273,6 @@
     let currentRoomID = null;
     let currentWinPoints = 1;
     let currentHostMode = 'auto';
-    let publicBaseURL = window.location.origin; // لأننا الآن على سيرفر حقيقي
 
     setInterval(() => { socket.emit('ping'); }, 25000);
 
@@ -351,14 +350,14 @@
     document.getElementById('opt-host-screen-btn').addEventListener('click', () => {
       optionsMenu.classList.add('hidden');
       if (!currentRoomID) { alert('لم يتم إنشاء غرفة بعد. اضغط على بدء اللعبة أولاً.'); return; }
-      const hostLink = `${publicBaseURL}/host.html?room=${currentRoomID}`;
+      const hostLink = `${window.location.origin}/host?room=${currentRoomID}`;
       showQrModal('شاشة التحكم للمقدم', hostLink);
     });
 
     document.getElementById('opt-bell-btn').addEventListener('click', () => {
       optionsMenu.classList.add('hidden');
       if (!currentRoomID) { alert('لم يتم إنشاء غرفة بعد. اضغط على بدء اللعبة أولاً.'); return; }
-      const buzzerLink = `${publicBaseURL}/buzzer.html?room=${currentRoomID}`;
+      const buzzerLink = `${window.location.origin}/buzzer?room=${currentRoomID}`;
       showQrModal('الجرس للاعبين', buzzerLink);
     });
 
@@ -499,7 +498,7 @@
 
     socket.on('buzzer-locked', (data) => {
       buzzerPlayerName.textContent = `${data.winner.name} (${data.winner.team})`;
-      buzzerPlayerName.style.display = 'block'; 
+      buzzerPlayerName.style.display = 'block';
       buzzerTimerValue.textContent = data.timeLeft;
       buzzerTimerLabel.textContent = 'وقت الإجابة';
       buzzerTimerValue.classList.remove('timer-phase-other');
@@ -511,7 +510,7 @@
     });
 
     socket.on('timer-phase-change', (data) => {
-      buzzerPlayerName.style.display = 'none'; 
+      buzzerPlayerName.style.display = 'none';
       buzzerTimerLabel.textContent = 'وقت الفريق الآخر';
       buzzerTimerValue.textContent = data.timeLeft;
       buzzerTimerValue.classList.add('timer-phase-other');
@@ -524,8 +523,6 @@
     socket.on('new-question', (data) => {
       if (currentHostMode === 'auto') {
         renderQuestionModal(data);
-      } else {
-        document.getElementById('modal').classList.add('hidden');
       }
     });
 

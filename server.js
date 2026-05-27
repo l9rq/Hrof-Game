@@ -9,12 +9,14 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+// خدمة الملفات الثابتة من المجلد الرئيسي
+app.use(express.static(__dirname));
 
+// الآن الملفات مباشرة في __dirname
+app.get('/host.html', (req, res) => { res.sendFile(path.join(__dirname, 'host.html')); });
+app.get('/buzzer.html', (req, res) => { res.sendFile(path.join(__dirname, 'buzzer.html')); });
 
-app.get('/host', (req, res) => { res.sendFile(path.join(__dirname, 'public', 'host.html')); });
-app.get('/buzzer', (req, res) => { res.sendFile(path.join(__dirname, 'public', 'buzzer.html')); });
-
-// تحميل الأسئلة بطريقة آمنة لا توقف السيرفر (بدون process.exit)
+// تحميل الأسئلة من نفس المجلد الرئيسي
 let baseQuestions = {};
 try {
   const questionsPath = path.join(__dirname, 'questions.json');
