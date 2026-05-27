@@ -12,7 +12,6 @@ const io = new Server(server);
 // خدمة الملفات الثابتة من المجلد الرئيسي
 app.use(express.static(__dirname));
 
-// الآن الملفات مباشرة في __dirname
 // توجيهات ذكية لصفحة البداية والمقدم والجرس (بـ .html وبدونها)
 app.get('/', (req, res) => { res.sendFile(path.join(__dirname, 'index.html')); });
 
@@ -21,6 +20,7 @@ app.get('/host.html', (req, res) => { res.sendFile(path.join(__dirname, 'host.ht
 
 app.get('/buzzer', (req, res) => { res.sendFile(path.join(__dirname, 'buzzer.html')); });
 app.get('/buzzer.html', (req, res) => { res.sendFile(path.join(__dirname, 'buzzer.html')); });
+
 // تحميل الأسئلة من نفس المجلد الرئيسي
 let baseQuestions = {};
 try {
@@ -49,8 +49,15 @@ const rooms = new Map();
 const roomIntervals = new Map();
 
 function generateRoomID() { return crypto.randomBytes(4).toString('hex'); }
+
 function createRoom(customSettings = {}) {
   const roomID = generateRoomID();
+  
+  // تحويل نصوص الوقت والنقاط إلى أرقام برمجية لتجنب تعليق المؤقت
+  if (customSettings.ansTime !== undefined) customSettings.ansTime = parseInt(customSettings.ansTime) || 5;
+  if (customSettings.otherTeamTime !== undefined) customSettings.otherTeamTime = parseInt(customSettings.otherTeamTime) || 10;
+  if (customSettings.winPoints !== undefined) customSettings.winPoints = parseInt(customSettings.winPoints) || 1;
+
   const settings = { ...defaultSettings, ...customSettings };
   const gameState = {
     cells: generateCells(Object.keys(baseQuestions)),
@@ -134,6 +141,12 @@ io.on('connection', (socket) => {
   socket.on('update-settings', (newSettings) => {
     const room = rooms.get(socket.roomID);
     if (!room || !socket.isHost) return;
+    
+    // تأكيد تحويل الأرقام عند التحديث
+    if (newSettings.ansTime !== undefined) newSettings.ansTime = parseInt(newSettings.ansTime) || 5;
+    if (newSettings.otherTeamTime !== undefined) newSettings.otherTeamTime = parseInt(newSettings.otherTeamTime) || 10;
+    if (newSettings.winPoints !== undefined) newSettings.winPoints = parseInt(newSettings.winPoints) || 1;
+    
     room.settings = { ...room.settings, ...newSettings };
     io.to(socket.roomID).emit('settings', room.settings);
   });
@@ -150,19 +163,25 @@ io.on('connection', (socket) => {
 
   socket.on('press-buzzer', (playerData) => {
     const room = rooms.get(socket.roomID);
-    if (!room || room.gameState.buzzerLocked) return;
+    // 🚨 التعديل الأهم: منع ضغط الجرس إذا لم يتم اختيار حرف أو لم يكن هناك سؤال فعّال
+    if (!room || room.gameState.buzzerLocked || !room.gameState.questionActive) return;
+    
     room.gameState.buzzerLocked = true;
     room.gameState.buzzerWinner = playerData;
     room.gameState.timerPhase = 'answer';
     room.gameState.timeLeft = room.settings.ansTime;
+    
     io.to(socket.roomID).emit('buzzer-locked', { winner: playerData, timeLeft: room.gameState.timeLeft, phase: 'answer' });
     io.to(socket.roomID).emit('game-state', room.gameState);
+    
     if (roomIntervals.has(socket.roomID)) { clearInterval(roomIntervals.get(socket.roomID)); }
+    
     const interval = setInterval(() => {
       const r = rooms.get(socket.roomID);
       if (!r || !r.gameState.buzzerLocked) { clearInterval(interval); return; }
       r.gameState.timeLeft--;
       io.to(socket.roomID).emit('timer-tick', { timeLeft: r.gameState.timeLeft, phase: r.gameState.timerPhase });
+      
       if (r.gameState.timeLeft <= 0) {
         if (r.gameState.timerPhase === 'answer') {
           r.gameState.timerPhase = 'otherTeam';
@@ -192,16 +211,19 @@ io.on('connection', (socket) => {
     if (!room || !room.settings.gameStarted || room.gameState.roundOver) return;
     const cell = room.gameState.cells[cellIndex];
     if (!cell || cell.color) return;
+    
     room.gameState.questionActive = true;
     room.gameState.currentCellIndex = cellIndex;
     room.gameState.highlightedCellIndex = cellIndex;
     room.gameState.buzzerLocked = false;
     room.gameState.buzzerWinner = null;
     io.to(socket.roomID).emit('buzzer-reset');
+    
     const qData = baseQuestions[cell.letter]?.[Math.floor(Math.random() * baseQuestions[cell.letter]?.length || 0)];
     if (!qData) return;
     room.gameState.currentQuestion = qData.question;
     room.gameState.currentAnswer = qData.answer;
+    
     io.to(socket.roomID).emit('game-state', room.gameState);
     io.to(socket.roomID).emit('new-question', { cellIndex, letter: cell.letter, question: room.gameState.currentQuestion, answer: room.gameState.currentAnswer });
     io.to(socket.roomID).emit('host-receive-question', { cellIndex, letter: cell.letter, question: room.gameState.currentQuestion, answer: room.gameState.currentAnswer });
@@ -229,6 +251,7 @@ io.on('connection', (socket) => {
     resetBuzzerState(socket.roomID, room);
     const mode = teamIndex === 0 ? 'horizontal' : 'vertical';
     const roundWon = checkWin(room.gameState, color, mode);
+    
     if (roundWon) {
       room.gameState.scores[teamIndex]++;
       if (room.gameState.scores[teamIndex] >= room.settings.winPoints) {

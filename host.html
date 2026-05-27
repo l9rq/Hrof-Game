@@ -171,7 +171,6 @@
 
     socket.on('timer-tick', (data) => { hostTimerDisplay.textContent = data.timeLeft; });
     
-    // 🌟 التعديل هنا: يختفي اسم اللاعب في جوال المقدم بعد ويصير "وقت الفريق الآخر"
     socket.on('timer-phase-change', (data) => { 
       hostTimerDisplay.textContent = data.timeLeft; 
       hostTimerDisplay.style.color = '#ff5252'; 
