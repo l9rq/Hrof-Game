@@ -59,7 +59,7 @@
     #game-board-container { height: 100vh; width: 100vw; display: flex; }
     .game-layout { display: flex; flex-direction: row; width: 100%; height: 100%; }
     
-    /* --- تعديلات مستطيل النتائج --- */
+    /* --- المستطيل اليسار للكمبيوتر / اللاب توب (حجمه الأساسي 380 بيكسل) --- */
     .sidebar-section { width: 380px; height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 40px 20px; z-index: 20; }
     .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
     .sidebar-round { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: -10px; }
@@ -81,7 +81,6 @@
     .score-number { font-family: 'Lalezar', sans-serif; font-size: 40px; font-weight: 900; color: white; line-height: 1; margin-top: 8px;}
 
     .board-section { flex-grow: 1; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
-    /* --- تعديل مقاس وتمركز الخلية --- */
     .board { position: relative; z-index: 5; width: 700px; height: 640px; transform: scale(1.25); filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); transform-origin: center center; margin: auto; }
     
     .hex-outer { position: absolute; width: 140px; height: 160px; background: var(--main-purple); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
@@ -102,7 +101,10 @@
     .close-modal-x { position: absolute; top: 15px; left: 20px; font-size: 24px; font-weight: bold; cursor: pointer; color: #fff; background: rgba(255,255,255,0.2); width: 40px; height: 40px; border-radius: 10px; display: flex; justify-content: center; align-items: center; transition: 0.2s; }
     .close-modal-x:hover { background: rgba(255,82,82,0.8); }
     .modal-letter-box { width: 80px; height: 80px; margin: 0 auto 25px auto; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 18px; display: flex; justify-content: center; align-items: center; font-size: 55px; font-family: 'Lalezar'; color: white; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); padding-top:10px; }
+    
     .modal-question { font-size: 35px; font-weight: bold; margin-bottom: 35px; line-height: 1.4; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+    .qr-img { width: 150px; height: 150px; border-radius: 8px; } /* كلاس جديد للباركود للتحكم بمقاسه */
+
     .btn-wide-toggle { width: 100%; background: rgba(140, 90, 100, 0.8); border: 1px solid rgba(255,255,255,0.15); color: #ffeb3b; padding: 20px; border-radius: 15px; font-size: 26px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; transition: 0.2s; font-family: 'Cairo', sans-serif; }
     .modal-bottom-row { display: flex; gap: 15px; margin-top: 15px; }
     .btn-half { flex: 1; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; padding: 15px; border-radius: 15px; font-size: 22px; font-weight: bold; cursor: pointer; transition: 0.2s; font-family: 'Cairo', sans-serif; display: flex; justify-content: center; align-items: center; gap: 10px; }
@@ -121,11 +123,13 @@
     
     .hidden { display: none !important; }
 
-    /* --- التعديل المطور: إجبار الجوال على الوضع الأفقي وموازنة النسب --- */
+    /* --- التعديلات المخصصة للجوال فقط --- */
     @media screen and (max-width: 992px) {
+        /* تكبير الشعار والاسم */
         .word-huroof { font-size: 80px; text-shadow: 2px 2px 0 var(--dark-shadow); }
         .word-m3 { font-size: 70px; text-shadow: 2px 2px 0 var(--dark-shadow); }
         .word-name { font-size: 50px; text-shadow: 2px 2px 0 var(--dark-shadow); margin-top: 20px; }
+        
         .main-btn { width: 80%; max-width: 300px; font-size: 20px; padding: 10px 20px; }
         .settings-overlay { padding: 15px; }
         .settings-grid { grid-template-columns: 1fr; gap: 10px; text-align: center; }
@@ -135,14 +139,19 @@
         
         .modal-content-custom { padding: 15px; width: 95%; max-height: 90vh; overflow-y: auto; border-radius: 15px; }
         .modal-letter-box { width: 45px; height: 45px; font-size: 30px; margin-bottom: 10px; padding-top: 5px; }
-        .modal-question { font-size: 20px; margin-bottom: 15px; }
+        
+        /* تصغير حجم نص السؤال في الجوال فقط */
+        .modal-question { font-size: 18px; margin-bottom: 15px; } 
+        /* تصغير الباركود في الجوال فقط */
+        .qr-img { width: 100px !important; height: 100px !important; }
+
         .btn-wide-toggle { font-size: 18px; padding: 12px; }
         .btn-half { font-size: 16px; padding: 10px; }
         .answer-text { font-size: 22px; margin-bottom: 10px; }
         .team-btns button { font-size: 16px; padding: 8px; }
     }
 
-    /* الخدعة الأساسية: الإجبار على الوضع الأفقي إذا كان اللاعب ماسك الجوال بالطول */
+    /* الخدعة الأساسية: الإجبار على الوضع الأفقي للجوال (Portrait) */
     @media screen and (max-width: 992px) and (orientation: portrait) {
         #game-board-container:not(.hidden), #celebration-overlay:not(.hidden) {
             position: fixed !important;
@@ -162,9 +171,9 @@
             height: 100%;
         }
 
-        /* القسم الأيسر: النتائج - وزنية الجوال (30%) */
+        /* القسم الأيسر للجوال - خليته 35% عشان يستوعب النصوص المكبرة وتوسيع الجرس */
         .sidebar-section {
-            width: 30% !important;
+            width: 35% !important; 
             height: 100%;
             padding: 10px 5px !important;
             display: flex;
@@ -175,28 +184,27 @@
             z-index: 20;
         }
 
-        /* القسم الأيمن: الخلايا (70%) */
         .board-section {
-            width: 70% !important;
+            width: 65% !important;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* تصغير اللوحة لتتسع بشكل مثالي */
         .board {
             transform: scale(0.45) !important; 
             margin: 0 !important;
         }
 
-        /* تصغير نصوص القسم الأيسر */
-        .sidebar-logo .word-huroof { font-size: 35px !important; line-height: 1;}
-        .sidebar-logo .word-m3 { font-size: 25px !important; line-height: 0.5;}
-        .sidebar-logo .word-name { font-size: 25px !important; margin-top: 10px !important;}
+        /* --- التكبير اللي طلبته للجوال (حروف مع اسمك) --- */
+        .sidebar-logo .word-huroof { font-size: 45px !important; line-height: 1;}
+        .sidebar-logo .word-m3 { font-size: 35px !important; line-height: 0.5;}
+        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 12px !important;}
         
-        .sidebar-round-text { font-size: 20px !important; margin-bottom: 0;}
-        .sidebar-round-num { font-size: 24px !important; margin-top: -5px; }
+        /* --- التكبير اللي طلبته لـ (الجولة الأولى) --- */
+        .sidebar-round-text { font-size: 26px !important; margin-bottom: 0;}
+        .sidebar-round-num { font-size: 32px !important; margin-top: -5px; }
         
         .sidebar-scores { flex-direction: row; gap: 5px; margin-top: 5px !important; }
         .team-score-col { width: 48%; gap: 5px;}
@@ -204,12 +212,17 @@
         .score-box { height: 35px !important; border-radius: 8px !important; }
         .score-number { font-size: 22px !important; margin-top: 5px !important;}
 
-        #sidebar-buzzer-display { padding: 5px; width: 95%; align-self: center; margin: 5px 0; }
-        .buzzer-player-name { font-size: 11px; margin-bottom: 2px;}
-        .buzzer-timer-value { font-size: 22px; }
-        .buzzer-timer-label { font-size: 11px; }
+        /* --- توسيع مساحة الجرس على الجوال --- */
+        #sidebar-buzzer-display { 
+            padding: 12px; /* كبرنا الـ padding لزيادة المساحة */
+            width: 95%; 
+            align-self: center; 
+            margin: 10px 0; /* زدنا المسافة من فوق وتحت */
+        }
+        .buzzer-player-name { font-size: 12px; margin-bottom: 2px;}
+        .buzzer-timer-value { font-size: 26px; }
+        .buzzer-timer-label { font-size: 12px; }
 
-        /* زر الخيارات المصغر في الجوال */
         .floating-options-wrapper { top: 5px; right: 5px; }
         .options-btn { font-size: 13px; padding: 4px 8px; }
         .options-menu { width: 180px; right: 0; top: 35px; padding: 8px; }
@@ -222,18 +235,21 @@
     /* إذا كان الجوال بالعرض خلقة (Landscape) */
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
-        .sidebar-section { width: 30% !important; padding: 10px !important; justify-content: space-evenly; }
-        .board-section { width: 70% !important; }
+        .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: space-evenly; }
+        .board-section { width: 65% !important; }
         .board { transform: scale(0.45) !important; margin: 0 !important; }
         
-        .sidebar-logo .word-huroof { font-size: 35px !important; }
-        .sidebar-logo .word-m3 { font-size: 25px !important; }
-        .sidebar-logo .word-name { font-size: 25px !important; margin-top: 10px !important;}
-        .sidebar-round-text { font-size: 20px !important; }
-        .sidebar-round-num { font-size: 24px !important; }
+        /* نفس تكبير النصوص اللي فوق ينطبق هنا للمقاس العرضي */
+        .sidebar-logo .word-huroof { font-size: 45px !important; }
+        .sidebar-logo .word-m3 { font-size: 35px !important; }
+        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 12px !important;}
+        .sidebar-round-text { font-size: 26px !important; }
+        .sidebar-round-num { font-size: 32px !important; }
         .team-name-text { font-size: 13px !important; }
         .score-box { height: 35px !important; border-radius: 8px !important; }
         .score-number { font-size: 22px !important; margin-top: 5px !important;}
+
+        #sidebar-buzzer-display { padding: 12px; margin: 10px 0; }
         
         .floating-options-wrapper { top: 5px; right: 5px; }
         .options-btn { font-size: 13px; padding: 4px 8px; }
@@ -492,13 +508,13 @@
 
     function showQrModal(title, urlStr) {
       const modalBody = document.getElementById('modal-body');
-      /* تم تصغير حجم الباركود هنا */
+      /* استخدام الكلاس qr-img عشان نصغره بالجوال ونحافظ عليه كبير بالكمبيوتر */
       modalBody.innerHTML = `
         <div class="close-modal-x" id="close-qr-btn">✖</div>
         <h2 style="font-family:'Lalezar'; font-size:30px; margin-bottom:10px;">${title}</h2>
         <p style="font-size:16px; font-weight:bold; margin-bottom: 20px;">امسح الكود ضوئياً من الجوال للمزامنة الفورية</p>
         <div style="background: white; padding: 12px; border-radius: 15px; display: inline-block; margin-bottom: 15px;">
-           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(urlStr)}" alt="QR Code" style="border-radius: 8px; width: 150px; height: 150px;">
+           <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(urlStr)}" alt="QR Code">
         </div>
         <div style="font-size: 14px; color: #ffca28; margin-bottom: 15px; word-break: break-all; direction: ltr;">${urlStr}</div>
         <div class="modal-bottom-row" style="justify-content: center;">
@@ -541,7 +557,6 @@
       const compName = document.getElementById('comp-name')?.value || 'اسمك';
       mainMenu.classList.add('hidden'); gameContainer.classList.remove('hidden');
       
-      // التعديل هنا: تفعيل الشاشة الكاملة وإجبار الوضع الأفقي (Landscape)
       let doc = document.documentElement;
       if (doc.requestFullscreen) {
         doc.requestFullscreen().then(() => {
