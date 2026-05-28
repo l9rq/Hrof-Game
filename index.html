@@ -11,17 +11,18 @@
     :root { --team1-color: #12b49c; --team2-color: #f37021; --main-purple: #392265; --dark-shadow: #1d0b33; }
     body { font-family: 'Cairo', sans-serif; background-color: #2b164d; color: white; height: 100vh; overflow-x: hidden; position: relative; }
     
-    .floating-options-wrapper { position: absolute; top: 20px; right: 30px; z-index: 50; }
-    .options-btn { background-color: white; color: var(--main-purple); font-family: 'Lalezar', sans-serif; font-size: 24px; padding: 10px 30px; border-radius: 30px; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.2s; }
+    /* --- تعديلات قائمة الخيارات --- */
+    .floating-options-wrapper { position: absolute; top: 15px; right: 15px; z-index: 50; }
+    .options-btn { background-color: white; color: var(--main-purple); font-family: 'Lalezar', sans-serif; font-size: 18px; padding: 6px 20px; border-radius: 30px; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.2s; }
     .options-btn:hover { transform: scale(1.05); background-color: #ffca28; }
-    .options-menu { position: absolute; top: 60px; right: 0; background-color: white; border-radius: 20px; width: 280px; padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 10px; transform-origin: top right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .options-menu { position: absolute; top: 45px; right: 0; background-color: white; border-radius: 15px; width: 220px; padding: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 8px; transform-origin: top right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .options-menu.hidden { transform: scale(0); opacity: 0; pointer-events: none; }
-    .menu-row { display: flex; gap: 10px; }
-    .menu-item-btn { flex: 1; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 12px; padding: 12px 10px; font-family: 'Cairo'; font-weight: 900; font-size: 16px; color: var(--main-purple); cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
+    .menu-row { display: flex; gap: 8px; }
+    .menu-item-btn { flex: 1; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 10px; padding: 8px 6px; font-family: 'Cairo'; font-weight: 900; font-size: 14px; color: var(--main-purple); cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 6px; }
     .menu-item-btn:hover { background-color: #e0e0e0; transform: translateY(-2px); }
     .menu-item-btn.active-purple { background-color: #8b5cf6; color: white; border-color: #8b5cf6; }
     .menu-item-btn.gradient-btn { background: linear-gradient(45deg, #ffca28, #ffb300); color: #392265; border: none; }
-    .menu-label { text-align: center; color: var(--main-purple); font-family: 'Cairo'; font-weight: 900; font-size: 14px; margin-bottom: -5px;}
+    .menu-label { text-align: center; color: var(--main-purple); font-family: 'Cairo'; font-weight: 900; font-size: 13px; margin-bottom: -4px;}
 
     .main-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 100; background-color: #6b439b; background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.923' viewBox='0 0 60 103.923' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 103.923L0 86.603V51.962L30 34.641l30 17.321v34.641L30 103.923zM30 34.641L0 17.321V-17.321L30-34.641l30 17.321V17.321L30 34.641z' stroke='rgba(255,255,255,0.05)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-size: 80px 138px; }
     .menu-content { display: flex; flex-direction: column; align-items: center; gap: 50px; }
@@ -57,28 +58,32 @@
 
     #game-board-container { height: 100vh; width: 100vw; display: flex; }
     .game-layout { display: flex; flex-direction: row; width: 100%; height: 100%; }
-    .sidebar-section { width: 420px; height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 50px 30px; z-index: 20; }
+    
+    /* --- تعديلات مستطيل النتائج --- */
+    .sidebar-section { width: 380px; height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 40px 20px; z-index: 20; }
     .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
     .sidebar-round { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: -10px; }
-    .sidebar-round-text { font-family: 'Lalezar', sans-serif; font-size: 60px; color: #ff5252; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
-    .sidebar-round-num { font-family: 'Lalezar', sans-serif; font-size: 75px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
+    .sidebar-round-text { font-family: 'Lalezar', sans-serif; font-size: 50px; color: #ff5252; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
+    .sidebar-round-num { font-family: 'Lalezar', sans-serif; font-size: 65px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
     
-    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.3); border: 2px solid #ffca28; border-radius: 15px; padding: 12px; text-align: center; margin-top: 15px; width: 100%; animation: fadeIn 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
-    .buzzer-player-name { font-family: 'Cairo'; font-size: 18px; font-weight: 900; color: white; margin-bottom: 5px; }
-    .buzzer-timer-label { font-family: 'Cairo'; font-size: 15px; font-weight: bold; color: #ffca28; }
-    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 50px; line-height: 1; color: #76ff03; text-shadow: 0 4px 6px rgba(0,0,0,0.5); }
+    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.3); border: 2px solid #ffca28; border-radius: 15px; padding: 10px; text-align: center; margin-top: 15px; width: 100%; animation: fadeIn 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+    .buzzer-player-name { font-family: 'Cairo'; font-size: 16px; font-weight: 900; color: white; margin-bottom: 5px; }
+    .buzzer-timer-label { font-family: 'Cairo'; font-size: 14px; font-weight: bold; color: #ffca28; }
+    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 45px; line-height: 1; color: #76ff03; text-shadow: 0 4px 6px rgba(0,0,0,0.5); }
     .timer-phase-other { color: #ff5252 !important; }
 
     .sidebar-scores { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-    .team-score-col { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 45%; }
-    .team-name-text { font-family: 'Lalezar', sans-serif; font-size: 24px; line-height: 1; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+    .team-score-col { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 48%; }
+    .team-name-text { font-family: 'Lalezar', sans-serif; font-size: 22px; line-height: 1; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
     #team1-name-display { color: var(--team1-color); } #team2-name-display { color: var(--team2-color); }
-    .score-box { width: 100%; height: 60px; border-radius: 15px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .score-box { width: 100%; height: 55px; border-radius: 12px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     #score1-box { background-color: var(--team1-color); } #score2-box { background-color: var(--team2-color); }
-    .score-number { font-family: 'Lalezar', sans-serif; font-size: 45px; font-weight: 900; color: white; line-height: 1; margin-top: 10px;}
+    .score-number { font-family: 'Lalezar', sans-serif; font-size: 40px; font-weight: 900; color: white; line-height: 1; margin-top: 8px;}
 
     .board-section { flex-grow: 1; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
-    .board { position: relative; z-index: 5; width: 700px; height: 640px; transform: scale(1.35); filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); transform-origin: center center; }
+    /* --- تعديل مقاس وتمركز الخلية --- */
+    .board { position: relative; z-index: 5; width: 700px; height: 640px; transform: scale(1.25); filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); transform-origin: center center; margin: auto; }
+    
     .hex-outer { position: absolute; width: 140px; height: 160px; background: var(--main-purple); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
     .hex-outer:hover { transform: scale(1.08); z-index: 10; }
     .hex-inner { width: 100%; height: 100%; background: #ffffff; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; transform: scale(0.85); font-family: 'Lalezar', sans-serif; font-size: 70px; color: var(--main-purple); transition: background-color 0.2s, color 0.2s; padding-top: 15px; }
@@ -116,9 +121,8 @@
     
     .hidden { display: none !important; }
 
-    /* --- التعديل المطور: إجبار الجوال على الوضع الأفقي (Landscape) وتقسيم الشاشة --- */
+    /* --- التعديل المطور: إجبار الجوال على الوضع الأفقي وموازنة النسب --- */
     @media screen and (max-width: 992px) {
-        /* تعديلات القائمة والإعدادات لتناسب شاشة الجوال (بالطول قبل بدء اللعبة) */
         .word-huroof { font-size: 80px; text-shadow: 2px 2px 0 var(--dark-shadow); }
         .word-m3 { font-size: 70px; text-shadow: 2px 2px 0 var(--dark-shadow); }
         .word-name { font-size: 50px; text-shadow: 2px 2px 0 var(--dark-shadow); margin-top: 20px; }
@@ -129,7 +133,6 @@
         .color-themes-container { gap: 10px; }
         .settings-form-wrapper { width: 100%; }
         
-        /* النوافذ المنبثقة (تصغيرها لتناسب شاشة الجوال بالعرض) */
         .modal-content-custom { padding: 15px; width: 95%; max-height: 90vh; overflow-y: auto; border-radius: 15px; }
         .modal-letter-box { width: 45px; height: 45px; font-size: 30px; margin-bottom: 10px; padding-top: 5px; }
         .modal-question { font-size: 20px; margin-bottom: 15px; }
@@ -154,14 +157,14 @@
         }
 
         .game-layout {
-            flex-direction: row !important; /* الخلية يمين والنتائج يسار */
+            flex-direction: row !important;
             width: 100%;
             height: 100%;
         }
 
-        /* القسم الأيسر: النتائج (35%) */
+        /* القسم الأيسر: النتائج - وزنية الجوال (30%) */
         .sidebar-section {
-            width: 35% !important;
+            width: 30% !important;
             height: 100%;
             padding: 10px 5px !important;
             display: flex;
@@ -172,69 +175,73 @@
             z-index: 20;
         }
 
-        /* القسم الأيمن: الخلايا (65%) */
+        /* القسم الأيمن: الخلايا (70%) */
         .board-section {
-            width: 65% !important;
+            width: 70% !important;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* تصغير اللوحة لتتسع للـ 65% */
+        /* تصغير اللوحة لتتسع بشكل مثالي */
         .board {
-            transform: scale(0.50) !important; 
+            transform: scale(0.45) !important; 
             margin: 0 !important;
         }
 
-        /* تصغير نصوص القسم الأيسر لتناسب الـ 35% */
-        .sidebar-logo .word-huroof { font-size: 40px !important; line-height: 1;}
-        .sidebar-logo .word-m3 { font-size: 30px !important; line-height: 0.5;}
-        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 10px !important;}
+        /* تصغير نصوص القسم الأيسر */
+        .sidebar-logo .word-huroof { font-size: 35px !important; line-height: 1;}
+        .sidebar-logo .word-m3 { font-size: 25px !important; line-height: 0.5;}
+        .sidebar-logo .word-name { font-size: 25px !important; margin-top: 10px !important;}
         
-        .sidebar-round-text { font-size: 22px !important; margin-bottom: 0;}
-        .sidebar-round-num { font-size: 28px !important; margin-top: -5px; }
+        .sidebar-round-text { font-size: 20px !important; margin-bottom: 0;}
+        .sidebar-round-num { font-size: 24px !important; margin-top: -5px; }
         
         .sidebar-scores { flex-direction: row; gap: 5px; margin-top: 5px !important; }
         .team-score-col { width: 48%; gap: 5px;}
-        .team-name-text { font-size: 14px !important; }
+        .team-name-text { font-size: 13px !important; }
         .score-box { height: 35px !important; border-radius: 8px !important; }
-        .score-number { font-size: 24px !important; margin-top: 5px !important;}
+        .score-number { font-size: 22px !important; margin-top: 5px !important;}
 
         #sidebar-buzzer-display { padding: 5px; width: 95%; align-self: center; margin: 5px 0; }
-        .buzzer-player-name { font-size: 12px; margin-bottom: 2px;}
-        .buzzer-timer-value { font-size: 24px; }
-        .buzzer-timer-label { font-size: 12px; }
+        .buzzer-player-name { font-size: 11px; margin-bottom: 2px;}
+        .buzzer-timer-value { font-size: 22px; }
+        .buzzer-timer-label { font-size: 11px; }
 
-        /* زر الخيارات */
+        /* زر الخيارات المصغر في الجوال */
         .floating-options-wrapper { top: 5px; right: 5px; }
-        .options-btn { font-size: 14px; padding: 5px 10px; }
-        .options-menu { width: 220px; right: 0; top: 40px; }
-        .menu-item-btn { font-size: 14px; padding: 8px; }
+        .options-btn { font-size: 13px; padding: 4px 8px; }
+        .options-menu { width: 180px; right: 0; top: 35px; padding: 8px; }
+        .menu-item-btn { font-size: 12px; padding: 6px; }
         
-        /* نافذة الاحتفال */
-        #celeb-team { font-size: 60px !important; margin: 10px 0 !important; }
-        #celeb-title { font-size: 40px !important; }
+        #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
+        #celeb-title { font-size: 35px !important; }
     }
 
     /* إذا كان الجوال بالعرض خلقة (Landscape) */
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
-        .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: space-evenly; }
-        .board-section { width: 65% !important; }
-        .board { transform: scale(0.50) !important; margin: 0 !important; }
+        .sidebar-section { width: 30% !important; padding: 10px !important; justify-content: space-evenly; }
+        .board-section { width: 70% !important; }
+        .board { transform: scale(0.45) !important; margin: 0 !important; }
         
-        .sidebar-logo .word-huroof { font-size: 40px !important; }
-        .sidebar-logo .word-m3 { font-size: 30px !important; }
-        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 10px !important;}
-        .sidebar-round-text { font-size: 22px !important; }
-        .sidebar-round-num { font-size: 28px !important; }
-        .team-name-text { font-size: 14px !important; }
+        .sidebar-logo .word-huroof { font-size: 35px !important; }
+        .sidebar-logo .word-m3 { font-size: 25px !important; }
+        .sidebar-logo .word-name { font-size: 25px !important; margin-top: 10px !important;}
+        .sidebar-round-text { font-size: 20px !important; }
+        .sidebar-round-num { font-size: 24px !important; }
+        .team-name-text { font-size: 13px !important; }
         .score-box { height: 35px !important; border-radius: 8px !important; }
-        .score-number { font-size: 24px !important; margin-top: 5px !important;}
+        .score-number { font-size: 22px !important; margin-top: 5px !important;}
         
-        #celeb-team { font-size: 60px !important; margin: 10px 0 !important; }
-        #celeb-title { font-size: 40px !important; }
+        .floating-options-wrapper { top: 5px; right: 5px; }
+        .options-btn { font-size: 13px; padding: 4px 8px; }
+        .options-menu { width: 180px; right: 0; top: 35px; padding: 8px; }
+        .menu-item-btn { font-size: 12px; padding: 6px; }
+        
+        #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
+        #celeb-title { font-size: 35px !important; }
     }
   </style>
 </head>
@@ -348,9 +355,9 @@
       </div>
       <div class="sidebar-section">
         <div class="sidebar-logo">
-          <h1 class="word-huroof" style="font-size: 90px; text-shadow: 3px 3px 0 var(--dark-shadow);">حروف</h1>
-          <h1 class="word-m3" style="font-size: 70px; text-shadow: 3px 3px 0 var(--dark-shadow);">مــــع</h1>
-          <h1 class="word-name" id="dynamic-name" style="font-size: 65px; margin-top: 35px; margin-bottom: 0px; text-shadow: 3px 3px 0 var(--dark-shadow);">اسمك</h1>
+          <h1 class="word-huroof" style="font-size: 80px; text-shadow: 3px 3px 0 var(--dark-shadow);">حروف</h1>
+          <h1 class="word-m3" style="font-size: 60px; text-shadow: 3px 3px 0 var(--dark-shadow);">مــــع</h1>
+          <h1 class="word-name" id="dynamic-name" style="font-size: 55px; margin-top: 25px; margin-bottom: 0px; text-shadow: 3px 3px 0 var(--dark-shadow);">اسمك</h1>
         </div>
         
         <div class="sidebar-round">
@@ -364,7 +371,7 @@
            <div class="buzzer-timer-value" id="buzzer-timer-value">5</div>
         </div>
 
-        <div class="sidebar-scores" style="margin-top: 20px;">
+        <div class="sidebar-scores" style="margin-top: 15px;">
           <div class="team-score-col">
             <span class="team-name-text" id="team1-name-display">الفريق الأول</span>
             <div class="score-box" id="score1-box"><span class="score-number" id="team1-score">0</span></div>
@@ -485,16 +492,17 @@
 
     function showQrModal(title, urlStr) {
       const modalBody = document.getElementById('modal-body');
+      /* تم تصغير حجم الباركود هنا */
       modalBody.innerHTML = `
         <div class="close-modal-x" id="close-qr-btn">✖</div>
-        <h2 style="font-family:'Lalezar'; font-size:40px; margin-bottom:10px;">${title}</h2>
-        <p style="font-size:20px; font-weight:bold; margin-bottom: 25px;">امسح الكود ضوئياً من الجوال للمزامنة الفورية</p>
-        <div style="background: white; padding: 15px; border-radius: 20px; display: inline-block; margin-bottom: 15px;">
-           <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(urlStr)}" alt="QR Code" style="border-radius: 10px;">
+        <h2 style="font-family:'Lalezar'; font-size:30px; margin-bottom:10px;">${title}</h2>
+        <p style="font-size:16px; font-weight:bold; margin-bottom: 20px;">امسح الكود ضوئياً من الجوال للمزامنة الفورية</p>
+        <div style="background: white; padding: 12px; border-radius: 15px; display: inline-block; margin-bottom: 15px;">
+           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(urlStr)}" alt="QR Code" style="border-radius: 8px; width: 150px; height: 150px;">
         </div>
-        <div style="font-size: 16px; color: #ffca28; margin-bottom: 20px; word-break: break-all; direction: ltr;">${urlStr}</div>
+        <div style="font-size: 14px; color: #ffca28; margin-bottom: 15px; word-break: break-all; direction: ltr;">${urlStr}</div>
         <div class="modal-bottom-row" style="justify-content: center;">
-            <button id="copy-link-btn" class="btn-half" style="max-width: 250px;"><span>🔗</span> نسخ الرابط</button>
+            <button id="copy-link-btn" class="btn-half" style="max-width: 200px;"><span>🔗</span> نسخ الرابط</button>
         </div>
       `;
       document.getElementById('modal').classList.remove('hidden');
