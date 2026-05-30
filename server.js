@@ -42,7 +42,7 @@ try {
 const defaultSettings = {
   competitionName: 'اسمك', team1Name: 'الفريق الأول', team2Name: 'الفريق الثاني',
   team1Color: '#12b49c', team2Color: '#f37021', hostMode: 'auto', winPoints: 1, gameStarted: false,
-  ansTime: 3, otherTeamTime: 10 // تم تعديل الديفولت حق وقت الإجابة ليكون 3 ثواني
+  ansTime: 3, otherTeamTime: 10
 };
 
 const rooms = new Map();
@@ -145,7 +145,6 @@ io.on('connection', (socket) => {
     const room = rooms.get(socket.roomID);
     if (!room || !socket.isHost) return;
     
-    // تأكيد تحويل الأرقام عند التحديث
     if (newSettings.ansTime !== undefined) newSettings.ansTime = parseInt(newSettings.ansTime) || 3;
     if (newSettings.otherTeamTime !== undefined) newSettings.otherTeamTime = parseInt(newSettings.otherTeamTime) || 10;
     if (newSettings.winPoints !== undefined) newSettings.winPoints = parseInt(newSettings.winPoints) || 1;
@@ -168,7 +167,8 @@ io.on('connection', (socket) => {
     const roomID = data.roomID || socket.roomID; 
     const room = rooms.get(roomID);
     
-    if (!room || room.gameState.buzzerLocked || !room.gameState.questionActive) return;
+    // التعديل: إزالة شرط room.gameState.questionActive ليعمل الجرس دائماً
+    if (!room || room.gameState.buzzerLocked) return;
     
     room.gameState.buzzerLocked = true;
     room.gameState.buzzerWinner = { name: data.playerName, team: data.teamName };
