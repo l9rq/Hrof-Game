@@ -445,8 +445,8 @@
         <div class="set-label">وقت الإجابة (ث):</div>
         <div class="counter-wrapper">
           <button type="button" class="counter-btn" onclick="adjustTimer('ans-time', -1)">-</button>
-          <span id="ans-time-val" class="counter-value-span">5</span>
-          <button type="button" class="counter-btn" onclick="adjustTimer('other-time', 1)">+</button>
+          <span id="ans-time-val" class="counter-value-span">3</span>
+          <button type="button" class="counter-btn" onclick="adjustTimer('ans-time', 1)">+</button>
         </div>
         
         <div class="set-label">وقت الفريق الآخر (ث):</div>
@@ -563,7 +563,8 @@
     function adjustTimer(id, delta) {
         let el = document.getElementById(id + '-val');
         let val = parseInt(el.textContent);
-        val = Math.max(1, Math.min(60, val + delta)); 
+        // تم التعديل: أقصى وقت 30 وأقل وقت 1
+        val = Math.max(1, Math.min(30, val + delta)); 
         el.textContent = val;
     }
 

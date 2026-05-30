@@ -150,7 +150,13 @@
 
     function triggerBuzzerPress() {
       if (document.getElementById('buzzer-click-btn').classList.contains('locked')) return;
-      socket.emit('press-buzzer', localPlayer);
+      
+      // التعديل هنا: استخدام نفس الأمر الموجود بالسيرفر 'buzzer-press' مع إرسال تفاصيل الروم واللاعب
+      socket.emit('buzzer-press', {
+          roomID: roomID,
+          playerName: localPlayer.name,
+          teamName: localPlayer.team
+      });
     }
 
     socket.on('game-state', (state) => {

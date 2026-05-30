@@ -153,8 +153,14 @@
 
     socket.on('game-state', (state) => { 
       renderHostBoard(state); 
-      if (state.buzzerLocked && state.buzzerWinner) {
-        buzzerWinnerName.textContent = `${state.buzzerWinner.name} (${state.buzzerWinner.team})`;
+      if (state.buzzerLocked) {
+        if (state.timerPhase === 'second') {
+            buzzerWinnerName.textContent = 'وقت الفريق الآخر';
+            hostTimerDisplay.style.color = '#ff5252';
+        } else if (state.buzzerWinner) {
+            buzzerWinnerName.textContent = `${state.buzzerWinner.name} (${state.buzzerWinner.team})`;
+            hostTimerDisplay.style.color = '#76ff03';
+        }
         hostTimerDisplay.textContent = state.timeLeft;
         buzzerWinnerBox.classList.remove('hidden');
       } else {
