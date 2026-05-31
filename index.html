@@ -91,26 +91,28 @@
         z-index: 5; 
         width: 700px; 
         height: 640px; 
-        transform: scale(1); /* تم إزالة التكبير الإجباري اللي كان 1.25 عشان لا يضرب على شاشات البي سي */
+        transform: scale(1.25); /* تكبير أساسي عشان يعبي شاشات البي سي الكبيرة */
         filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); 
         transform-origin: center center; 
         margin: auto; 
     }
 
-    /* استعلام وسائط ذكي (Media Queries) عشان يوزن مقاس اللوحة تلقائياً على كل الشاشات بدون متصفح الزوم */
-    @media screen and (min-width: 993px) and (max-height: 750px) { .board { transform: scale(0.80); } }
-    @media screen and (min-width: 993px) and (max-height: 850px) and (min-height: 751px) { .board { transform: scale(0.90); } }
+    /* استعلامات وسائط ذكية تقيس ارتفاع الشاشة عشان ما ينقص الكود باللابتوبات */
+    @media screen and (min-width: 993px) and (max-height: 950px) { .board { transform: scale(1.1); } }
+    @media screen and (min-width: 993px) and (max-height: 850px) { .board { transform: scale(0.95); } }
+    @media screen and (min-width: 993px) and (max-height: 750px) { .board { transform: scale(0.85); } }
+    @media screen and (min-width: 993px) and (max-height: 650px) { .board { transform: scale(0.75); } }
     
     .hex-outer { position: absolute; width: 140px; height: 160px; background: var(--main-purple); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
     .hex-outer:hover { transform: scale(1.08); z-index: 10; }
     
-    /* تم التعديل على المساحة الداخلية هنا عشان ما تطلع الخلايا ملصوقة ببعض */
     .hex-inner { 
         width: 100%; height: 100%; background: #ffffff; 
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); 
         display: flex; align-items: center; justify-content: center; 
-        transform: scale(0.82); /* تم التخفيض لـ 0.82 عشان تعطي مساحة أكبر للحدود البنفسجية بين الخلايا */
-        font-family: 'Lalezar', sans-serif; font-size: 65px; /* صغرنا الخط شيء بسيط ليناسب الـ scale الجديد */
+        transform: scale(0.88); /* كبرنا الخلية البيضاء هنا عشان تصير الحدود أنيقة ونفس الصورة */
+        font-family: 'Lalezar', sans-serif; 
+        font-size: 75px; /* كبرنا الخط عشان يعبي الخلية تماماً */
         color: var(--main-purple); transition: background-color 0.2s, color 0.2s; padding-top: 15px; 
     }
     /* ========================================================= */
@@ -240,7 +242,7 @@
             height: 100%; padding: 10px 5px !important; display: flex; flex-direction: column; justify-content: space-evenly; box-shadow: inset -5px 0 15px rgba(0,0,0,0.5); border: none; z-index: 20;
         }
         .board-section { width: 65% !important; height: 100%; display: flex; align-items: center; justify-content: center; }
-        .board { transform: scale(0.45) !important; margin: 0 !important; }
+        .board { transform: scale(0.55) !important; margin: 0 !important; }
 
         .sidebar-logo .word-huroof { font-size: 45px !important; line-height: 1;}
         .sidebar-logo .word-m3 { font-size: 35px !important; line-height: 0.5;}
@@ -325,7 +327,7 @@
         .game-layout { flex-direction: row !important; }
         .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: space-evenly; }
         .board-section { width: 65% !important; }
-        .board { transform: scale(0.45) !important; margin: 0 !important; }
+        .board { transform: scale(0.52) !important; margin: 0 !important; }
         
         .sidebar-logo .word-huroof { font-size: 45px !important; }
         .sidebar-logo .word-m3 { font-size: 35px !important; }
