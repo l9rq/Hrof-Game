@@ -133,38 +133,34 @@
     .bell-player-name { font-family: 'Lalezar', sans-serif; font-size: 60px; color: #ffca28; margin-top: 20px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
     @keyframes shake { 0% { transform: rotate(0deg); } 25% { transform: rotate(-20deg); } 50% { transform: rotate(0deg); } 75% { transform: rotate(20deg); } 100% { transform: rotate(0deg); } }
 
-    /* ========== تعديلات الجوال ========== */
+    /* ========== تعديلات الجوال – الشريط يسار واللوحة يمين ========== */
     @media screen and (max-width: 992px) {
       body { overflow: hidden; }
-      #game-board-container { flex-direction: column !important; }
-      .game-layout { flex-direction: column !important; }
+      .game-layout { flex-direction: row !important; } /* جنب بعض */
       .sidebar-section {
-        width: 100% !important;
-        height: auto !important;
-        flex-direction: row !important;
-        justify-content: space-around !important;
-        align-items: center !important;
-        padding: 8px 5px !important;
+        width: 35% !important;
+        height: 100% !important;
+        padding: 10px 5px !important;
+        justify-content: space-evenly;
         flex-shrink: 0;
         z-index: 25;
       }
-      .sidebar-logo, .sidebar-round { display: flex; flex-direction: column; align-items: center; }
       .sidebar-logo .word-huroof { font-size: 28px !important; }
       .sidebar-logo .word-m3 { font-size: 22px !important; }
       .sidebar-logo .word-name { font-size: 20px !important; margin-top: 5px !important; }
       .sidebar-round-text { font-size: 20px !important; }
       .sidebar-round-num { font-size: 24px !important; }
-      .sidebar-scores { flex-direction: row !important; gap: 10px; margin-top: 0 !important; }
-      .team-score-col { width: auto !important; }
+      .sidebar-scores { flex-direction: column !important; gap: 5px; margin-top: 10px !important; }
+      .team-score-col { width: 100% !important; }
       .team-name-text { font-size: 13px !important; }
-      .score-box { height: 35px !important; width: 55px !important; }
+      .score-box { height: 35px !important; width: 100% !important; }
       .score-number { font-size: 20px !important; margin-top: 4px !important; }
       #sidebar-buzzer-display { display: none; }
 
       .board-section {
-        width: 100% !important;
+        width: 65% !important;
         height: 100% !important;
-        flex-grow: 1;
+        flex-grow: 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -172,22 +168,18 @@
         overflow: hidden;
       }
 
-      /* اللوحة في المنتصف بحجم أكبر والألوان الجانبية ظاهرة */
       .board {
         width: 700px;
         height: 640px;
-        transform: scale(0.6) !important;
+        transform: scale(0.45) !important; /* حجم يناسب الجوال مع ظهور الألوان */
         transform-origin: center center !important;
         margin: 0 !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
       }
-
-      /* تكبير الخط داخل الخلايا */
       .hex-inner { font-size: 70px !important; }
 
-      /* النافذة المنبثقة على الجوال */
       .modal {
         position: fixed !important;
         width: 100% !important;
@@ -204,9 +196,6 @@
         padding: 20px 15px !important;
         background: #472b75 !important;
         border-radius: 15px !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
       }
       .modal-letter-box { width: 55px; height: 55px; font-size: 30px; padding-top: 4px; }
       .modal-question { font-size: 22px; margin-bottom: 15px; }
@@ -375,7 +364,6 @@
   </div>
 
   <script>
-    // ... (نفس السكربت السابق بدون أي تغيير) ...
     const socket = io();
     
     let currentRoomID = null;
