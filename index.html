@@ -106,7 +106,6 @@
     .hex-outer { position: absolute; width: 140px; height: 160px; background: var(--main-purple); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
     .hex-outer:hover { transform: scale(1.08); z-index: 10; }
     
-    /* ==== تم تعديل الخلية الداخلية فقط كما طلبت ==== */
     .hex-inner { 
         width: 100%; height: 100%; background: #ffffff; 
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); 
@@ -118,7 +117,6 @@
         transition: background-color 0.2s, color 0.2s; 
         padding-top: 15px; 
     }
-    /* ========================================================= */
 
     .hex-outer:hover .hex-inner:not(.answered):not(.highlighted) { background: #e0e0e0; }
     .hex-inner.answered { color: transparent !important; text-shadow: none !important; }
@@ -210,8 +208,10 @@
         .settings-form-wrapper { width: 100%; }
         
         .modal-content-custom { padding: 15px; width: 96%; max-height: 95vh; border-radius: 12px; }
-        .modal-letter-wrapper { margin-bottom: 10px; }
-        .modal-letter-box { width: 50px; height: 50px; font-size: 28px; border-radius: 12px; line-height: 1; padding-top: 4px; }
+        /* تعديل توسيط ومقاسات مربع الخلية بالجوال بشكل عام */
+        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 12px !important; flex-shrink: 0 !important; }
+        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; border-radius: 14px !important; line-height: 1 !important; padding-top: 6px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        
         .modal-question { font-size: 18px; margin-bottom: 10px; line-height: 1.4; } 
         .question-wrapper { max-height: 45vh; margin-bottom: 10px; padding: 0 5px; }
         .qr-img { width: 100px !important; height: 100px !important; }
@@ -245,14 +245,15 @@
             height: 100%; padding: 10px 5px !important; display: flex; flex-direction: column; justify-content: space-evenly; box-shadow: inset -5px 0 15px rgba(0,0,0,0.5); border: none; z-index: 20;
         }
         .board-section { width: 65% !important; height: 100%; display: flex; align-items: center; justify-content: center; }
-.board { 
-    transform: scale(0.45) !important; 
-    transform-origin: center center !important; 
-    margin: auto !important; 
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-}
+        
+        /* التعديل الجذري للوحة: تكبير المقياس وضبط التوسيط بدون إتلاف المطلق */
+        .board { 
+            transform: scale(0.6) !important; 
+            transform-origin: center center !important; 
+            margin: auto !important; 
+            position: relative !important;
+            display: block !important;
+        }
 
         .sidebar-logo .word-huroof { font-size: 45px !important; line-height: 1;}
         .sidebar-logo .word-m3 { font-size: 35px !important; line-height: 0.5;}
@@ -286,23 +287,23 @@
         #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
         #celeb-title { font-size: 35px !important; }
 
-        /* -- التعديل السحري المعدل: النافذة صارت يمين فوق الخلايا والنتائج باليسار مكشوفة -- */
+        /* نافذة السؤال وتوسيط الخلية بداخلها بوضعية العمودي */
         .modal {
             position: absolute !important;
-            width: 65% !important; /* نغطي مساحة الخلايا فقط */
+            width: 65% !important;
             height: 100% !important;
-            right: 0 !important; /* نثبته يمين فوق الخلايا */
-            left: auto !important; /* نبعد عن مستطيل النتائج اللي باليسار */
+            right: 0 !important;
+            left: auto !important;
             top: 0 !important;
             background: rgba(0,0,0,0.7) !important;
             backdrop-filter: blur(4px) !important;
-            pointer-events: auto !important; /* يمنع الضغط على الخلايا اللي بالخلفية */
+            pointer-events: auto !important;
         }
         .modal-content-custom {
             pointer-events: auto !important;
             position: absolute !important;
-            top: 50% !important; /* التعديل هنا: سحبناها للنص بالطول */
-            transform: translateY(-50%) !important; /* التعديل هنا: وزن السنترة عمودياً بدقة */
+            top: 50% !important;
+            transform: translateY(-50%) !important;
             right: 5% !important;
             left: auto !important;
             width: 90% !important;
@@ -317,8 +318,11 @@
             display: flex !important;
             flex-direction: column !important;
         }
-        .modal-letter-wrapper { margin-bottom: 5px !important; flex-shrink: 0 !important;}
-        .modal-letter-box { width: 45px !important; height: 45px !important; font-size: 24px !important; padding-top: 4px !important; border-radius: 10px !important; }
+        
+        /* التعديل الجذري لمربع الخلية: سنترة في المنتصف وتكبير الحجم */
+        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 15px !important; flex-shrink: 0 !important;}
+        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        
         .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
         .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
         .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
@@ -337,7 +341,9 @@
         .game-layout { flex-direction: row !important; }
         .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: space-evenly; }
         .board-section { width: 65% !important; }
-        .board { transform: scale(0.52) !important; margin: 0 !important; }
+        
+        /* التعديل الجذري للوحة: تكبير المقياس وضبط التوسيط */
+        .board { transform: scale(0.6) !important; margin: auto !important; position: relative !important; display: block !important;}
         
         .sidebar-logo .word-huroof { font-size: 45px !important; }
         .sidebar-logo .word-m3 { font-size: 35px !important; }
@@ -362,23 +368,23 @@
         #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
         #celeb-title { font-size: 35px !important; }
 
-        /* -- التعديل السحري المعدل: النافذة صارت يمين فوق الخلايا والنتائج باليسار مكشوفة -- */
+        /* نافذة السؤال وتوسيط الخلية بداخلها بوضعية الأفقي */
         .modal {
             position: absolute !important;
-            width: 65% !important; /* نغطي مساحة الخلايا فقط */
+            width: 65% !important;
             height: 100% !important;
-            right: 0 !important; /* نثبته يمين فوق الخلايا */
-            left: auto !important; /* نبعد عن مستطيل النتائج اللي باليسار */
+            right: 0 !important;
+            left: auto !important;
             top: 0 !important;
             background: rgba(0,0,0,0.7) !important;
             backdrop-filter: blur(4px) !important;
-            pointer-events: auto !important; /* يمنع الضغط على الخلايا اللي بالخلفية */
+            pointer-events: auto !important;
         }
         .modal-content-custom {
             pointer-events: auto !important;
             position: absolute !important;
-            top: 50% !important; /* التعديل هنا: سحبناها للنص بالطول */
-            transform: translateY(-50%) !important; /* التعديل هنا: وزن السنترة عمودياً بدقة */
+            top: 50% !important;
+            transform: translateY(-50%) !important;
             right: 5% !important;
             left: auto !important;
             width: 90% !important;
@@ -393,8 +399,11 @@
             display: flex !important;
             flex-direction: column !important;
         }
-        .modal-letter-wrapper { margin-bottom: 5px !important; flex-shrink: 0 !important;}
-        .modal-letter-box { width: 45px !important; height: 45px !important; font-size: 24px !important; padding-top: 4px !important; border-radius: 10px !important; }
+        
+        /* التعديل الجذري لمربع الخلية: سنترة في المنتصف وتكبير الحجم */
+        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 12px !important; flex-shrink: 0 !important;}
+        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        
         .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
         .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
         .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
