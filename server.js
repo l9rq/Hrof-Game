@@ -9,19 +9,14 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// خدمة الملفات الثابتة من المجلد الرئيسي
 app.use(express.static(__dirname));
 
-// توجيهات ذكية لصفحة البداية والمقدم والجرس (بـ .html وبدونها)
 app.get('/', (req, res) => { res.sendFile(path.join(__dirname, 'index.html')); });
-
 app.get('/host', (req, res) => { res.sendFile(path.join(__dirname, 'host.html')); });
 app.get('/host.html', (req, res) => { res.sendFile(path.join(__dirname, 'host.html')); });
-
 app.get('/buzzer', (req, res) => { res.sendFile(path.join(__dirname, 'buzzer.html')); });
 app.get('/buzzer.html', (req, res) => { res.sendFile(path.join(__dirname, 'buzzer.html')); });
 
-// تحميل الأسئلة من نفس المجلد الرئيسي
 let baseQuestions = {};
 try {
   const questionsPath = path.join(__dirname, 'questions.json');
@@ -52,8 +47,6 @@ function generateRoomID() { return crypto.randomBytes(4).toString('hex'); }
 
 function createRoom(customSettings = {}) {
   const roomID = generateRoomID();
-  
-  // تحويل نصوص الوقت والنقاط إلى أرقام برمجية لتجنب تعليق المؤقت
   if (customSettings.ansTime !== undefined) customSettings.ansTime = parseInt(customSettings.ansTime) || 3;
   if (customSettings.otherTeamTime !== undefined) customSettings.otherTeamTime = parseInt(customSettings.otherTeamTime) || 10;
   if (customSettings.winPoints !== undefined) customSettings.winPoints = parseInt(customSettings.winPoints) || 1;
@@ -116,7 +109,6 @@ function checkWin(gameState, teamColor, mode) {
 
 io.on('connection', (socket) => {
   socket.on('ping', () => socket.emit('pong'));
-
   socket.on('create-room', (customSettings) => {
     const roomID = createRoom(customSettings);
     rooms.get(roomID).settings.roomID = roomID;
@@ -144,11 +136,9 @@ io.on('connection', (socket) => {
   socket.on('update-settings', (newSettings) => {
     const room = rooms.get(socket.roomID);
     if (!room || !socket.isHost) return;
-    
     if (newSettings.ansTime !== undefined) newSettings.ansTime = parseInt(newSettings.ansTime) || 3;
     if (newSettings.otherTeamTime !== undefined) newSettings.otherTeamTime = parseInt(newSettings.otherTeamTime) || 10;
     if (newSettings.winPoints !== undefined) newSettings.winPoints = parseInt(newSettings.winPoints) || 1;
-    
     room.settings = { ...room.settings, ...newSettings };
     io.to(socket.roomID).emit('settings', room.settings);
   });
@@ -166,27 +156,19 @@ io.on('connection', (socket) => {
   socket.on('buzzer-press', (data) => {
     const roomID = data.roomID || socket.roomID; 
     const room = rooms.get(roomID);
-    
     if (!room || room.gameState.buzzerLocked) return;
-    
     room.gameState.buzzerLocked = true;
     room.gameState.buzzerWinner = { name: data.playerName, team: data.teamName };
     room.gameState.timerPhase = 'first'; 
     room.gameState.timeLeft = room.settings.ansTime;
-    
     io.to(roomID).emit('buzzer-locked', { winner: room.gameState.buzzerWinner, timeLeft: room.gameState.timeLeft });
     io.to(roomID).emit('game-state', room.gameState);
-    
-    if (roomIntervals.has(roomID)) { 
-        clearInterval(roomIntervals.get(roomID)); 
-    }
-    
+    if (roomIntervals.has(roomID)) clearInterval(roomIntervals.get(roomID)); 
     const interval = setInterval(() => {
       const r = rooms.get(roomID);
       if (!r || !r.gameState.buzzerLocked) { clearInterval(interval); return; }
       r.gameState.timeLeft--;
       io.to(roomID).emit('timer-tick', { timeLeft: r.gameState.timeLeft });
-      
       if (r.gameState.timeLeft <= 0) {
         if (r.gameState.timerPhase === 'first') {
           r.gameState.timerPhase = 'second';
@@ -216,18 +198,15 @@ io.on('connection', (socket) => {
     if (!room || !room.settings.gameStarted || room.gameState.roundOver) return;
     const cell = room.gameState.cells[cellIndex];
     if (!cell || cell.color) return;
-    
     room.gameState.questionActive = true;
     room.gameState.currentCellIndex = cellIndex;
     room.gameState.highlightedCellIndex = cellIndex;
     resetBuzzerState(socket.roomID, room); 
     io.to(socket.roomID).emit('buzzer-reset');
-    
     const qData = baseQuestions[cell.letter]?.[Math.floor(Math.random() * baseQuestions[cell.letter]?.length || 0)];
     if (!qData) return;
     room.gameState.currentQuestion = qData.question;
     room.gameState.currentAnswer = qData.answer;
-    
     io.to(socket.roomID).emit('game-state', room.gameState);
     io.to(socket.roomID).emit('new-question', { cellIndex, letter: cell.letter, question: room.gameState.currentQuestion, answer: room.gameState.currentAnswer });
     io.to(socket.roomID).emit('host-receive-question', { cellIndex, letter: cell.letter, question: room.gameState.currentQuestion, answer: room.gameState.currentAnswer });
@@ -255,7 +234,6 @@ io.on('connection', (socket) => {
     resetBuzzerState(socket.roomID, room); 
     const mode = teamIndex === 0 ? 'horizontal' : 'vertical';
     const roundWon = checkWin(room.gameState, color, mode);
-    
     if (roundWon) {
       room.gameState.scores[teamIndex]++;
       if (room.gameState.scores[teamIndex] >= room.settings.winPoints) {
