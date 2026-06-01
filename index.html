@@ -9,9 +9,9 @@
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Lalezar&display=swap');
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --team1-color: #12b49c; --team2-color: #f37021; --main-purple: #392265; --dark-shadow: #1d0b33; }
-    body { font-family: 'Cairo', sans-serif; background-color: #2b164d; color: white; height: 100vh; overflow: hidden; position: relative; }
+    body { font-family: 'Cairo', sans-serif; background-color: #2b164d; color: white; height: 100vh; overflow-x: hidden; position: relative; }
     
-    /* --- قائمة الخيارات --- */
+    /* --- التعديلات قائمة الخيارات --- */
     .floating-options-wrapper { position: absolute; top: 15px; right: 15px; z-index: 50; }
     .options-btn { background-color: white; color: var(--main-purple); font-family: 'Lalezar', sans-serif; font-size: 18px; padding: 6px 20px; border-radius: 30px; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.2s; }
     .options-btn:hover { transform: scale(1.05); background-color: #ffca28; }
@@ -24,7 +24,6 @@
     .menu-item-btn.gradient-btn { background: linear-gradient(45deg, #ffca28, #ffb300); color: #392265; border: none; }
     .menu-label { text-align: center; color: var(--main-purple); font-family: 'Cairo'; font-weight: 900; font-size: 13px; margin-bottom: -4px;}
 
-    /* --- الصفحة الرئيسية --- */
     .main-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 100; background-color: #6b439b; background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.923' viewBox='0 0 60 103.923' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 103.923L0 86.603V51.962L30 34.641l30 17.321v34.641L30 103.923zM30 34.641L0 17.321V-17.321L30-34.641l30 17.321V17.321L30 34.641z' stroke='rgba(255,255,255,0.05)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-size: 80px 138px; }
     .menu-content { display: flex; flex-direction: column; align-items: center; gap: 50px; }
     .game-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); }
@@ -32,11 +31,12 @@
     .word-m3 { font-family: 'Lalezar', sans-serif; font-size: 110px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.55; margin: 0; z-index: 2; }
     .word-name { font-family: 'Lalezar', sans-serif; font-size: 85px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin-top: 40px; margin-bottom: 20px; z-index: 1; }
     .menu-btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+    
     .main-btn { font-family: 'Cairo', sans-serif; font-size: 24px; font-weight: 900; padding: 12px 60px; border: none; border-radius: 50px; cursor: pointer; color: #6b439b; background-color: #ffffff; width: 320px; max-width: 90vw; white-space: nowrap; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: all 0.3s; }
     .main-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 20px rgba(0,0,0,0.3); background-color: #ffca28; color: #392265; }
 
-    /* --- الإعدادات --- */
     .settings-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #6b439b; background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.923' viewBox='0 0 60 103.923' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 103.923L0 86.603V51.962L30 34.641l30 17.321v34.641L30 103.923zM30 34.641L0 17.321V-17.321L30-34.641l30 17.321V17.321L30 34.641z' stroke='rgba(255,255,255,0.05)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-size: 80px 138px; z-index: 100; overflow-y: auto; display: flex; flex-direction: column; align-items: center; padding: 30px 0; }
+    
     .settings-form-wrapper { width: 850px; max-width: 95%; margin-top: 10px; }
     .settings-grid { display: grid; grid-template-columns: 200px 1fr; gap: 18px 20px; align-items: center; }
     .set-label { font-size: 22px; font-weight: 900; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
@@ -45,10 +45,12 @@
     .pill-btn { flex: 1; background: transparent; color: white; border: none; padding: 10px 0; font-size: 20px; font-weight: bold; font-family: 'Cairo'; cursor: pointer; transition: 0.2s; border-left: 1px solid rgba(255,255,255,0.3); }
     .pill-btn:last-child { border-left: none; }
     .pill-btn.active { background: white; color: #6b439b; }
+    
     .counter-wrapper { display: flex; justify-content: center; align-items: center; gap: 15px; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; border: 2px solid white; }
     .counter-btn { background: white; color: #392265; width: 40px; height: 40px; border-radius: 50%; font-size: 26px; font-weight: 900; cursor: pointer; display: flex; justify-content: center; align-items: center; border: none; transition: 0.2s; }
     .counter-btn:hover { background: #ffca28; }
     .counter-value-span { font-size: 24px; font-weight: 900; color: white; min-width: 40px; text-align: center; }
+
     .color-themes-container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
     .color-theme-pair { display: flex; align-items: center; padding: 6px; border-radius: 20px; border: 2px solid transparent; cursor: pointer; transition: 0.3s; }
     .color-theme-pair.selected { border-color: white; transform: scale(1.1); background: rgba(255,255,255,0.15); }
@@ -56,20 +58,24 @@
     .hex-color:nth-child(2) { margin-right: -12px; z-index: 1; } .hex-color:nth-child(1) { z-index: 2; }
     .save-settings-btn { background: white; color: #6b439b; font-family: 'Cairo'; font-size: 24px; font-weight: 900; border: none; border-radius: 50px; padding: 12px 50px; margin-top: 40px; margin-bottom: 20px; cursor: pointer; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: all 0.2s; }
 
-    /* --- شاشة اللعبة --- */
     #game-board-container { height: 100vh; width: 100vw; display: flex; position: relative; }
     .game-layout { display: flex; flex-direction: row; width: 100%; height: 100%; }
+    
     .sidebar-section { width: 24%; height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 30px 20px; z-index: 20; }
     .board-section { flex-grow: 1; width: 76%; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
+    
     .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
     .sidebar-round { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 10px; }
+    
     .sidebar-round-text { font-family: 'Lalezar', sans-serif; font-size: 65px; color: #ff5252; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
     .sidebar-round-num { font-family: 'Lalezar', sans-serif; font-size: 80px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
+    
     #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.3); border: 2px solid #ffca28; border-radius: 15px; padding: 10px; text-align: center; margin-top: 15px; width: 100%; animation: fadeIn 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
     .buzzer-player-name { font-family: 'Cairo'; font-size: 16px; font-weight: 900; color: white; margin-bottom: 5px; }
     .buzzer-timer-label { font-family: 'Cairo'; font-size: 14px; font-weight: bold; color: #ffca28; }
     .buzzer-timer-value { font-family: 'Lalezar'; font-size: 45px; line-height: 1; color: #76ff03; text-shadow: 0 4px 6px rgba(0,0,0,0.5); }
     .timer-phase-other { color: #ff5252 !important; }
+
     .sidebar-scores { display: flex; justify-content: space-between; align-items: center; width: 100%; }
     .team-score-col { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 48%; }
     .team-name-text { font-family: 'Lalezar', sans-serif; font-size: 28px; line-height: 1; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
@@ -78,8 +84,20 @@
     #score1-box { background-color: var(--team1-color); } #score2-box { background-color: var(--team2-color); }
     .score-number { font-family: 'Lalezar', sans-serif; font-size: 60px; font-weight: 900; color: white; line-height: 1; margin-top: 8px;}
 
-    /* --- لوحة الخلايا (سطح المكتب) --- */
-    .board { position: relative; z-index: 5; width: 700px; height: 640px; transform: scale(1.25); filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); transform-origin: center center; margin: auto; }
+    /* ========== التعديلات الرئيسية لمقاس اللوحة والخلايا ========== */
+    
+    .board { 
+        position: relative; 
+        z-index: 5; 
+        width: 700px; 
+        height: 640px; 
+        transform: scale(1.25); /* تكبير أساسي عشان يعبي شاشات البي سي الكبيرة */
+        filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); 
+        transform-origin: center center; 
+        margin: auto; 
+    }
+
+    /* استعلامات وسائط ذكية تقيس ارتفاع الشاشة عشان ما ينقص الكود باللابتوبات */
     @media screen and (min-width: 993px) and (max-height: 950px) { .board { transform: scale(1.1); } }
     @media screen and (min-width: 993px) and (max-height: 850px) { .board { transform: scale(0.95); } }
     @media screen and (min-width: 993px) and (max-height: 750px) { .board { transform: scale(0.85); } }
@@ -87,7 +105,18 @@
     
     .hex-outer { position: absolute; width: 140px; height: 160px; background: var(--main-purple); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
     .hex-outer:hover { transform: scale(1.08); z-index: 10; }
-    .hex-inner { width: 100%; height: 100%; background: #ffffff; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; transform: scale(0.88); font-family: 'Lalezar', sans-serif; font-size: 75px; color: var(--main-purple); transition: background-color 0.2s, color 0.2s; padding-top: 15px; }
+    
+    .hex-inner { 
+        width: 100%; height: 100%; background: #ffffff; 
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); 
+        display: flex; align-items: center; justify-content: center; 
+        transform: scale(0.88); /* كبرنا الخلية البيضاء هنا عشان تصير الحدود أنيقة ونفس الصورة */
+        font-family: 'Lalezar', sans-serif; 
+        font-size: 75px; /* كبرنا الخط عشان يعبي الخلية تماماً */
+        color: var(--main-purple); transition: background-color 0.2s, color 0.2s; padding-top: 15px; 
+    }
+    /* ========================================================= */
+
     .hex-outer:hover .hex-inner:not(.answered):not(.highlighted) { background: #e0e0e0; }
     .hex-inner.answered { color: transparent !important; text-shadow: none !important; }
     .hex-inner.highlighted { background: #ffeb3b !important; color: var(--main-purple) !important; transform: scale(0.92); box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
@@ -98,19 +127,24 @@
     .hex-outer:nth-child(16) { top: 360px; left: 70px; } .hex-outer:nth-child(17) { top: 360px; left: 210px; } .hex-outer:nth-child(18) { top: 360px; left: 350px; } .hex-outer:nth-child(19) { top: 360px; left: 490px; } .hex-outer:nth-child(20) { top: 360px; left: 630px; }
     .hex-outer:nth-child(21) { top: 480px; left: 0px; } .hex-outer:nth-child(22) { top: 480px; left: 140px; } .hex-outer:nth-child(23) { top: 480px; left: 280px; } .hex-outer:nth-child(24) { top: 480px; left: 420px; } .hex-outer:nth-child(25) { top: 480px; left: 560px; }
 
-    /* --- النوافذ المنبثقة --- */
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 200; }
+    
     .modal-content-custom { background: #5a3b8c; padding: 40px; border-radius: 25px; max-width: 650px; width: 90%; color: white; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); position: relative; display: flex; flex-direction: column; max-height: 90vh; }
+    
     .modal-letter-wrapper { display: flex; justify-content: center; width: 100%; flex-shrink: 0; margin-bottom: 15px; }
     .modal-letter-box { width: 80px; height: 80px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 18px; display: flex; justify-content: center; align-items: center; font-size: 55px; font-family: 'Lalezar'; color: white; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); line-height: 1; padding-top: 8px; }
+    
     .question-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; flex-grow: 1; overflow-y: auto; margin-bottom: 20px; padding: 0 10px; }
     .question-wrapper::-webkit-scrollbar { width: 5px; }
     .question-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 5px; }
     .action-wrapper { width: 100%; flex-shrink: 0; }
+    
     .close-modal-x { position: absolute; top: 15px; left: 20px; font-size: 24px; font-weight: bold; cursor: pointer; color: #fff; background: rgba(255,255,255,0.2); width: 40px; height: 40px; border-radius: 10px; display: flex; justify-content: center; align-items: center; transition: 0.2s; z-index: 10; }
     .close-modal-x:hover { background: rgba(255,82,82,0.8); }
+    
     .modal-question { font-size: 35px; font-weight: bold; margin-bottom: 20px; line-height: 1.4; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
     .qr-img { width: 150px; height: 150px; border-radius: 8px; } 
+
     .btn-wide-toggle { width: 100%; background: rgba(140, 90, 100, 0.8); border: 1px solid rgba(255,255,255,0.15); color: #ffeb3b; padding: 20px; border-radius: 15px; font-size: 26px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; transition: 0.2s; font-family: 'Cairo', sans-serif; }
     .modal-bottom-row { display: flex; gap: 15px; margin-top: 15px; }
     .btn-half { flex: 1; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; padding: 15px; border-radius: 15px; font-size: 22px; font-weight: bold; cursor: pointer; transition: 0.2s; font-family: 'Cairo', sans-serif; display: flex; justify-content: center; align-items: center; gap: 10px; }
@@ -126,103 +160,249 @@
     #confetti-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: -1;}
     .confetti-particle { position: absolute; width: 12px; height: 12px; top: -20px; animation: fall linear forwards; opacity: 0; }
     @keyframes fall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 1; } }
+    
     .hidden { display: none !important; }
 
-    #bell-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); justify-content: center; align-items: center; flex-direction: column; z-index: 9999; }
-    .bell-icon { font-size: 15rem; animation: shake 0.5s infinite; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
-    .bell-player-name { font-family: 'Lalezar', sans-serif; font-size: 60px; color: #ffca28; margin-top: 20px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
-    @keyframes shake { 0% { transform: rotate(0deg); } 25% { transform: rotate(-20deg); } 50% { transform: rotate(0deg); } 75% { transform: rotate(20deg); } 100% { transform: rotate(0deg); } }
-
-    /* ========== تعديلات الجوال (أهم قسم) ========== */
-    @media screen and (max-width: 992px) {
-      .game-layout {
-        flex-direction: column !important; /* العناصر فوق بعض */
-      }
-      .sidebar-section {
-        width: 100% !important;
-        height: auto !important;
-        flex-direction: row !important;
-        justify-content: space-around !important;
-        align-items: center !important;
-        padding: 10px 5px !important;
-        flex-shrink: 0;
-      }
-      .sidebar-logo, .sidebar-round {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .sidebar-logo .word-huroof { font-size: 30px !important; }
-      .sidebar-logo .word-m3 { font-size: 24px !important; }
-      .sidebar-logo .word-name { font-size: 22px !important; margin-top: 5px !important; }
-      .sidebar-round-text { font-size: 22px !important; }
-      .sidebar-round-num { font-size: 28px !important; }
-      .sidebar-scores {
-        flex-direction: row !important;
-        gap: 10px;
-        margin-top: 0 !important;
-      }
-      .team-score-col { width: auto !important; }
-      .team-name-text { font-size: 14px !important; }
-      .score-box { height: 40px !important; width: 60px !important; }
-      .score-number { font-size: 24px !important; margin-top: 4px !important; }
-      #sidebar-buzzer-display { display: none; } /* إخفاء الجرس في شاشة النتائج العلوية */
-
-      .board-section {
-        width: 100% !important;
-        height: 100% !important;
-        flex-grow: 1;
-        display: flex;
+    #bell-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.75);
         justify-content: center;
         align-items: center;
-        background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0);
-      }
-
-      /* ضبط اللوحة لتظهر بالمنتصف بحجم متوسط */
-      .board {
-        width: 700px;
-        height: 640px;
-        transform: scale(0.75) !important; /* حجم متوسط مثالي للجوال */
-        transform-origin: center center !important;
-        margin: 0 !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-      }
-
-      /* تكبير الخط قليلاً داخل الخلايا */
-      .hex-inner {
-        font-size: 65px !important;
-      }
-
-      /* النافذة المنبثقة على الجوال */
-      .modal {
-        position: fixed !important;
-        width: 100% !important;
-        height: 100% !important;
-        left: 0 !important;
-        right: 0 !important;
-        top: 0 !important;
-        background: rgba(0,0,0,0.7) !important;
-        backdrop-filter: blur(4px) !important;
-      }
-      .modal-content-custom {
-        width: 92% !important;
-        max-height: 85% !important;
-        padding: 20px 15px !important;
-        background: #472b75 !important;
-        border-radius: 15px !important;
-        display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-      }
-      .modal-letter-box { width: 55px; height: 55px; font-size: 30px; padding-top: 4px; }
-      .modal-question { font-size: 22px; margin-bottom: 15px; }
-      .btn-wide-toggle { font-size: 20px; padding: 12px; }
-      .btn-half { font-size: 16px; padding: 10px; }
-      .answer-text { font-size: 24px; }
-      .team-btns button { font-size: 18px; padding: 10px; }
-      .close-modal-x { width: 32px; height: 32px; font-size: 18px; top: 10px; left: 10px; }
+        z-index: 9999;
+    }
+    .bell-icon {
+        font-size: 15rem;
+        animation: shake 0.5s infinite;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    }
+    .bell-player-name {
+        font-family: 'Lalezar', sans-serif;
+        font-size: 60px;
+        color: #ffca28;
+        margin-top: 20px;
+        text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    }
+    @keyframes shake {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(-20deg); }
+        50% { transform: rotate(0deg); }
+        75% { transform: rotate(20deg); }
+        100% { transform: rotate(0deg); }
+    }
+
+    /* --- التعديلات المخصصة للجوال عامة --- */
+    @media screen and (max-width: 992px) {
+        .word-huroof { font-size: 80px; text-shadow: 2px 2px 0 var(--dark-shadow); }
+        .word-m3 { font-size: 70px; text-shadow: 2px 2px 0 var(--dark-shadow); }
+        .word-name { font-size: 50px; text-shadow: 2px 2px 0 var(--dark-shadow); margin-top: 20px; }
+        
+        .main-btn { font-size: 20px; padding: 10px 20px; }
+        .settings-overlay { padding: 15px; }
+        .settings-grid { grid-template-columns: 1fr; gap: 10px; text-align: center; }
+        .set-label { font-size: 18px; margin-top: 10px; }
+        .color-themes-container { gap: 10px; }
+        .settings-form-wrapper { width: 100%; }
+        
+        .modal-content-custom { padding: 15px; width: 96%; max-height: 95vh; border-radius: 12px; }
+        .modal-letter-wrapper { margin-bottom: 10px; }
+        .modal-letter-box { width: 50px; height: 50px; font-size: 28px; border-radius: 12px; line-height: 1; padding-top: 4px; }
+        .modal-question { font-size: 18px; margin-bottom: 10px; line-height: 1.4; } 
+        .question-wrapper { max-height: 45vh; margin-bottom: 10px; padding: 0 5px; }
+        .qr-img { width: 100px !important; height: 100px !important; }
+
+        .btn-wide-toggle { font-size: 15px; padding: 8px; border-radius: 10px; }
+        .answer-reveal-area { padding: 10px; margin-top: 10px; margin-bottom: 10px; }
+        .answer-text { font-size: 18px; margin-bottom: 8px; }
+        .team-btns button { font-size: 14px; padding: 8px; border-radius: 8px; }
+        
+        .modal-bottom-row { gap: 10px; margin-top: 10px; }
+        .btn-half { font-size: 14px; padding: 8px; border-radius: 8px; }
+    }
+
+    /* --- التعديلات الخاصة بوضعية الهاتف العمودي المقلوب (للجوال) --- */
+    @media screen and (max-width: 992px) and (orientation: portrait) {
+        #game-board-container:not(.hidden), #celebration-overlay:not(.hidden) {
+            position: fixed !important;
+            top: 100vh !important;
+            left: 0 !important;
+            width: 100vh !important;
+            height: 100vw !important;
+            transform: rotate(-90deg);
+            transform-origin: left top;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        .game-layout { flex-direction: row !important; width: 100%; height: 100%; }
+        .sidebar-section {
+            width: 35% !important; 
+            height: 100%; padding: 10px 5px !important; display: flex; flex-direction: column; justify-content: space-evenly; box-shadow: inset -5px 0 15px rgba(0,0,0,0.5); border: none; z-index: 20;
+        }
+        .board-section { width: 65% !important; height: 100%; display: flex; align-items: center; justify-content: center; }
+.board { 
+    transform: scale(0.45) !important; 
+    transform-origin: center center !important; 
+    margin: auto !important; 
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+        .sidebar-logo .word-huroof { font-size: 45px !important; line-height: 1;}
+        .sidebar-logo .word-m3 { font-size: 35px !important; line-height: 0.5;}
+        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 12px !important;}
+        
+        .sidebar-round-text { font-size: 32px !important; margin-bottom: 5px !important;}
+        .sidebar-round-num { font-size: 42px !important; margin-top: 5px !important; }
+        
+        .sidebar-scores { flex-direction: row; gap: 5px; margin-top: 5px !important; }
+        .team-score-col { width: 48%; gap: 5px;}
+        .team-name-text { font-size: 13px !important; }
+        .score-box { height: 35px !important; border-radius: 8px !important; }
+        .score-number { font-size: 22px !important; margin-top: 5px !important;}
+
+        #sidebar-buzzer-display { 
+            padding: 15px 5px; 
+            width: 95%; 
+            align-self: center; 
+            margin: 15px 0;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .buzzer-player-name { font-size: 13px; margin-bottom: 2px;}
+        .buzzer-timer-value { font-size: 32px; }
+        .buzzer-timer-label { font-size: 13px; }
+
+        .floating-options-wrapper { top: 5px; right: 5px; }
+        .options-btn { font-size: 13px; padding: 4px 8px; }
+        .options-menu { width: 180px; right: 0; top: 35px; padding: 8px; }
+        .menu-item-btn { font-size: 12px; padding: 6px; }
+        
+        #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
+        #celeb-title { font-size: 35px !important; }
+
+        /* -- التعديل السحري المعدل: النافذة صارت يمين فوق الخلايا والنتائج باليسار مكشوفة -- */
+        .modal {
+            position: absolute !important;
+            width: 65% !important; /* نغطي مساحة الخلايا فقط */
+            height: 100% !important;
+            right: 0 !important; /* نثبته يمين فوق الخلايا */
+            left: auto !important; /* نبعد عن مستطيل النتائج اللي باليسار */
+            top: 0 !important;
+            background: rgba(0,0,0,0.7) !important;
+            backdrop-filter: blur(4px) !important;
+            pointer-events: auto !important; /* يمنع الضغط على الخلايا اللي بالخلفية */
+        }
+        .modal-content-custom {
+            pointer-events: auto !important;
+            position: absolute !important;
+            top: 50% !important; /* التعديل هنا: سحبناها للنص بالطول */
+            transform: translateY(-50%) !important; /* التعديل هنا: وزن السنترة عمودياً بدقة */
+            right: 5% !important;
+            left: auto !important;
+            width: 90% !important;
+            height: auto !important; 
+            max-height: 90% !important;
+            background: #472b75 !important;
+            border-radius: 15px !important;
+            padding: 12px 8px !important;
+            border: 2px solid rgba(255,255,255,0.15) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
+            justify-content: flex-start !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .modal-letter-wrapper { margin-bottom: 5px !important; flex-shrink: 0 !important;}
+        .modal-letter-box { width: 45px !important; height: 45px !important; font-size: 24px !important; padding-top: 4px !important; border-radius: 10px !important; }
+        .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
+        .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
+        .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
+        .btn-wide-toggle { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; margin-bottom: 8px !important; }
+        .modal-bottom-row { flex-direction: row !important; gap: 8px !important; margin-top: 10px !important; justify-content: center !important;}
+        .btn-half { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; width: 100% !important; justify-content: center !important;}
+        .answer-reveal-area { padding: 8px !important; margin-bottom: 8px !important; border-radius: 10px !important; }
+        .answer-text { font-size: 15px !important; margin-bottom: 8px !important; }
+        .team-btns { flex-direction: row !important; gap: 8px !important; }
+        .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
+        .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
+    }
+
+    /* --- التعديلات الخاصة بوضعية العرض الأفقي (للجوال والأجهزة الصغيرة) --- */
+    @media screen and (max-height: 600px) and (orientation: landscape) {
+        .game-layout { flex-direction: row !important; }
+        .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: space-evenly; }
+        .board-section { width: 65% !important; }
+        .board { transform: scale(0.52) !important; margin: 0 !important; }
+        
+        .sidebar-logo .word-huroof { font-size: 45px !important; }
+        .sidebar-logo .word-m3 { font-size: 35px !important; }
+        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 12px !important;}
+        
+        .sidebar-round-text { font-size: 32px !important; margin-bottom: 5px !important; }
+        .sidebar-round-num { font-size: 42px !important; margin-top: 5px !important; }
+        
+        .team-name-text { font-size: 13px !important; }
+        .score-box { height: 35px !important; border-radius: 8px !important; }
+        .score-number { font-size: 22px !important; margin-top: 5px !important;}
+
+        #sidebar-buzzer-display { padding: 15px 5px; margin: 15px 0; display: flex; flex-direction: column; justify-content: center; }
+        .buzzer-player-name { font-size: 13px; }
+        .buzzer-timer-value { font-size: 32px; }
+        
+        .floating-options-wrapper { top: 5px; right: 5px; }
+        .options-btn { font-size: 13px; padding: 4px 8px; }
+        .options-menu { width: 180px; right: 0; top: 35px; padding: 8px; }
+        .menu-item-btn { font-size: 12px; padding: 6px; }
+        
+        #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
+        #celeb-title { font-size: 35px !important; }
+
+        /* -- التعديل السحري المعدل: النافذة صارت يمين فوق الخلايا والنتائج باليسار مكشوفة -- */
+        .modal {
+            position: absolute !important;
+            width: 65% !important; /* نغطي مساحة الخلايا فقط */
+            height: 100% !important;
+            right: 0 !important; /* نثبته يمين فوق الخلايا */
+            left: auto !important; /* نبعد عن مستطيل النتائج اللي باليسار */
+            top: 0 !important;
+            background: rgba(0,0,0,0.7) !important;
+            backdrop-filter: blur(4px) !important;
+            pointer-events: auto !important; /* يمنع الضغط على الخلايا اللي بالخلفية */
+        }
+        .modal-content-custom {
+            pointer-events: auto !important;
+            position: absolute !important;
+            top: 50% !important; /* التعديل هنا: سحبناها للنص بالطول */
+            transform: translateY(-50%) !important; /* التعديل هنا: وزن السنترة عمودياً بدقة */
+            right: 5% !important;
+            left: auto !important;
+            width: 90% !important;
+            height: auto !important; 
+            max-height: 90% !important;
+            background: #472b75 !important;
+            border-radius: 15px !important;
+            padding: 12px 8px !important;
+            border: 2px solid rgba(255,255,255,0.15) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
+            justify-content: flex-start !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .modal-letter-wrapper { margin-bottom: 5px !important; flex-shrink: 0 !important;}
+        .modal-letter-box { width: 45px !important; height: 45px !important; font-size: 24px !important; padding-top: 4px !important; border-radius: 10px !important; }
+        .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
+        .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
+        .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
+        .btn-wide-toggle { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; margin-bottom: 8px !important; }
+        .modal-bottom-row { flex-direction: row !important; gap: 8px !important; margin-top: 10px !important; justify-content: center !important;}
+        .btn-half { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; width: 100% !important; justify-content: center !important;}
+        .answer-reveal-area { padding: 8px !important; margin-bottom: 8px !important; border-radius: 10px !important; }
+        .answer-text { font-size: 15px !important; margin-bottom: 8px !important; }
+        .team-btns { flex-direction: row !important; gap: 8px !important; }
+        .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
+        .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
   </style>
 </head>
@@ -409,12 +589,16 @@
         const nameEl = document.getElementById('bell-player-name');
         if(nameEl && playerName) nameEl.textContent = playerName;
         overlay.style.display = 'flex'; 
-        setTimeout(() => { overlay.style.display = 'none'; }, 3000);
+        
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 3000);
     }
 
     function adjustTimer(id, delta) {
         let el = document.getElementById(id + '-val');
         let val = parseInt(el.textContent);
+        // تم التعديل: أقصى وقت 30 وأقل وقت 1
         val = Math.max(1, Math.min(30, val + delta)); 
         el.textContent = val;
     }
@@ -539,7 +723,9 @@
       mainMenu.classList.add('hidden'); gameContainer.classList.remove('hidden');
       
       let doc = document.documentElement;
-      if (doc.requestFullscreen) { doc.requestFullscreen().catch(e => console.log("إلغاء وضع الشاشة الكاملة")); }
+      if (doc.requestFullscreen) {
+        doc.requestFullscreen().catch(e => console.log("إلغاء وضع الشاشة الكاملة"));
+      }
 
       socket.emit('create-room', {
         competitionName: compName,
@@ -599,6 +785,7 @@
 
             if (currentHostMode !== 'auto') {
                 const modalBody = document.getElementById('modal-body');
+                
                 modalBody.innerHTML = `
                   <div class="close-modal-x" id="close-host-alert-btn">✖</div>
                   <div class="modal-letter-wrapper">
@@ -615,6 +802,7 @@
                   </div>
                 `;
                 document.getElementById('modal').classList.remove('hidden');
+                
                 document.getElementById('close-host-alert-btn').addEventListener('click', () => document.getElementById('modal').classList.add('hidden'));
                 document.getElementById('ok-close-btn').addEventListener('click', () => document.getElementById('modal').classList.add('hidden'));
             }
@@ -640,6 +828,7 @@
       buzzerTimerLabel.textContent = 'وقت الإجابة';
       buzzerTimerValue.classList.remove('timer-phase-other');
       sidebarBuzzerDisplay.classList.remove('hidden');
+      
       showGiantBellEffect(data.winner.name);
     });
 
@@ -670,6 +859,7 @@
       const modalBody = document.getElementById('modal-body');
       const team1Name = document.getElementById('team1-name-display').textContent;
       const team2Name = document.getElementById('team2-name-display').textContent;
+      
       modalBody.innerHTML = `
         <div class="modal-letter-wrapper">
           <div class="modal-letter-box">${data.letter}</div>
@@ -693,6 +883,7 @@
         </div>
       `;
       document.getElementById('modal').classList.remove('hidden');
+      
       let isAnswerShown = false;
       document.getElementById('toggle-answer-btn').addEventListener('click', () => {
           isAnswerShown = !isAnswerShown;
