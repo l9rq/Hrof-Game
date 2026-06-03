@@ -336,21 +336,34 @@
         .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
 
-    /* إذا كان الجوال بالعرض خلقة (Landscape) */
+    /* --- التعديلات الخاصة بوضعية العرض الأفقي (للجوال والأجهزة الصغيرة) --- */
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
-        .sidebar-section { width: 30% !important; padding: 10px !important; justify-content: space-evenly; }
-        .board-section { width: 70% !important; }
-        .board { transform: scale(0.45) !important; margin: 0 !important; }
+        .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: space-evenly; }
+        .board-section { width: 65% !important; }
         
-        .sidebar-logo .word-huroof { font-size: 35px !important; }
-        .sidebar-logo .word-m3 { font-size: 25px !important; }
-        .sidebar-logo .word-name { font-size: 25px !important; margin-top: 10px !important;}
-        .sidebar-round-text { font-size: 20px !important; }
-        .sidebar-round-num { font-size: 24px !important; }
+        /* التعديل الجذري للوحة: تكبير المقياس وضبط التوسيط */
+       .board { 
+    transform: scale(0.6) !important;   /* هذا الرقم للتحكم في الحجم (كبره لـ 0.7 أو صغره لـ 0.5) */
+    top: 0px !important;                /* هذا السطر هو اللي يرفع وينزل! */
+    margin: auto !important; 
+    position: relative !important; 
+    display: block !important;
+}
+        .sidebar-logo .word-huroof { font-size: 45px !important; }
+        .sidebar-logo .word-m3 { font-size: 35px !important; }
+        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 12px !important;}
+        
+        .sidebar-round-text { font-size: 32px !important; margin-bottom: 5px !important; }
+        .sidebar-round-num { font-size: 42px !important; margin-top: 5px !important; }
+        
         .team-name-text { font-size: 13px !important; }
         .score-box { height: 35px !important; border-radius: 8px !important; }
         .score-number { font-size: 22px !important; margin-top: 5px !important;}
+
+        #sidebar-buzzer-display { padding: 15px 5px; margin: 15px 0; display: flex; flex-direction: column; justify-content: center; }
+        .buzzer-player-name { font-size: 13px; }
+        .buzzer-timer-value { font-size: 32px; }
         
         .floating-options-wrapper { top: 5px; right: 5px; }
         .options-btn { font-size: 13px; padding: 4px 8px; }
@@ -359,11 +372,58 @@
         
         #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
         #celeb-title { font-size: 35px !important; }
+
+        /* نافذة السؤال وتوسيط الخلية بداخلها بوضعية الأفقي */
+        .modal {
+            position: absolute !important;
+            width: 65% !important;
+            height: 100% !important;
+            right: 0 !important;
+            left: auto !important;
+            top: 0 !important;
+            background: rgba(0,0,0,0.7) !important;
+            backdrop-filter: blur(4px) !important;
+            pointer-events: auto !important;
+        }
+        .modal-content-custom {
+            pointer-events: auto !important;
+            position: absolute !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            right: 5% !important;
+            left: auto !important;
+            width: 90% !important;
+            height: auto !important; 
+            max-height: 90% !important;
+            background: #472b75 !important;
+            border-radius: 15px !important;
+            padding: 12px 8px !important;
+            border: 2px solid rgba(255,255,255,0.15) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
+            justify-content: flex-start !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        
+        /* التعديل الجذري لمربع الخلية: سنترة في المنتصف وتكبير الحجم */
+        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 12px !important; flex-shrink: 0 !important;}
+        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        
+        .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
+        .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
+        .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
+        .btn-wide-toggle { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; margin-bottom: 8px !important; }
+        .modal-bottom-row { flex-direction: row !important; gap: 8px !important; margin-top: 10px !important; justify-content: center !important;}
+        .btn-half { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; width: 100% !important; justify-content: center !important;}
+        .answer-reveal-area { padding: 8px !important; margin-bottom: 8px !important; border-radius: 10px !important; }
+        .answer-text { font-size: 15px !important; margin-bottom: 8px !important; }
+        .team-btns { flex-direction: row !important; gap: 8px !important; }
+        .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
+        .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
   </style>
 </head>
 <body>
- 
 
   <div id="bell-overlay">
       <div class="bell-icon">🔔</div>
