@@ -250,10 +250,11 @@
     .rotate-title { font-family: 'Lalezar', sans-serif; font-size: 40px; color: #ffca28; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     .rotate-text { font-family: 'Cairo', sans-serif; font-size: 18px; font-weight: bold; }
 
-    /* إظهار التنبيه وإخفاء اللعبة بالكامل إذا كان الجوال بالطول */
+    /* إظهار التنبيه وإخفاء اللعبة بالكامل إذا كان الجوال بالطول (مرتبط بشاشة الخلية فقط) */
     @media screen and (max-width: 992px) and (orientation: portrait) {
-        #rotate-device-overlay { display: flex !important; }
-        #main-menu, #settings-panel, #game-board-container, #celebration-overlay { display: none !important; }
+        body.in-game #rotate-device-overlay { display: flex !important; }
+        body.in-game #game-board-container, 
+        body.in-game #celebration-overlay { display: none !important; }
     }
 
     /* --- التعديلات الخاصة بوضعية العرض الأفقي للعبة --- */
@@ -596,6 +597,7 @@
 
     document.getElementById('opt-settings-btn').addEventListener('click', () => {
       gameContainer.classList.add('hidden'); settingsPanel.classList.remove('hidden'); optionsMenu.classList.add('hidden');
+      document.body.classList.remove('in-game');
     });
 
     document.getElementById('opt-host-screen-btn').addEventListener('click', () => {
@@ -666,6 +668,7 @@
     document.getElementById('start-btn').addEventListener('click', () => {
       const compName = document.getElementById('comp-name')?.value || 'اسمك';
       mainMenu.classList.add('hidden'); gameContainer.classList.remove('hidden');
+      document.body.classList.add('in-game');
       
       let doc = document.documentElement;
       if (doc.requestFullscreen) {
@@ -711,7 +714,13 @@
         otherTeamTime: document.getElementById('other-time-val').textContent
       });
       settingsPanel.classList.add('hidden');
-      if (board.children.length > 0) { gameContainer.classList.remove('hidden'); } else { mainMenu.classList.remove('hidden'); }
+      if (board.children.length > 0) { 
+          gameContainer.classList.remove('hidden'); 
+          document.body.classList.add('in-game');
+      } else { 
+          mainMenu.classList.remove('hidden'); 
+          document.body.classList.remove('in-game');
+      }
     }
 
     function renderBoard(state) {
