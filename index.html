@@ -250,17 +250,19 @@
     .rotate-title { font-family: 'Lalezar', sans-serif; font-size: 40px; color: #ffca28; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     .rotate-text { font-family: 'Cairo', sans-serif; font-size: 18px; font-weight: bold; }
 
-    /* إظهار التنبيه وإخفاء اللعبة بالكامل إذا كان الجوال بالطول (مرتبط بشاشة الخلية فقط) */
+    /* إظهار التنبيه وإخفاء اللعبة بالكامل إذا كان الجوال بالطول */
     @media screen and (max-width: 992px) and (orientation: portrait) {
         body.in-game #rotate-device-overlay { display: flex !important; }
         body.in-game #game-board-container, 
         body.in-game #celebration-overlay { display: none !important; }
     }
 
-    /* --- التعديلات الخاصة بوضعية العرض الأفقي للعبة --- */
+    /* --- التعديلات الجذرية لشاشة الجوال بالعرض (التايمر ومساحته) --- */
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
-        .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: space-evenly; }
+        
+        /* جعلنا العناصر متراصة للأعلى لنوفر مساحة للتايمر في المنتصف */
+        .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: flex-start !important; gap: 8px !important; }
         .board-section { width: 65% !important; }
         
         .board { 
@@ -272,20 +274,34 @@
             top: -125px !important; 
             transition: all 0.3s ease !important; 
         }
-        .sidebar-logo .word-huroof { font-size: 55px !important; line-height: 1 !important;}
-        .sidebar-logo .word-m3 { font-size: 42px !important; line-height: 0.5 !important;}
-        .sidebar-logo .word-name { font-size: 37px !important; margin-top: 17px !important;}
         
-        .sidebar-round-text { font-size: 32px !important; margin-bottom: 5px !important; }
-        .sidebar-round-num { font-size: 42px !important; margin-top: 5px !important; }
+        /* تصغير الشعار قليلاً لتوفير المساحة المطلوبة */
+        .sidebar-logo .word-huroof { font-size: 45px !important; line-height: 0.9 !important;}
+        .sidebar-logo .word-m3 { font-size: 35px !important; line-height: 0.5 !important;}
+        .sidebar-logo .word-name { font-size: 28px !important; margin-top: 12px !important;}
         
+        /* رفع الجولة الأولى لأعلى قليلاً وتصغيرها */
+        .sidebar-round { margin-top: 0 !important; }
+        .sidebar-round-text { font-size: 24px !important; margin-bottom: 2px !important; }
+        .sidebar-round-num { font-size: 30px !important; margin-top: 2px !important; }
+        
+        /* تثبيت النتائج (السكور) في أسفل الشاشة دائماً لترك التايمر مرتاح بالوسط */
+        .sidebar-scores { margin-top: auto !important; }
         .team-name-text { font-size: 13px !important; }
         .score-box { height: 35px !important; border-radius: 8px !important; }
         .score-number { font-size: 22px !important; margin-top: 5px !important;}
 
-        #sidebar-buzzer-display { padding: 15px 5px; margin: 15px 0; display: flex; flex-direction: column; justify-content: center; }
-        .buzzer-player-name { font-size: 13px; }
-        .buzzer-timer-value { font-size: 32px; }
+        /* إظهار الجرس وتثبيت مقاساته ليكون مطابق للابتوب والبي سي تماماً */
+        #sidebar-buzzer-display { 
+            padding: 8px 5px !important; 
+            margin: 5px 0 !important; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+        }
+        .buzzer-player-name { font-size: 16px !important; }
+        .buzzer-timer-value { font-size: 45px !important; line-height: 1 !important;} /* تم تثبيت مقاس البي سي 45px */
+        .buzzer-timer-label { font-size: 14px !important; margin-bottom: -5px !important;}
         
         .floating-options-wrapper { top: 5px; right: 5px; }
         .options-btn { font-size: 13px; padding: 4px 8px; }
