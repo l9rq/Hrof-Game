@@ -65,12 +65,23 @@
     .board-section { flex-grow: 1; width: 76%; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
     
     .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
-    .sidebar-round { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 10px; }
     
+    /* المساحة المخصصة للتبديل بين الجولة والتايمر */
+    .sidebar-dynamic-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 120px; /* لضمان عدم اهتزاز الواجهة عند التبديل */
+        margin-top: 10px;
+    }
+
+    .sidebar-round { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
     .sidebar-round-text { font-family: 'Lalezar', sans-serif; font-size: 65px; color: #ff5252; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
     .sidebar-round-num { font-family: 'Lalezar', sans-serif; font-size: 80px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
     
-    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.3); border: 2px solid #ffca28; border-radius: 15px; padding: 10px; text-align: center; margin-top: 15px; width: 100%; animation: fadeIn 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.3); border: 2px solid #ffca28; border-radius: 15px; padding: 10px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
     .buzzer-player-name { font-family: 'Cairo'; font-size: 16px; font-weight: 900; color: white; margin-bottom: 5px; }
     .buzzer-timer-label { font-family: 'Cairo'; font-size: 14px; font-weight: bold; color: #ffca28; }
     .buzzer-timer-value { font-family: 'Lalezar'; font-size: 45px; line-height: 1; color: #76ff03; text-shadow: 0 4px 6px rgba(0,0,0,0.5); }
@@ -261,7 +272,6 @@
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
         
-        /* جعلنا العناصر متراصة للأعلى لنوفر مساحة للتايمر في المنتصف */
         .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: flex-start !important; gap: 8px !important; }
         .board-section { width: 65% !important; }
         
@@ -275,34 +285,31 @@
             transition: all 0.3s ease !important; 
         }
         
-        /* تصغير الشعار قليلاً لتوفير المساحة المطلوبة */
         .sidebar-logo .word-huroof { font-size: 45px !important; line-height: 0.9 !important;}
         .sidebar-logo .word-m3 { font-size: 35px !important; line-height: 0.5 !important;}
         .sidebar-logo .word-name { font-size: 28px !important; margin-top: 12px !important;}
         
-        /* رفع الجولة الأولى لأعلى قليلاً وتصغيرها */
-        .sidebar-round { margin-top: 0 !important; }
-        .sidebar-round-text { font-size: 24px !important; margin-bottom: 2px !important; }
-        .sidebar-round-num { font-size: 30px !important; margin-top: 2px !important; }
+        /* تكبير الجولة الأولى مثل ما طلبت */
+        .sidebar-dynamic-area { margin-top: 5px !important; min-height: 100px !important; }
+        .sidebar-round-text { font-size: 32px !important; margin-bottom: -5px !important; }
+        .sidebar-round-num { font-size: 42px !important; margin-top: 0 !important; }
         
-        /* تثبيت النتائج (السكور) في أسفل الشاشة دائماً لترك التايمر مرتاح بالوسط */
+        /* التايمر يغطي مكان الجولة بحجم ضخم وواضح */
+        #sidebar-buzzer-display { 
+            padding: 10px 5px !important; 
+            margin: 0 !important; 
+            border-width: 3px !important;
+            background: rgba(0, 0, 0, 0.6) !important;
+        }
+        .buzzer-player-name { font-size: 18px !important; color: white !important; margin-bottom: 2px !important; }
+        .buzzer-timer-value { font-size: 60px !important; line-height: 1 !important; margin: 5px 0 !important; } 
+        .buzzer-timer-label { font-size: 14px !important; margin-bottom: 0 !important; }
+        
         .sidebar-scores { margin-top: auto !important; }
         .team-name-text { font-size: 13px !important; }
         .score-box { height: 35px !important; border-radius: 8px !important; }
         .score-number { font-size: 22px !important; margin-top: 5px !important;}
 
-        /* إظهار الجرس وتثبيت مقاساته ليكون مطابق للابتوب والبي سي تماماً */
-        #sidebar-buzzer-display { 
-            padding: 8px 5px !important; 
-            margin: 5px 0 !important; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-        }
-        .buzzer-player-name { font-size: 16px !important; }
-        .buzzer-timer-value { font-size: 45px !important; line-height: 1 !important;} /* تم تثبيت مقاس البي سي 45px */
-        .buzzer-timer-label { font-size: 14px !important; margin-bottom: -5px !important;}
-        
         .floating-options-wrapper { top: 5px; right: 5px; }
         .options-btn { font-size: 13px; padding: 4px 8px; }
         .options-menu { width: 180px; right: 0; top: 35px; padding: 8px; }
@@ -488,15 +495,17 @@
           <h1 class="word-name" id="dynamic-name" style="font-size: 75px; margin-top: 35px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow);">اسمك</h1>
         </div>
         
-        <div class="sidebar-round">
-          <h2 class="sidebar-round-text">الجولة</h2>
-          <h2 class="sidebar-round-num" id="round-display-number">الأولى</h2>
-        </div>
-        
-        <div id="sidebar-buzzer-display" class="hidden">
-           <div class="buzzer-player-name" id="buzzer-player-name">ابراهيم (الفريق الأول)</div>
-           <div class="buzzer-timer-label" id="buzzer-timer-label">وقت الإجابة</div>
-           <div class="buzzer-timer-value" id="buzzer-timer-value">5</div>
+        <div class="sidebar-dynamic-area">
+            <div class="sidebar-round" id="round-display-container">
+              <h2 class="sidebar-round-text">الجولة</h2>
+              <h2 class="sidebar-round-num" id="round-display-number">الأولى</h2>
+            </div>
+            
+            <div id="sidebar-buzzer-display" class="hidden">
+               <div class="buzzer-player-name" id="buzzer-player-name">ابراهيم (الفريق الأول)</div>
+               <div class="buzzer-timer-value" id="buzzer-timer-value">5</div>
+               <div class="buzzer-timer-label" id="buzzer-timer-label">وقت الإجابة</div>
+            </div>
         </div>
 
         <div class="sidebar-scores" style="margin-top: 15px;">
@@ -539,6 +548,8 @@
     const board = document.getElementById('hex-board');
     const roundNames = ["", "الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة", "العاشرة"];
     
+    // حاويات التبديل
+    const roundDisplayContainer = document.getElementById('round-display-container');
     const sidebarBuzzerDisplay = document.getElementById('sidebar-buzzer-display');
     const buzzerPlayerName = document.getElementById('buzzer-player-name');
     const buzzerTimerValue = document.getElementById('buzzer-timer-value');
@@ -754,7 +765,6 @@
         hexOuter.addEventListener('click', () => {
             currentSelectedCellIndex = index; 
             
-            // --- إضافة زر إلغاء الملكية عند الضغط على خلية مأخوذة ---
             if (cell.color) {
                 const modalBody = document.getElementById('modal-body');
                 modalBody.innerHTML = `
@@ -778,13 +788,11 @@
                 document.getElementById('close-cancel-btn').addEventListener('click', () => document.getElementById('modal').classList.add('hidden'));
                 document.getElementById('cancel-cancel-btn').addEventListener('click', () => document.getElementById('modal').classList.add('hidden'));
                 document.getElementById('confirm-cancel-btn').addEventListener('click', () => {
-                    // أمر السوكيت الخاص بإلغاء الملكية
                     socket.emit('cancel-ownership', index); 
                     document.getElementById('modal').classList.add('hidden');
                 });
-                return; // نوقف الكود هنا عشان ما يكمل للمقدم الآلي والبشري
+                return;
             }
-            // ----------------------------------------------------
             
             socket.emit('select-cell', index);
 
@@ -826,13 +834,16 @@
       }
     });
 
+    // 💡 التعديل الجذري على زر الجرس (يخفي الجولة ويعرض التايمر)
     socket.on('buzzer-locked', (data) => {
       buzzerPlayerName.textContent = `${data.winner.name} (${data.winner.team})`;
       buzzerPlayerName.style.display = 'block';
       buzzerTimerValue.textContent = data.timeLeft;
       buzzerTimerLabel.textContent = 'وقت الإجابة';
       buzzerTimerValue.classList.remove('timer-phase-other');
-      sidebarBuzzerDisplay.classList.remove('hidden');
+      
+      roundDisplayContainer.classList.add('hidden'); // إخفاء الجولة
+      sidebarBuzzerDisplay.classList.remove('hidden'); // عرض الجرس مكانه
       
       showGiantBellEffect(data.winner.name);
     });
@@ -848,8 +859,10 @@
       buzzerTimerValue.classList.add('timer-phase-other');
     });
 
+    // 💡 إرجاع الجولة لما ينتهي التايمر
     socket.on('buzzer-reset', () => {
-      sidebarBuzzerDisplay.classList.add('hidden');
+      sidebarBuzzerDisplay.classList.add('hidden'); // إخفاء الجرس
+      roundDisplayContainer.classList.remove('hidden'); // استعادة الجولة
     });
 
     socket.on('new-question', (data) => {
@@ -858,7 +871,11 @@
       }
     });
 
-    socket.on('question-cleared', () => { document.getElementById('modal').classList.add('hidden'); sidebarBuzzerDisplay.classList.add('hidden'); });
+    socket.on('question-cleared', () => { 
+        document.getElementById('modal').classList.add('hidden'); 
+        sidebarBuzzerDisplay.classList.add('hidden');
+        roundDisplayContainer.classList.remove('hidden'); 
+    });
 
     function renderQuestionModal(data) {
       const modalBody = document.getElementById('modal-body');
