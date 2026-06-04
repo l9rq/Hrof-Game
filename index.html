@@ -196,9 +196,10 @@
 
     /* --- التعديلات المخصصة للجوال عامة --- */
     @media screen and (max-width: 992px) {
-        .word-huroof { font-size: 80px; text-shadow: 2px 2px 0 var(--dark-shadow); }
-        .word-m3 { font-size: 70px; text-shadow: 2px 2px 0 var(--dark-shadow); }
-        .word-name { font-size: 50px; text-shadow: 2px 2px 0 var(--dark-shadow); margin-top: 20px; }
+        /* تعديل احترافي: توحيد نسب المقاسات في الجوال لـ (حروف مع اسمك) لتتطابق تماماً مع البي سي */
+        .word-huroof { font-size: 80px !important; text-shadow: 3px 3px 0 var(--dark-shadow) !important; line-height: 1 !important; margin: 0 !important; }
+        .word-m3 { font-size: 80px !important; text-shadow: 3px 3px 0 var(--dark-shadow) !important; line-height: 0.55 !important; margin: 0 !important; }
+        .word-name { font-size: 62px !important; text-shadow: 3px 3px 0 var(--dark-shadow) !important; margin-top: 30px !important; margin-bottom: 20px !important; line-height: 1 !important; }
         
         .main-btn { font-size: 20px; padding: 10px 20px; }
         .settings-overlay { padding: 15px; }
@@ -225,7 +226,24 @@
         .btn-half { font-size: 14px; padding: 8px; border-radius: 8px; }
     }
 
-    /* --- التعديلات الخاصة بوضعية الهاتف العمودي المقلوب (للجوال) --- */
+    /* خدعة CSS لإجبار شاشة البداية والإعدادات تظل "بالطول" إذا لف المستخدم جواله بالعرض */
+    @media screen and (max-width: 992px) and (orientation: landscape) {
+        #main-menu:not(.hidden), #settings-panel:not(.hidden) {
+            position: fixed !important;
+            top: 100vh !important;
+            left: 0 !important;
+            width: 100vh !important;
+            height: 100vw !important;
+            transform: rotate(-90deg) !important;
+            transform-origin: left top !important;
+            overflow: hidden !important;
+        }
+        #settings-panel:not(.hidden) {
+            overflow-y: auto !important; /* تفعيل السحب لصفحة الإعدادات */
+        }
+    }
+
+    /* --- التعديلات الخاصة بوضعية الهاتف العمودي المقلوب (للجوال للعبة) --- */
     @media screen and (max-width: 992px) and (orientation: portrait) {
         #game-board-container:not(.hidden), #celebration-overlay:not(.hidden) {
             position: fixed !important;
@@ -246,7 +264,6 @@
         }
         .board-section { width: 65% !important; height: 100%; display: flex; align-items: center; justify-content: center; }
         
-        /* التعديل الجذري للوحة: تكبير المقياس وضبط التوسيط بدون إتلاف المطلق */
         .board { 
             transform: scale(0.6) !important; 
             transform-origin: center center !important; 
@@ -255,9 +272,10 @@
             display: block !important;
         }
 
-        .sidebar-logo .word-huroof { font-size: 45px !important; line-height: 1;}
-        .sidebar-logo .word-m3 { font-size: 35px !important; line-height: 0.5;}
-        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 12px !important;}
+        /* تعديل نسب شعار القائمة الجانبية لتطابق أبعاد البي سي */
+        .sidebar-logo .word-huroof { font-size: 55px !important; line-height: 1 !important;}
+        .sidebar-logo .word-m3 { font-size: 42px !important; line-height: 0.5 !important;}
+        .sidebar-logo .word-name { font-size: 37px !important; margin-top: 17px !important;}
         
         .sidebar-round-text { font-size: 32px !important; margin-bottom: 5px !important;}
         .sidebar-round-num { font-size: 42px !important; margin-top: 5px !important; }
@@ -319,7 +337,6 @@
             flex-direction: column !important;
         }
         
-        /* التعديل الجذري لمربع الخلية: سنترة في المنتصف وتكبير الحجم */
         .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 15px !important; flex-shrink: 0 !important;}
         .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
         
@@ -336,31 +353,25 @@
         .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
 
-    /* --- التعديلات الخاصة بوضعية العرض الأفقي (للجوال والأجهزة الصغيرة) --- */
+    /* --- التعديلات الخاصة بوضعية العرض الأفقي للعبة (للجوال والأجهزة الصغيرة) --- */
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
         .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: space-evenly; }
         .board-section { width: 65% !important; }
         
-        /* التعديل الجذري للوحة: تكبير المقياس وضبط التوسيط */
-.board { 
-    transform: scale(0.50) !important; 
-    position: relative !important; /* هذا اللي يخلي top و left يشتغلون */
-    display: block !important;
-    margin: auto !important;
-    
-    /* 1. التحكم الأفقي (يمين ويسار) */
-    left: -40px !important;  /* بالسالب يروح يسار، وبالموجب يروح يمين */
-    
-    /* 2. التحكم الرأسي (فوق وتحت) */
-    top: -125px !important;   /* بالسالب يرفع اللوحة لفوق، وبالموجب ينزلها لتحت */
-    
-    /* حركة ناعمة عند تغيير الأرقام */
-    transition: all 0.3s ease !important; 
-}
-        .sidebar-logo .word-huroof { font-size: 45px !important; }
-        .sidebar-logo .word-m3 { font-size: 35px !important; }
-        .sidebar-logo .word-name { font-size: 30px !important; margin-top: 12px !important;}
+        .board { 
+            transform: scale(0.50) !important; 
+            position: relative !important; 
+            display: block !important;
+            margin: auto !important;
+            left: -40px !important; 
+            top: -125px !important; 
+            transition: all 0.3s ease !important; 
+        }
+        /* تعديل نسب شعار القائمة الجانبية لتطابق أبعاد البي سي */
+        .sidebar-logo .word-huroof { font-size: 55px !important; line-height: 1 !important;}
+        .sidebar-logo .word-m3 { font-size: 42px !important; line-height: 0.5 !important;}
+        .sidebar-logo .word-name { font-size: 37px !important; margin-top: 17px !important;}
         
         .sidebar-round-text { font-size: 32px !important; margin-bottom: 5px !important; }
         .sidebar-round-num { font-size: 42px !important; margin-top: 5px !important; }
@@ -381,7 +392,6 @@
         #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
         #celeb-title { font-size: 35px !important; }
 
-        /* نافذة السؤال وتوسيط الخلية بداخلها بوضعية الأفقي */
         .modal {
             position: absolute !important;
             width: 65% !important;
@@ -413,7 +423,6 @@
             flex-direction: column !important;
         }
         
-        /* التعديل الجذري لمربع الخلية: سنترة في المنتصف وتكبير الحجم */
         .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 12px !important; flex-shrink: 0 !important;}
         .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
         
@@ -623,7 +632,6 @@
     function adjustTimer(id, delta) {
         let el = document.getElementById(id + '-val');
         let val = parseInt(el.textContent);
-        // تم التعديل: أقصى وقت 30 وأقل وقت 1
         val = Math.max(1, Math.min(30, val + delta)); 
         el.textContent = val;
     }
@@ -743,13 +751,19 @@
 
     socket.on('settings', (settings) => { updateSettingsUI(settings); });
 
+    /* ===== التعديل المهم هنا: تفعيل الشاشة الكاملة وإجبار العرض ===== */
     document.getElementById('start-btn').addEventListener('click', () => {
       const compName = document.getElementById('comp-name')?.value || 'اسمك';
       mainMenu.classList.add('hidden'); gameContainer.classList.remove('hidden');
       
       let doc = document.documentElement;
       if (doc.requestFullscreen) {
-        doc.requestFullscreen().catch(e => console.log("إلغاء وضع الشاشة الكاملة"));
+        doc.requestFullscreen().then(() => {
+          // بعد فتح الشاشة الكاملة، نجبر الجهاز على وضعية العرض (Landscape)
+          if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock('landscape').catch(e => console.log("Orientation lock not supported:", e));
+          }
+        }).catch(e => console.log("إلغاء وضع الشاشة الكاملة"));
       }
 
       socket.emit('create-room', {
