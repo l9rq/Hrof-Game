@@ -223,112 +223,37 @@
         .btn-half { font-size: 14px; padding: 8px; border-radius: 8px; }
     }
 
-    /* --- التعديلات الخاصة بوضعية الهاتف العمودي المقلوب للعبة فقط (إجبار الخلية تكون بالعرض دايماً) --- */
+    /* --- شاشة التنبيه بتدوير الجهاز --- */
+    #rotate-device-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-color: #2b164d;
+        z-index: 999999;
+        color: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+    #rotate-device-overlay svg {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+        animation: rotatePhone 1.5s infinite ease-in-out alternate;
+    }
+    @keyframes rotatePhone {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(-90deg); }
+    }
+    .rotate-title { font-family: 'Lalezar', sans-serif; font-size: 40px; color: #ffca28; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    .rotate-text { font-family: 'Cairo', sans-serif; font-size: 18px; font-weight: bold; }
+
+    /* إظهار التنبيه وإخفاء اللعبة بالكامل إذا كان الجوال بالطول */
     @media screen and (max-width: 992px) and (orientation: portrait) {
-        #game-board-container:not(.hidden), #celebration-overlay:not(.hidden) {
-            position: fixed !important;
-            top: 100dvh !important;
-            left: 0 !important;
-            width: 100dvh !important;
-            height: 100dvw !important;
-            transform: rotate(-90deg);
-            transform-origin: left top;
-            overflow: hidden;
-            z-index: 9999;
-        }
-
-        .game-layout { flex-direction: row !important; width: 100%; height: 100%; }
-        .sidebar-section {
-            width: 35% !important; 
-            height: 100%; padding: 10px 5px !important; display: flex; flex-direction: column; justify-content: space-evenly; box-shadow: inset -5px 0 15px rgba(0,0,0,0.5); border: none; z-index: 20;
-        }
-        .board-section { width: 65% !important; height: 100%; display: flex; align-items: center; justify-content: center; }
-        
-        .board { 
-            transform: scale(0.6) !important; 
-            transform-origin: center center !important; 
-            margin: auto !important; 
-            position: relative !important;
-            display: block !important;
-        }
-
-        .sidebar-logo .word-huroof { font-size: 55px !important; line-height: 1 !important;}
-        .sidebar-logo .word-m3 { font-size: 42px !important; line-height: 0.5 !important;}
-        .sidebar-logo .word-name { font-size: 37px !important; margin-top: 17px !important;}
-        
-        .sidebar-round-text { font-size: 32px !important; margin-bottom: 5px !important;}
-        .sidebar-round-num { font-size: 42px !important; margin-top: 5px !important; }
-        
-        .sidebar-scores { flex-direction: row; gap: 5px; margin-top: 5px !important; }
-        .team-score-col { width: 48%; gap: 5px;}
-        .team-name-text { font-size: 13px !important; }
-        .score-box { height: 35px !important; border-radius: 8px !important; }
-        .score-number { font-size: 22px !important; margin-top: 5px !important;}
-
-        #sidebar-buzzer-display { 
-            padding: 15px 5px; 
-            width: 95%; 
-            align-self: center; 
-            margin: 15px 0;
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .buzzer-player-name { font-size: 13px; margin-bottom: 2px;}
-        .buzzer-timer-value { font-size: 32px; }
-        .buzzer-timer-label { font-size: 13px; }
-
-        .floating-options-wrapper { top: 5px; right: 5px; }
-        .options-btn { font-size: 13px; padding: 4px 8px; }
-        .options-menu { width: 180px; right: 0; top: 35px; padding: 8px; }
-        .menu-item-btn { font-size: 12px; padding: 6px; }
-        
-        #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
-        #celeb-title { font-size: 35px !important; }
-
-        .modal {
-            position: absolute !important;
-            width: 65% !important;
-            height: 100% !important;
-            right: 0 !important;
-            left: auto !important;
-            top: 0 !important;
-            background: rgba(0,0,0,0.7) !important;
-            backdrop-filter: blur(4px) !important;
-            pointer-events: auto !important;
-        }
-        .modal-content-custom {
-            pointer-events: auto !important;
-            position: absolute !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            right: 5% !important;
-            left: auto !important;
-            width: 90% !important;
-            height: auto !important; 
-            max-height: 90% !important;
-            background: #472b75 !important;
-            border-radius: 15px !important;
-            padding: 12px 8px !important;
-            border: 2px solid rgba(255,255,255,0.15) !important;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
-            justify-content: flex-start !important;
-            display: flex !important;
-            flex-direction: column !important;
-        }
-        
-        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 15px !important; flex-shrink: 0 !important;}
-        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
-        
-        .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
-        .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
-        .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
-        .btn-wide-toggle { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; margin-bottom: 8px !important; }
-        .modal-bottom-row { flex-direction: row !important; gap: 8px !important; margin-top: 10px !important; justify-content: center !important;}
-        .btn-half { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; width: 100% !important; justify-content: center !important;}
-        .answer-reveal-area { padding: 8px !important; margin-bottom: 8px !important; border-radius: 10px !important; }
-        .answer-text { font-size: 15px !important; margin-bottom: 8px !important; }
-        .team-btns { flex-direction: row !important; gap: 8px !important; }
-        .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
-        .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
+        #rotate-device-overlay { display: flex !important; }
+        #main-menu, #settings-panel, #game-board-container, #celebration-overlay { display: none !important; }
     }
 
     /* --- التعديلات الخاصة بوضعية العرض الأفقي للعبة --- */
@@ -418,6 +343,15 @@
   </style>
 </head>
 <body>
+
+  <div id="rotate-device-overlay">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#ffca28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+      <line x1="12" y1="18" x2="12.01" y2="18"></line>
+    </svg>
+    <div class="rotate-title">يرجى تدوير الجهاز</div>
+    <div class="rotate-text">للحصول على أفضل تجربة، يرجى تدوير هاتفك ليكون بالعرض (Landscape).</div>
+  </div>
 
   <div id="bell-overlay">
       <div class="bell-icon">🔔</div>
@@ -681,7 +615,6 @@
     function showQrModal(title, urlStr) {
       const modalBody = document.getElementById('modal-body');
       
-      // التعديل الرئيسي لضمان أن الباركود يظهر كامل بدون ما ينزل اللاعب
       modalBody.innerHTML = `
         <div class="close-modal-x" id="close-qr-btn">✖</div>
         <div class="question-wrapper" style="margin-bottom: 5px; max-height: none; overflow: hidden;">
@@ -795,7 +728,38 @@
         
         hexOuter.addEventListener('click', () => {
             currentSelectedCellIndex = index; 
-            if (cell.color) return; 
+            
+            // --- إضافة زر إلغاء الملكية عند الضغط على خلية مأخوذة ---
+            if (cell.color) {
+                const modalBody = document.getElementById('modal-body');
+                modalBody.innerHTML = `
+                  <div class="close-modal-x" id="close-cancel-btn">✖</div>
+                  <div class="modal-letter-wrapper">
+                    <div class="modal-letter-box" style="background: ${cell.color}; color: white; border-color: white;">${cell.letter}</div>
+                  </div>
+                  <div class="question-wrapper">
+                    <div class="modal-question" style="color: #ff5252; font-size: 26px; margin-top: 15px; margin-bottom: 10px;">إلغاء ملكية الخلية؟</div>
+                    <p style="font-size: 18px; margin-bottom: 20px;">هل تريد فعلاً سحب هذه الخلية وإعادتها متاحة للعب مرة أخرى؟</p>
+                  </div>
+                  <div class="action-wrapper">
+                    <div class="modal-bottom-row" style="justify-content: center; margin-top: 20px;">
+                      <button class="btn-half" style="background: rgba(255,82,82,0.15); border: 2px solid #ff5252; color: #ff5252;" id="confirm-cancel-btn">✔️ نعم، إلغاء الملكية</button>
+                      <button class="btn-half" id="cancel-cancel-btn">❌ تراجع</button>
+                    </div>
+                  </div>
+                `;
+                document.getElementById('modal').classList.remove('hidden');
+
+                document.getElementById('close-cancel-btn').addEventListener('click', () => document.getElementById('modal').classList.add('hidden'));
+                document.getElementById('cancel-cancel-btn').addEventListener('click', () => document.getElementById('modal').classList.add('hidden'));
+                document.getElementById('confirm-cancel-btn').addEventListener('click', () => {
+                    // أمر السوكيت الخاص بإلغاء الملكية
+                    socket.emit('cancel-ownership', index); 
+                    document.getElementById('modal').classList.add('hidden');
+                });
+                return; // نوقف الكود هنا عشان ما يكمل للمقدم الآلي والبشري
+            }
+            // ----------------------------------------------------
             
             socket.emit('select-cell', index);
 
