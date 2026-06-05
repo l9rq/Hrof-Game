@@ -29,7 +29,10 @@
     .game-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); }
     .word-huroof { font-family: 'Lalezar', sans-serif; font-size: 110px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; z-index: 3; }
     .word-m3 { font-family: 'Lalezar', sans-serif; font-size: 110px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.55; margin: 0; z-index: 2; }
-    .word-name { font-family: 'Lalezar', sans-serif; font-size: 85px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin-top: 40px; margin-bottom: 20px; z-index: 1; }
+    
+    /* 💡 التعديل هنا: تمطيط الاسم لاستغلال المساحة اليمين واليسار */
+    .word-name { font-family: 'Lalezar', sans-serif; font-size: 85px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin-top: 40px; margin-bottom: 20px; z-index: 1; transform: scaleX(1.6); display: inline-block; white-space: nowrap; }
+    
     .menu-btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; }
     
     .main-btn { font-family: 'Cairo', sans-serif; font-size: 24px; font-weight: 900; padding: 12px 60px; border: none; border-radius: 50px; cursor: pointer; color: #6b439b; background-color: #ffffff; width: 320px; max-width: 90vw; white-space: nowrap; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: all 0.3s; }
@@ -66,22 +69,27 @@
     
     .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
     
-    /* المساحة المخصصة للتبديل بين الجولة والتايمر */
+    /* المساحة المخصصة للتبديل بين الجولة والتايمر - تم التعديل عليها */
     .sidebar-dynamic-area {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
-        min-height: 120px; /* لضمان عدم اهتزاز الواجهة عند التبديل */
+        flex-grow: 1;
+        min-height: 120px; 
         margin-top: 10px;
+        position: relative;
     }
 
-    .sidebar-round { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
+    #round-display-container { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
     .sidebar-round-text { font-family: 'Lalezar', sans-serif; font-size: 65px; color: #ff5252; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
     .sidebar-round-num { font-family: 'Lalezar', sans-serif; font-size: 80px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 3px 3px 0 var(--dark-shadow); }
     
-    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.3); border: 2px solid #ffca28; border-radius: 15px; padding: 10px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+    /* 💡 التعديل هنا: التايمر يغطي مساحة الجولة بشكل كامل */
+    #sidebar-buzzer-display:not(.hidden) { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
+    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.4); border: 2px solid #ffca28; border-radius: 15px; padding: 10px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+    
     .buzzer-player-name { font-family: 'Cairo'; font-size: 16px; font-weight: 900; color: white; margin-bottom: 5px; }
     .buzzer-timer-label { font-family: 'Cairo'; font-size: 14px; font-weight: bold; color: #ffca28; }
     .buzzer-timer-value { font-family: 'Lalezar'; font-size: 45px; line-height: 1; color: #76ff03; text-shadow: 0 4px 6px rgba(0,0,0,0.5); }
@@ -174,27 +182,29 @@
     
     .hidden { display: none !important; }
 
+    /* 💡 التعديل هنا: جرس التنبيه صار أعلى طبقة وأحجامه تتجاوب مع الشاشة */
     #bell-overlay {
         display: none;
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.85);
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        z-index: 9999;
+        z-index: 9999999 !important; /* لضمان ظهوره فوق كل شيء */
     }
     .bell-icon {
-        font-size: 15rem;
+        font-size: 25vw;
         animation: shake 0.5s infinite;
         filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
     }
     .bell-player-name {
         font-family: 'Lalezar', sans-serif;
-        font-size: 60px;
+        font-size: 8vw;
         color: #ffca28;
         margin-top: 20px;
         text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        text-align: center;
     }
     @keyframes shake {
         0% { transform: rotate(0deg); }
@@ -208,7 +218,7 @@
     @media screen and (max-width: 992px) {
         .word-huroof { font-size: 80px !important; text-shadow: 3px 3px 0 var(--dark-shadow) !important; line-height: 1 !important; margin: 0 !important; }
         .word-m3 { font-size: 80px !important; text-shadow: 3px 3px 0 var(--dark-shadow) !important; line-height: 0.55 !important; margin: 0 !important; }
-        .word-name { font-size: 62px !important; text-shadow: 3px 3px 0 var(--dark-shadow) !important; margin-top: 30px !important; margin-bottom: 20px !important; line-height: 1 !important; }
+        .word-name { font-size: 62px !important; text-shadow: 3px 3px 0 var(--dark-shadow) !important; margin-top: 30px !important; margin-bottom: 20px !important; line-height: 1 !important; transform: scaleX(1.4) !important; }
         
         .main-btn { font-size: 20px; padding: 10px 20px; }
         .settings-overlay { padding: 15px; }
@@ -287,23 +297,33 @@
         
         .sidebar-logo .word-huroof { font-size: 45px !important; line-height: 0.9 !important;}
         .sidebar-logo .word-m3 { font-size: 35px !important; line-height: 0.5 !important;}
-        .sidebar-logo .word-name { font-size: 28px !important; margin-top: 12px !important;}
         
-        /* تكبير الجولة الأولى مثل ما طلبت */
-        .sidebar-dynamic-area { margin-top: 5px !important; min-height: 100px !important; }
+        /* 💡 التعديل هنا: تكبير الاسم وتمطيطه لشاشة العرض */
+        .sidebar-logo .word-name { 
+            font-size: 38px !important; 
+            margin-top: 15px !important;
+            transform: scaleX(1.6) !important; 
+            display: inline-block !important;
+        }
+        
+        /* 💡 التعديل هنا: ديناميكية الجولة والتايمر لاستغلال المساحة */
+        .sidebar-dynamic-area { margin-top: 5px !important; flex-grow: 1 !important; display: flex !important; flex-direction: column !important; justify-content: center !important; }
         .sidebar-round-text { font-size: 32px !important; margin-bottom: -5px !important; }
         .sidebar-round-num { font-size: 42px !important; margin-top: 0 !important; }
         
-        /* التايمر يغطي مكان الجولة بحجم ضخم وواضح */
+        /* 💡 التعديل هنا: التايمر يغطي مكان الجولة بحجم ضخم وواضح جداً */
         #sidebar-buzzer-display { 
-            padding: 10px 5px !important; 
+            padding: 15px 5px !important; 
             margin: 0 !important; 
-            border-width: 3px !important;
-            background: rgba(0, 0, 0, 0.6) !important;
+            border-width: 4px !important;
+            background: rgba(0, 0, 0, 0.85) !important;
+            border-radius: 15px !important;
+            box-shadow: 0 0 15px rgba(255, 202, 40, 0.4) !important;
+            width: 100% !important;
         }
-        .buzzer-player-name { font-size: 18px !important; color: white !important; margin-bottom: 2px !important; }
-        .buzzer-timer-value { font-size: 60px !important; line-height: 1 !important; margin: 5px 0 !important; } 
-        .buzzer-timer-label { font-size: 14px !important; margin-bottom: 0 !important; }
+        .buzzer-player-name { font-size: 20px !important; color: white !important; margin-bottom: 5px !important; line-height: 1.1 !important; }
+        .buzzer-timer-value { font-size: 80px !important; line-height: 1 !important; margin: 5px 0 !important; text-shadow: 0 4px 10px rgba(0,0,0,0.8) !important; } 
+        .buzzer-timer-label { font-size: 16px !important; margin-bottom: 0 !important; }
         
         .sidebar-scores { margin-top: auto !important; }
         .team-name-text { font-size: 13px !important; }
@@ -496,7 +516,7 @@
         </div>
         
         <div class="sidebar-dynamic-area">
-            <div class="sidebar-round" id="round-display-container">
+            <div id="round-display-container">
               <h2 class="sidebar-round-text">الجولة</h2>
               <h2 class="sidebar-round-num" id="round-display-number">الأولى</h2>
             </div>
@@ -557,14 +577,17 @@
 
     let currentSelectedCellIndex = null;
 
+    // 💡 التعديل البرمجي لضمان ظهور جرس التنبيه فوق كل الشاشات
     function showGiantBellEffect(playerName) {
         const overlay = document.getElementById('bell-overlay');
         const nameEl = document.getElementById('bell-player-name');
         if(nameEl && playerName) nameEl.textContent = playerName;
-        overlay.style.display = 'flex'; 
+        
+        // إجبار الظهور بـ important لتجاوز أي إعدادات أخرى
+        overlay.style.setProperty('display', 'flex', 'important'); 
         
         setTimeout(() => {
-            overlay.style.display = 'none';
+            overlay.style.setProperty('display', 'none', 'important');
         }, 3000);
     }
 
