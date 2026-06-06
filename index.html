@@ -369,33 +369,60 @@
         .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
         .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
-/* 1. قراءة ملف الخط العريض اللي فكيت ضغطه */
+/* 1. نسحب الخط حقك من الملف */
 @font-face {
-    font-family: 'GalaxyBold';
-    src: url('galaxy-bold.ttf'); /* تأكد إنك سميت ملف الخط كذا بالضبط */
+    font-family: 'Galaxy';
+    src: url('galaxy.otf'); 
 }
 
-/* 2. تطبيق الخط العريض على الشعار والجولات (بدون ما نلمس ألوانك الأصلية) */
+/* 2. نطبق الخط على الشعار والجولات فقط */
 .word-huroof, 
 .word-m3, 
 .word-name,
 .sidebar-logo .word-huroof, 
 .sidebar-logo .word-m3, 
 .sidebar-logo .word-name,
-.title-huroof,
-.title-host,
 .sidebar-round-text, 
-.sidebar-round-num {
-    font-family: 'GalaxyBold', sans-serif !important;
-    /* لاحظ: ما حطيت أي لون أو ظل هنا! موقعك بياخذ ألوانك الأصلية (أصفر، أخضر، أحمر) لحاله */
+.sidebar-round-num,
+.team-name-text {
+    font-family: 'Galaxy', sans-serif !important;
 }
 
-/* 3. أسماء الأفرقة بخط جالكسي وباللون الأبيض زي ما طلبت */
-.team-name-text,
-#t1-name,
-#t2-name {
-    font-family: 'GalaxyBold', sans-serif !important;
+/* 3. سحر الألوان والإطارات والظلال (نفس بروز كانفا) */
+
+/* كلمة "حروف" باللون الأصفر */
+.word-huroof, .sidebar-logo .word-huroof {
+    color: #ffca28 !important; 
+    -webkit-text-stroke: 3px #1d0b33; /* الإطار الغامق حول الحرف */
+    text-shadow: 3px 3px 0 #1d0b33, 4px 4px 0 #1d0b33, 5px 5px 0 #1d0b33, 6px 6px 0 #1d0b33 !important; /* ظل الـ 3D */
+}
+
+/* كلمة "مـع" باللون الأخضر */
+.word-m3, .sidebar-logo .word-m3 {
+    color: #26a69a !important; 
+    -webkit-text-stroke: 3px #1d0b33;
+    text-shadow: 3px 3px 0 #1d0b33, 4px 4px 0 #1d0b33, 5px 5px 0 #1d0b33, 6px 6px 0 #1d0b33 !important;
+}
+
+/* كلمة "اسمك" باللون الأحمر */
+.word-name, .sidebar-logo .word-name {
+    color: #ff5252 !important; 
+    -webkit-text-stroke: 3px #1d0b33;
+    text-shadow: 3px 3px 0 #1d0b33, 4px 4px 0 #1d0b33, 5px 5px 0 #1d0b33, 6px 6px 0 #1d0b33 !important;
+}
+
+/* الجولات باللون الأصفر والإطار الغامق */
+.sidebar-round-text, .sidebar-round-num {
+    color: #ffca28 !important;
+    -webkit-text-stroke: 2px #1d0b33;
+    text-shadow: 3px 3px 0 #1d0b33, 4px 4px 0 #1d0b33 !important;
+}
+
+/* أسماء الأفرقة باللون الأبيض */
+.team-name-text, #t1-name, #t2-name {
     color: white !important;
+    -webkit-text-stroke: 1px #1d0b33;
+    text-shadow: 2px 2px 0 #1d0b33 !important;
 }
 
   </style>
