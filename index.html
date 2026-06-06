@@ -369,13 +369,13 @@
         .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
         .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
-/* 1. نسحب الخط حقك من الملف */
+/* 1. ربط ملف الخط من المجلد مباشرة */
 @font-face {
     font-family: 'Galaxy';
     src: url('galaxy.otf'); 
 }
 
-/* 2. نطبق الخط على الشعار والجولات فقط */
+/* 2. تطبيق الخط على (حروف مع اسمك) و (الجولات) سادة من الملف */
 .word-huroof, 
 .word-m3, 
 .word-name,
@@ -383,48 +383,17 @@
 .sidebar-logo .word-m3, 
 .sidebar-logo .word-name,
 .sidebar-round-text, 
-.sidebar-round-num,
-.team-name-text {
+.sidebar-round-num {
     font-family: 'Galaxy', sans-serif !important;
 }
 
-/* 3. سحر الألوان والإطارات والظلال (نفس بروز كانفا) */
-
-/* كلمة "حروف" باللون الأصفر */
-.word-huroof, .sidebar-logo .word-huroof {
-    color: #ffca28 !important; 
-    -webkit-text-stroke: 3px #1d0b33; /* الإطار الغامق حول الحرف */
-    text-shadow: 3px 3px 0 #1d0b33, 4px 4px 0 #1d0b33, 5px 5px 0 #1d0b33, 6px 6px 0 #1d0b33 !important; /* ظل الـ 3D */
-}
-
-/* كلمة "مـع" باللون الأخضر */
-.word-m3, .sidebar-logo .word-m3 {
-    color: #26a69a !important; 
-    -webkit-text-stroke: 3px #1d0b33;
-    text-shadow: 3px 3px 0 #1d0b33, 4px 4px 0 #1d0b33, 5px 5px 0 #1d0b33, 6px 6px 0 #1d0b33 !important;
-}
-
-/* كلمة "اسمك" باللون الأحمر */
-.word-name, .sidebar-logo .word-name {
-    color: #ff5252 !important; 
-    -webkit-text-stroke: 3px #1d0b33;
-    text-shadow: 3px 3px 0 #1d0b33, 4px 4px 0 #1d0b33, 5px 5px 0 #1d0b33, 6px 6px 0 #1d0b33 !important;
-}
-
-/* الجولات باللون الأصفر والإطار الغامق */
-.sidebar-round-text, .sidebar-round-num {
-    color: #ffca28 !important;
-    -webkit-text-stroke: 2px #1d0b33;
-    text-shadow: 3px 3px 0 #1d0b33, 4px 4px 0 #1d0b33 !important;
-}
-
-/* أسماء الأفرقة باللون الأبيض */
-.team-name-text, #t1-name, #t2-name {
+/* 3. تطبيق الخط على (أسماء الأفرقة) وتكون باللون الأبيض زي ما طلبت */
+.team-name-text,
+#t1-name,
+#t2-name {
+    font-family: 'Galaxy', sans-serif !important;
     color: white !important;
-    -webkit-text-stroke: 1px #1d0b33;
-    text-shadow: 2px 2px 0 #1d0b33 !important;
 }
-
   </style>
 </head>
 <body>
