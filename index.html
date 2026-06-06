@@ -25,17 +25,13 @@
     .menu-label { text-align: center; color: var(--main-purple); font-family: 'Cairo'; font-weight: 900; font-size: 13px; margin-bottom: -4px;}
 
     .main-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 100; background-color: #6b439b; background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.923' viewBox='0 0 60 103.923' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 103.923L0 86.603V51.962L30 34.641l30 17.321v34.641L30 103.923zM30 34.641L0 17.321V-17.321L30-34.641l30 17.321V17.321L30 34.641z' stroke='rgba(255,255,255,0.05)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-size: 80px 138px; }
-    .menu-content { display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; }
+    .menu-content { display: flex; flex-direction: column; align-items: center; gap: 40px; }
     
-    /* 💡 التعديل 1: توحيد المسافات وأحجام الخطوط وتوسيعها لتاخذ مساحة متناسقة لليسار واليمين */
-    .game-logo { width: 100%; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); padding: 10px; }
-    .word-huroof, .word-m3, .word-name {
-        display: block; width: 100%; text-align: center; font-family: 'Lalezar', sans-serif;
-        font-size: 140px; line-height: 0.9; margin: 0 0 20px 0; z-index: 3;
-    }
-    .word-huroof { color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); }
-    .word-m3 { color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); z-index: 2; }
-    .word-name { color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); z-index: 1; white-space: nowrap; margin-bottom: 30px; }
+    /* 💡 التعديل: توحيد حجم الكلمات "حروف"، "مع"، "اسمك" لتكون متناسقة */
+    .game-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); padding: 10px; }
+    .word-huroof { font-family: 'Lalezar', sans-serif; font-size: 130px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.9; margin: 0; z-index: 3; display: inline-block; }
+    .word-m3 { font-family: 'Lalezar', sans-serif; font-size: 130px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.7; margin: 0; margin-top: -10px; z-index: 2; display: inline-block; }
+    .word-name { font-family: 'Lalezar', sans-serif; font-size: 130px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin-top: 10px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
     
     .menu-btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; }
     .main-btn { font-family: 'Cairo', sans-serif; font-size: 24px; font-weight: 900; padding: 12px 60px; border: none; border-radius: 50px; cursor: pointer; color: #6b439b; background-color: #ffffff; width: 320px; max-width: 90vw; white-space: nowrap; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: all 0.3s; }
@@ -69,18 +65,23 @@
     .sidebar-section { width: 24%; height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 25px 18px; z-index: 20; }
     .board-section { flex-grow: 1; width: 76%; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
     
-    /* 💡 التعديل 2: تنسيق القائمة الجانبية للشعار لتكون متطابقة بالمسافات والأحجام */
-    .sidebar-logo { width: 100%; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
-    .sidebar-logo .word-huroof, .sidebar-logo .word-m3, .sidebar-logo .word-name {
-        display: block; width: 100%; text-align: center; font-size: 100px; line-height: 0.9; margin: 0 0 10px 0;
-    }
-    .sidebar-logo .word-huroof { text-shadow: 4px 4px 0 var(--dark-shadow); }
-    .sidebar-logo .word-m3 { text-shadow: 3px 3px 0 var(--dark-shadow); }
-    .sidebar-logo .word-name { text-shadow: 4px 4px 0 var(--dark-shadow); margin-bottom: 0px; white-space: nowrap; }
+    /* 💡 التعديل: تعديل اللوجو الجانبي ليكون بحجم موحد ومربع */
+    .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
+    .sidebar-logo .word-huroof { font-size: 100px; line-height: 0.9; margin: 0; text-shadow: 4px 4px 0 var(--dark-shadow); }
+    .sidebar-logo .word-m3 { font-size: 100px; line-height: 0.7; margin: 0; margin-top: -10px; text-shadow: 3px 3px 0 var(--dark-shadow); }
+    .sidebar-logo .word-name { font-size: 100px; margin-top: 10px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow); white-space: nowrap; }
 
     .sidebar-dynamic-area {
-        display: flex; flex-direction: column; justify-content: center; align-items: center;
-        width: 100%; flex-grow: 1; margin-top: 15px; margin-bottom: 15px; gap: 15px; position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-grow: 1;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        gap: 15px;
+        position: relative;
     }
 
     #round-display-container { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
@@ -88,11 +89,11 @@
     .sidebar-round-num { font-family: 'Lalezar', sans-serif; font-size: 95px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 4px 4px 0 var(--dark-shadow); }
     
     #sidebar-buzzer-display:not(.hidden) { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
-    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.65); border: 4px solid #ffca28; border-radius: 15px; padding: 15px 10px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.5); }
+    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.65); border: 4px solid #ffca28; border-radius: 15px; padding: 25px 15px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.5); }
     
-    .buzzer-player-name { font-family: 'Cairo'; font-size: 18px; font-weight: 900; color: white; margin-bottom: 2px; word-break: break-word; }
-    .buzzer-timer-label { font-family: 'Cairo'; font-size: 15px; font-weight: bold; color: #ffca28; }
-    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 65px; line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 2px 0; }
+    .buzzer-player-name { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; margin-bottom: 5px; word-break: break-word; }
+    .buzzer-timer-label { font-family: 'Cairo'; font-size: 16px; font-weight: bold; color: #ffca28; }
+    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 85px; line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 5px 0; }
     .timer-phase-other { color: #ff5252 !important; }
 
     .sidebar-scores { display: flex; justify-content: space-between; align-items: center; width: 100%; }
@@ -103,7 +104,17 @@
     #score1-box { background-color: var(--team1-color); } #score2-box { background-color: var(--team2-color); }
     .score-number { font-family: 'Lalezar', sans-serif; font-size: 60px; font-weight: 900; color: white; line-height: 1; margin-top: 8px;}
 
-    .board { position: relative; z-index: 5; width: 700px; height: 640px; transform: scale(1.25); filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); transform-origin: center center; margin: auto; }
+    .board { 
+        position: relative; 
+        z-index: 5; 
+        width: 700px; 
+        height: 640px; 
+        transform: scale(1.25);
+        filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); 
+        transform-origin: center center; 
+        margin: auto; 
+    }
+
     @media screen and (min-width: 993px) and (max-height: 950px) { .board { transform: scale(1.1); } }
     @media screen and (min-width: 993px) and (max-height: 850px) { .board { transform: scale(0.95); } }
     @media screen and (min-width: 993px) and (max-height: 750px) { .board { transform: scale(0.85); } }
@@ -111,7 +122,18 @@
     
     .hex-outer { position: absolute; width: 140px; height: 160px; background: var(--main-purple); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
     .hex-outer:hover { transform: scale(1.08); z-index: 10; }
-    .hex-inner { width: 100%; height: 100%; background: #ffffff; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; transform: scale(0.88); font-family: 'Lalezar', sans-serif; font-size: 70px; color: var(--main-purple); transition: background-color 0.2s, color 0.2s; padding-top: 15px; }
+    
+    .hex-inner { 
+        width: 100%; height: 100%; background: #ffffff; 
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); 
+        display: flex; align-items: center; justify-content: center; 
+        transform: scale(0.88); 
+        font-family: 'Lalezar', sans-serif; 
+        font-size: 70px; 
+        color: var(--main-purple); 
+        transition: background-color 0.2s, color 0.2s; 
+        padding-top: 15px; 
+    }
 
     .hex-outer:hover .hex-inner:not(.answered):not(.highlighted) { background: #e0e0e0; }
     .hex-inner.answered { color: transparent !important; text-shadow: none !important; }
@@ -158,14 +180,44 @@
     
     .hidden { display: none !important; }
 
-    #bell-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; flex-direction: column; z-index: 9999999 !important; pointer-events: none; }
-    .bell-icon { font-size: 15vh; animation: shake 0.5s infinite; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
-    .bell-player-name { font-family: 'Lalezar', sans-serif; font-size: 7vh; color: #ffca28; margin-top: 15px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); text-align: center; width: 90%; }
-    @keyframes shake { 0% { transform: rotate(0deg); } 25% { transform: rotate(-20deg); } 50% { transform: rotate(0deg); } 75% { transform: rotate(20deg); } 100% { transform: rotate(0deg); } }
+    #bell-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9999999 !important;
+        pointer-events: none;
+    }
+    .bell-icon {
+        font-size: 15vh;
+        animation: shake 0.5s infinite;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    }
+    .bell-player-name {
+        font-family: 'Lalezar', sans-serif;
+        font-size: 7vh;
+        color: #ffca28;
+        margin-top: 15px;
+        text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        text-align: center;
+        width: 90%;
+    }
+    @keyframes shake {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(-20deg); }
+        50% { transform: rotate(0deg); }
+        75% { transform: rotate(20deg); }
+        100% { transform: rotate(0deg); }
+    }
 
+    /* 💡 التعديل: توحيد الخطوط في قائمة الجوال (Portrait) */
     @media screen and (max-width: 992px) {
-        /* توحيد المسافات والأحجام للجوال بالطول */
-        .word-huroof, .word-m3, .word-name { font-size: 95px !important; margin: 0 0 15px 0 !important; }
+        .word-huroof { font-size: 90px !important; line-height: 1 !important; }
+        .word-m3 { font-size: 90px !important; line-height: 0.7 !important; margin-top: -5px !important;}
+        .word-name { font-size: 90px !important; margin-top: 10px !important; margin-bottom: 15px !important; transform: none !important; }
         
         .main-btn { font-size: 20px; padding: 10px 20px; }
         .settings-overlay { padding: 15px; }
@@ -191,7 +243,19 @@
         .btn-half { font-size: 14px; padding: 8px; border-radius: 8px; }
     }
 
-    #rotate-device-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #2b164d; z-index: 999999; color: white; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    #rotate-device-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-color: #2b164d;
+        z-index: 999999;
+        color: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
     #rotate-device-overlay svg { width: 120px; height: 120px; margin-bottom: 20px; animation: rotatePhone 1.5s infinite ease-in-out alternate; }
     @keyframes rotatePhone { 0% { transform: rotate(0deg); } 100% { transform: rotate(-90deg); } }
     .rotate-title { font-family: 'Lalezar', sans-serif; font-size: 40px; color: #ffca28; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
@@ -205,30 +269,54 @@
     /* --- التعديلات المخصصة لشاشة الجوال بالعرض (Landscape) --- */
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
-        .sidebar-section { width: 35% !important; padding: 10px !important; justify-content: flex-start !important; gap: 4px !important; }
+        /* 💡 تصغير وتضييق المسافات الجانبية */
+        .sidebar-section { width: 35% !important; padding: 5px !important; justify-content: flex-start !important; gap: 2px !important; }
         .board-section { width: 65% !important; }
         
-        .board { transform: scale(0.50) !important; position: relative !important; display: block !important; margin: auto !important; left: -40px !important; top: -125px !important; transition: all 0.3s ease !important; }
-        
-        /* توحيد المسافات والأحجام للجوال بالعرض */
-        .sidebar-logo .word-huroof, .sidebar-logo .word-m3, .sidebar-logo .word-name {
-            font-size: 55px !important; margin: 0 0 8px 0 !important;
+        .board { 
+            transform: scale(0.50) !important; 
+            position: relative !important; 
+            display: block !important;
+            margin: auto !important;
+            left: -40px !important; 
+            top: -125px !important; 
+            transition: all 0.3s ease !important; 
         }
         
-        .sidebar-dynamic-area { margin-top: 2px !important; margin-bottom: 2px !important; flex-grow: 1 !important; display: flex !important; flex-direction: column !important; justify-content: center !important; gap: 4px !important; }
+        /* 💡 التعديل: تعديل خطوط الجوال لتكون متناسقة وغير ممسوسة بنفس المقاس للجميع */
+        .sidebar-logo .word-huroof { font-size: 55px !important; line-height: 0.9 !important; transform: none !important;}
+        .sidebar-logo .word-m3 { font-size: 55px !important; line-height: 0.7 !important; margin-top: -5px !important; transform: none !important;}
+        .sidebar-logo .word-name { 
+            font-size: 55px !important; 
+            margin-top: 5px !important;
+            margin-bottom: 0px !important;
+            transform: none !important; 
+            display: inline-block !important;
+        }
+        
+        .sidebar-dynamic-area { margin-top: 2px !important; margin-bottom: 2px !important; flex-grow: 1 !important; display: flex !important; flex-direction: column !important; justify-content: center !important; gap: 2px !important; }
         
         .sidebar-round-text { font-size: 38px !important; margin: 0 !important; line-height: 0.9 !important; }
         .sidebar-round-num { font-size: 48px !important; margin: 0 !important; line-height: 1 !important; }
         
-        #sidebar-buzzer-display { padding: 8px 5px !important; margin: 0 !important; border-width: 2px !important; background: rgba(0, 0, 0, 0.85) !important; border-radius: 12px !important; box-shadow: 0 0 10px rgba(255, 202, 40, 0.3) !important; width: 100% !important; }
-        .buzzer-player-name { font-size: 15px !important; color: white !important; margin-bottom: 0 !important; line-height: 1.1 !important; }
-        .buzzer-timer-value { font-size: 45px !important; line-height: 1 !important; margin: 0 !important; text-shadow: 0 2px 5px rgba(0,0,0,0.8) !important; } 
-        .buzzer-timer-label { font-size: 12px !important; margin-bottom: 0 !important; }
+        /* 💡 التعديل: تصغير مستطيل التايمر بشكل كبير عشان يجي بصفحة وحدة وما يتسبب في السكرول */
+        #sidebar-buzzer-display { 
+            padding: 4px 8px !important; 
+            margin: 0 !important; 
+            border-width: 2px !important;
+            background: rgba(0, 0, 0, 0.85) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 0 10px rgba(255, 202, 40, 0.3) !important;
+            width: 100% !important;
+        }
+        .buzzer-player-name { font-size: 14px !important; color: white !important; margin-bottom: 0 !important; line-height: 1.1 !important; }
+        .buzzer-timer-value { font-size: 38px !important; line-height: 1 !important; margin: 0 !important; text-shadow: 0 2px 5px rgba(0,0,0,0.8) !important; } 
+        .buzzer-timer-label { font-size: 11px !important; margin-bottom: 0 !important; }
         
         .sidebar-scores { margin-top: auto !important; }
         .team-name-text { font-size: 13px !important; }
-        .score-box { height: 35px !important; border-radius: 8px !important; }
-        .score-number { font-size: 22px !important; margin-top: 5px !important;}
+        .score-box { height: 30px !important; border-radius: 8px !important; }
+        .score-number { font-size: 20px !important; margin-top: 2px !important;}
 
         .floating-options-wrapper { top: 5px; right: 5px; }
         .options-btn { font-size: 13px; padding: 4px 8px; }
@@ -238,23 +326,51 @@
         #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
         #celeb-title { font-size: 35px !important; }
 
-        .modal { position: absolute !important; width: 65% !important; height: 100% !important; right: 0 !important; left: auto !important; top: 0 !important; background: rgba(0,0,0,0.7) !important; backdrop-filter: blur(4px) !important; pointer-events: auto !important; }
-        .modal-content-custom { pointer-events: auto !important; position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; right: 5% !important; left: auto !important; width: 90% !important; height: auto !important; max-height: 98% !important; background: #472b75 !important; border-radius: 15px !important; padding: 8px 6px !important; border: 2px solid rgba(255,255,255,0.15) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; justify-content: flex-start !important; display: flex !important; flex-direction: column !important; }
+        .modal {
+            position: absolute !important;
+            width: 65% !important;
+            height: 100% !important;
+            right: 0 !important;
+            left: auto !important;
+            top: 0 !important;
+            background: rgba(0,0,0,0.7) !important;
+            backdrop-filter: blur(4px) !important;
+            pointer-events: auto !important;
+        }
+        .modal-content-custom {
+            pointer-events: auto !important;
+            position: absolute !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            right: 5% !important;
+            left: auto !important;
+            width: 90% !important;
+            height: auto !important; 
+            max-height: 90% !important;
+            background: #472b75 !important;
+            border-radius: 15px !important;
+            padding: 12px 8px !important;
+            border: 2px solid rgba(255,255,255,0.15) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
+            justify-content: flex-start !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
         
-        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 6px !important; flex-shrink: 0 !important;}
-        .modal-letter-box { width: 45px !important; height: 45px !important; font-size: 24px !important; padding-top: 4px !important; border-radius: 10px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 12px !important; flex-shrink: 0 !important;}
+        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
         
-        .question-wrapper { margin-bottom: 6px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
-        .modal-question { font-size: 14px !important; margin-bottom: 4px !important; line-height: 1.3 !important; }
-        .close-modal-x { width: 25px !important; height: 25px !important; font-size: 16px !important; top: 8px !important; left: 8px !important; border-radius: 6px !important; }
-        .btn-wide-toggle { padding: 6px !important; font-size: 12px !important; border-radius: 8px !important; margin-bottom: 4px !important; }
-        .modal-bottom-row { flex-direction: row !important; gap: 6px !important; margin-top: 4px !important; justify-content: center !important;}
-        .btn-half { padding: 6px !important; font-size: 12px !important; border-radius: 8px !important; width: 100% !important; justify-content: center !important;}
-        .answer-reveal-area { padding: 6px !important; margin-bottom: 4px !important; border-radius: 8px !important; }
-        .answer-text { font-size: 13px !important; margin-bottom: 4px !important; }
-        .team-btns { flex-direction: row !important; gap: 6px !important; }
-        .team-btns button { padding: 6px !important; font-size: 11px !important; border-radius: 6px !important; }
-        .qr-img { width: 70px !important; height: 70px !important; margin-bottom: 5px !important;}
+        .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
+        .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
+        .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
+        .btn-wide-toggle { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; margin-bottom: 8px !important; }
+        .modal-bottom-row { flex-direction: row !important; gap: 8px !important; margin-top: 10px !important; justify-content: center !important;}
+        .btn-half { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; width: 100% !important; justify-content: center !important;}
+        .answer-reveal-area { padding: 8px !important; margin-bottom: 8px !important; border-radius: 10px !important; }
+        .answer-text { font-size: 15px !important; margin-bottom: 8px !important; }
+        .team-btns { flex-direction: row !important; gap: 8px !important; }
+        .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
+        .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
   </style>
 </head>
@@ -277,9 +393,9 @@
   <div id="main-menu" class="main-menu-overlay">
     <div class="menu-content">
       <div class="game-logo">
-        <h1 class="word-huroof">حروف</h1>
-        <h1 class="word-m3">مــــع</h1>
-        <h1 class="word-name" id="menu-name-display">اسمك</h1>
+        <h1 class="logo-word word-huroof">حروف</h1>
+        <h1 class="logo-word word-m3">مــــع</h1>
+        <h1 class="logo-word word-name" id="menu-name-display">اسمك</h1>
       </div>
       <div class="menu-btn-group">
         <button id="start-btn" class="main-btn">بدء اللعبة</button>
@@ -291,9 +407,9 @@
 
   <div id="settings-panel" class="settings-overlay hidden">
     <div class="game-logo" style="transform: scale(0.65); margin-bottom: -25px;">
-      <h1 class="word-huroof">حروف</h1>
-      <h1 class="word-m3">مــــع</h1>
-      <h1 class="word-name" id="settings-name-display">اسمك</h1>
+      <h1 class="logo-word word-huroof">حروف</h1>
+      <h1 class="logo-word word-m3">مــــع</h1>
+      <h1 class="logo-word word-name" id="settings-name-display">اسمك</h1>
     </div>
     <div class="settings-form-wrapper">
       <div class="settings-grid">
@@ -432,17 +548,11 @@
     let currentWinPoints = 1;
     let currentHostMode = 'auto';
 
-    // 💡 التعديل: استعادة بيانات الجرس بدقة لو طلعت ورجعت للمتصفح
-    document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === 'visible' && currentRoomID) {
-            socket.emit('request-game-state');
-        }
-    });
-
+    // 💡 التعديل: هنا كود الريكونكت التلقائي لو طلعت من الموقع ورجعت
     socket.on('connect', () => {
-        if (currentRoomID) {
-            socket.emit('request-game-state');
-        }
+      if (currentRoomID) {
+        socket.emit('rejoin-room', { roomID: currentRoomID, isHost: true });
+      }
     });
 
     setInterval(() => { socket.emit('ping'); }, 25000);
@@ -729,7 +839,6 @@
       });
     }
 
-    // 💡 التعديل: مزامنة حالة الجرس فوراً لو طلعت من المتصفح ورجعت
     socket.on('game-state', (state) => {
       if (state.cells && state.cells.length > 0) { renderBoard(state); } else { board.innerHTML = ''; }
       if (state.scores) {
@@ -737,25 +846,6 @@
         document.getElementById('team2-score').textContent = state.scores[1] || 0;
         const currentRound = (state.scores[0] || 0) + (state.scores[1] || 0) + 1;
         document.getElementById('round-display-number').textContent = roundNames[currentRound] || currentRound; 
-      }
-      
-      // التعديل لمعالجة الخروج والدخول للمتصفح (يحدث حالة الجرس تلقائياً)
-      if (state.buzzerLocked) {
-        buzzerPlayerName.textContent = `${state.buzzerWinner?.name || '--'} (${state.buzzerWinner?.team || '--'})`;
-        buzzerPlayerName.style.display = state.timerPhase === 'first' ? 'block' : 'none';
-        buzzerTimerValue.textContent = state.timeLeft;
-        buzzerTimerLabel.textContent = state.timerPhase === 'first' ? 'وقت الإجابة' : 'وقت الفريق الآخر';
-
-        if(state.timerPhase === 'second' || state.timerPhase === 'other') {
-            buzzerTimerValue.classList.add('timer-phase-other');
-        } else {
-            buzzerTimerValue.classList.remove('timer-phase-other');
-        }
-        sidebarBuzzerDisplay.classList.remove('hidden');
-        document.getElementById('round-display-container').classList.add('hidden'); // إخفاء الجولة
-      } else {
-        sidebarBuzzerDisplay.classList.add('hidden');
-        document.getElementById('round-display-container').classList.remove('hidden'); // إظهار الجولة
       }
     });
 
@@ -767,8 +857,7 @@
       buzzerTimerValue.classList.remove('timer-phase-other');
       
       sidebarBuzzerDisplay.classList.remove('hidden'); 
-      document.getElementById('round-display-container').classList.add('hidden'); // 💡 إخفاء نص الجولة أثناء عمل الجرس
-
+      
       showGiantBellEffect(data.winner.name);
     });
 
@@ -785,7 +874,6 @@
 
     socket.on('buzzer-reset', () => {
       sidebarBuzzerDisplay.classList.add('hidden'); 
-      document.getElementById('round-display-container').classList.remove('hidden'); // 💡 إرجاع نص الجولة بعد انتهاء الجرس
     });
 
     socket.on('new-question', (data) => {
@@ -797,7 +885,6 @@
     socket.on('question-cleared', () => { 
         document.getElementById('modal').classList.add('hidden'); 
         sidebarBuzzerDisplay.classList.add('hidden');
-        document.getElementById('round-display-container').classList.remove('hidden');
     });
 
     function renderQuestionModal(data) {

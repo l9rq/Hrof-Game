@@ -109,6 +109,20 @@ function checkWin(gameState, teamColor, mode) {
 
 io.on('connection', (socket) => {
   socket.on('ping', () => socket.emit('pong'));
+  
+  // 💡 التعديل: استعادة الاتصال بالغرفة إذا رجع اللاعب من الخلفية
+  socket.on('rejoin-room', (data) => {
+    const room = rooms.get(data.roomID);
+    if (room) {
+      socket.join(data.roomID);
+      socket.roomID = data.roomID;
+      if (data.isHost) socket.isHost = true;
+      if (data.playerName) socket.playerName = data.playerName;
+      socket.emit('game-state', room.gameState);
+      socket.emit('settings', room.settings);
+    }
+  });
+
   socket.on('create-room', (customSettings) => {
     const roomID = createRoom(customSettings);
     rooms.get(roomID).settings.roomID = roomID;
