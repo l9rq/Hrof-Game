@@ -369,13 +369,13 @@
         .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
         .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
-/* 1. ربط ملف الخط مباشرة */
+/* 1. قراءة ملف الخط العريض اللي فكيت ضغطه */
 @font-face {
-    font-family: 'Galaxy';
-    src: url('galaxy.otf'); 
+    font-family: 'GalaxyBold';
+    src: url('galaxy-bold.ttf'); /* تأكد إنك سميت ملف الخط كذا بالضبط */
 }
 
-/* 2. تغيير خط (حروف مع اسمك + الجولات) فقط بدون الأزرار */
+/* 2. تطبيق الخط العريض على الشعار والجولات (بدون ما نلمس ألوانك الأصلية) */
 .word-huroof, 
 .word-m3, 
 .word-name,
@@ -386,14 +386,15 @@
 .title-host,
 .sidebar-round-text, 
 .sidebar-round-num {
-    font-family: 'Galaxy', sans-serif !important;
+    font-family: 'GalaxyBold', sans-serif !important;
+    /* لاحظ: ما حطيت أي لون أو ظل هنا! موقعك بياخذ ألوانك الأصلية (أصفر، أخضر، أحمر) لحاله */
 }
 
-/* 3. تغيير خط أسماء الأفرقة إلى جالكسي وتغيير لونها للأبيض */
+/* 3. أسماء الأفرقة بخط جالكسي وباللون الأبيض زي ما طلبت */
 .team-name-text,
 #t1-name,
 #t2-name {
-    font-family: 'Galaxy', sans-serif !important;
+    font-family: 'GalaxyBold', sans-serif !important;
     color: white !important;
 }
 
