@@ -27,11 +27,11 @@
     .main-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 100; background-color: #6b439b; background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.923' viewBox='0 0 60 103.923' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 103.923L0 86.603V51.962L30 34.641l30 17.321v34.641L30 103.923zM30 34.641L0 17.321V-17.321L30-34.641l30 17.321V17.321L30 34.641z' stroke='rgba(255,255,255,0.05)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-size: 80px 138px; }
     .menu-content { display: flex; flex-direction: column; align-items: center; gap: 40px; }
     
-    /* 💡 التعديل: استعادة طبيعة الخط "اسمك" وتكبير الكلمات بتناسق */
+    /* 💡 التعديل: توحيد أحجام الخطوط في الشعار ليكونوا متطابقين */
     .game-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); padding: 10px; }
-    .word-huroof { font-family: 'Lalezar', sans-serif; font-size: 130px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.9; margin: 0; z-index: 3; display: inline-block; }
-    .word-m3 { font-family: 'Lalezar', sans-serif; font-size: 110px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.6; margin: 0; z-index: 2; display: inline-block; }
-    .word-name { font-family: 'Lalezar', sans-serif; font-size: 125px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin-top: 15px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
+    .word-huroof { font-family: 'Lalezar', sans-serif; font-size: 120px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.9; margin: 0; z-index: 3; display: inline-block; }
+    .word-m3 { font-family: 'Lalezar', sans-serif; font-size: 120px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.9; margin: 0; z-index: 2; display: inline-block; }
+    .word-name { font-family: 'Lalezar', sans-serif; font-size: 120px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.9; margin-top: 10px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
     
     .menu-btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; }
     .main-btn { font-family: 'Cairo', sans-serif; font-size: 24px; font-weight: 900; padding: 12px 60px; border: none; border-radius: 50px; cursor: pointer; color: #6b439b; background-color: #ffffff; width: 320px; max-width: 90vw; white-space: nowrap; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: all 0.3s; }
@@ -65,11 +65,11 @@
     .sidebar-section { width: 24%; height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 25px 18px; z-index: 20; }
     .board-section { flex-grow: 1; width: 76%; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
     
-    /* 💡 التعديل: تعديل خطوط القائمة الجانبية لتكون متناسقة وغير ممسوسة */
+    /* 💡 التعديل: أحجام خطوط القائمة الجانبية متطابقة تماماً */
     .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
-    .sidebar-logo .word-huroof { font-size: 110px; line-height: 0.9; margin: 0; text-shadow: 4px 4px 0 var(--dark-shadow); }
-    .sidebar-logo .word-m3 { font-size: 85px; line-height: 0.6; margin: 0; text-shadow: 3px 3px 0 var(--dark-shadow); }
-    .sidebar-logo .word-name { font-size: 95px; margin-top: 15px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow); white-space: nowrap; }
+    .sidebar-logo .word-huroof { font-size: 90px; line-height: 0.9; margin: 0; text-shadow: 4px 4px 0 var(--dark-shadow); }
+    .sidebar-logo .word-m3 { font-size: 90px; line-height: 0.9; margin: 0; text-shadow: 3px 3px 0 var(--dark-shadow); }
+    .sidebar-logo .word-name { font-size: 90px; margin-top: 10px; margin-bottom: 0px; line-height: 0.9; text-shadow: 4px 4px 0 var(--dark-shadow); white-space: nowrap; }
 
     .sidebar-dynamic-area {
         display: flex;
@@ -80,23 +80,22 @@
         flex-grow: 1;
         margin-top: 15px;
         margin-bottom: 15px;
-        gap: 15px; /* زيادة الفراغ شوي */
+        gap: 15px; 
         position: relative;
     }
 
     #round-display-container { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
-    /* 💡 التعديل: تكبير حجم الجولة في البي سي */
     .sidebar-round-text { font-family: 'Lalezar', sans-serif; font-size: 75px; color: #ff5252; margin: 0; line-height: 0.9; text-shadow: 3px 3px 0 var(--dark-shadow); }
     .sidebar-round-num { font-family: 'Lalezar', sans-serif; font-size: 95px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 4px 4px 0 var(--dark-shadow); }
     
     #sidebar-buzzer-display:not(.hidden) { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
-    /* 💡 التعديل: تكبير مستطيل التايمر بالبي سي وملء الفراغ */
-    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.65); border: 4px solid #ffca28; border-radius: 15px; padding: 25px 15px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.5); }
+    /* 💡 التعديل: تصغير مساحة التايمر بالجهاز المكتبي والجوال لتكون مساحته أصغر */
+    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.65); border: 4px solid #ffca28; border-radius: 15px; padding: 15px 10px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.5); }
     
-    .buzzer-player-name { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; margin-bottom: 5px; word-break: break-word; }
-    .buzzer-timer-label { font-family: 'Cairo'; font-size: 16px; font-weight: bold; color: #ffca28; }
-    /* 💡 التعديل: تكبير رقم التايمر */
-    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 85px; line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 5px 0; }
+    .buzzer-player-name { font-family: 'Cairo'; font-size: 18px; font-weight: 900; color: white; margin-bottom: 2px; word-break: break-word; }
+    .buzzer-timer-label { font-family: 'Cairo'; font-size: 15px; font-weight: bold; color: #ffca28; }
+    /* 💡 التعديل: تصغير رقم التايمر */
+    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 65px; line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 2px 0; }
     .timer-phase-other { color: #ff5252 !important; }
 
     .sidebar-scores { display: flex; justify-content: space-between; align-items: center; width: 100%; }
@@ -183,17 +182,16 @@
     
     .hidden { display: none !important; }
 
-    /* 💡 التعديل: تخفيف التعتيم لتنبيه الجرس عشان ما يغطي التايمر بالجوال */
     #bell-overlay {
         display: none;
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.6); /* تخفيف السواد */
+        background: rgba(0, 0, 0, 0.6); 
         justify-content: center;
         align-items: center;
         flex-direction: column;
         z-index: 9999999 !important;
-        pointer-events: none; /* يسمح بمرور اللمس */
+        pointer-events: none; 
     }
     .bell-icon {
         font-size: 15vh;
@@ -218,9 +216,9 @@
     }
 
     @media screen and (max-width: 992px) {
-        .word-huroof { font-size: 90px !important; line-height: 1 !important; }
-        .word-m3 { font-size: 90px !important; line-height: 0.55 !important; }
-        .word-name { font-size: 80px !important; margin-top: 15px !important; margin-bottom: 15px !important; transform: none !important; }
+        .word-huroof { font-size: 85px !important; line-height: 0.9 !important; }
+        .word-m3 { font-size: 85px !important; line-height: 0.9 !important; }
+        .word-name { font-size: 85px !important; margin-top: 10px !important; margin-bottom: 15px !important; transform: none !important; }
         
         .main-btn { font-size: 20px; padding: 10px 20px; }
         .settings-overlay { padding: 15px; }
@@ -285,12 +283,13 @@
             transition: all 0.3s ease !important; 
         }
         
-        /* 💡 التعديل: تعديل خطوط الجوال لتكون متناسقة وغير ممسوسة */
-        .sidebar-logo .word-huroof { font-size: 60px !important; line-height: 0.9 !important; transform: none !important;}
-        .sidebar-logo .word-m3 { font-size: 45px !important; line-height: 0.6 !important; transform: none !important;}
+        /* 💡 التعديل: أحجام خطوط الجوال متطابقة تماماً */
+        .sidebar-logo .word-huroof { font-size: 50px !important; line-height: 0.9 !important; transform: none !important;}
+        .sidebar-logo .word-m3 { font-size: 50px !important; line-height: 0.9 !important; transform: none !important;}
         .sidebar-logo .word-name { 
             font-size: 50px !important; 
-            margin-top: 10px !important;
+            line-height: 0.9 !important;
+            margin-top: 5px !important;
             margin-bottom: 5px !important;
             transform: none !important; 
             display: inline-block !important;
@@ -298,23 +297,22 @@
         
         .sidebar-dynamic-area { margin-top: 2px !important; margin-bottom: 2px !important; flex-grow: 1 !important; display: flex !important; flex-direction: column !important; justify-content: center !important; gap: 4px !important; }
         
-        /* 💡 التعديل: تكبير حجم الجولة في الجوال */
         .sidebar-round-text { font-size: 38px !important; margin: 0 !important; line-height: 0.9 !important; }
         .sidebar-round-num { font-size: 48px !important; margin: 0 !important; line-height: 1 !important; }
         
-        /* 💡 التعديل: تكبير مستطيل التايمر في الجوال */
+        /* 💡 التعديل: تصغير مستطيل التايمر في الجوال بشكل ملحوظ */
         #sidebar-buzzer-display { 
-            padding: 15px 10px !important; 
+            padding: 8px 5px !important; 
             margin: 0 !important; 
-            border-width: 3px !important;
+            border-width: 2px !important;
             background: rgba(0, 0, 0, 0.85) !important;
             border-radius: 12px !important;
             box-shadow: 0 0 10px rgba(255, 202, 40, 0.3) !important;
             width: 100% !important;
         }
-        .buzzer-player-name { font-size: 18px !important; color: white !important; margin-bottom: 1px !important; line-height: 1.1 !important; }
-        .buzzer-timer-value { font-size: 55px !important; line-height: 1 !important; margin: 2px 0 !important; text-shadow: 0 2px 5px rgba(0,0,0,0.8) !important; } 
-        .buzzer-timer-label { font-size: 15px !important; margin-bottom: 0 !important; }
+        .buzzer-player-name { font-size: 15px !important; color: white !important; margin-bottom: 0 !important; line-height: 1.1 !important; }
+        .buzzer-timer-value { font-size: 45px !important; line-height: 1 !important; margin: 0 !important; text-shadow: 0 2px 5px rgba(0,0,0,0.8) !important; } 
+        .buzzer-timer-label { font-size: 12px !important; margin-bottom: 0 !important; }
         
         .sidebar-scores { margin-top: auto !important; }
         .team-name-text { font-size: 13px !important; }
@@ -340,6 +338,7 @@
             backdrop-filter: blur(4px) !important;
             pointer-events: auto !important;
         }
+        /* 💡 التعديل: ضغط شاشة السؤال في الجوال بحيث تناسب صفحة واحدة بالكامل */
         .modal-content-custom {
             pointer-events: auto !important;
             position: absolute !important;
@@ -349,10 +348,10 @@
             left: auto !important;
             width: 90% !important;
             height: auto !important; 
-            max-height: 90% !important;
+            max-height: 98% !important; /* السماح بمرونة أكبر */
             background: #472b75 !important;
             border-radius: 15px !important;
-            padding: 12px 8px !important;
+            padding: 8px 6px !important; /* تقليل المسافات */
             border: 2px solid rgba(255,255,255,0.15) !important;
             box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
             justify-content: flex-start !important;
@@ -360,20 +359,20 @@
             flex-direction: column !important;
         }
         
-        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 12px !important; flex-shrink: 0 !important;}
-        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 6px !important; flex-shrink: 0 !important;}
+        .modal-letter-box { width: 45px !important; height: 45px !important; font-size: 24px !important; padding-top: 4px !important; border-radius: 10px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
         
-        .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
-        .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
-        .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
-        .btn-wide-toggle { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; margin-bottom: 8px !important; }
-        .modal-bottom-row { flex-direction: row !important; gap: 8px !important; margin-top: 10px !important; justify-content: center !important;}
-        .btn-half { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; width: 100% !important; justify-content: center !important;}
-        .answer-reveal-area { padding: 8px !important; margin-bottom: 8px !important; border-radius: 10px !important; }
-        .answer-text { font-size: 15px !important; margin-bottom: 8px !important; }
-        .team-btns { flex-direction: row !important; gap: 8px !important; }
-        .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
-        .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
+        .question-wrapper { margin-bottom: 6px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
+        .modal-question { font-size: 14px !important; margin-bottom: 4px !important; line-height: 1.3 !important; }
+        .close-modal-x { width: 25px !important; height: 25px !important; font-size: 16px !important; top: 8px !important; left: 8px !important; border-radius: 6px !important; }
+        .btn-wide-toggle { padding: 6px !important; font-size: 12px !important; border-radius: 8px !important; margin-bottom: 4px !important; }
+        .modal-bottom-row { flex-direction: row !important; gap: 6px !important; margin-top: 4px !important; justify-content: center !important;}
+        .btn-half { padding: 6px !important; font-size: 12px !important; border-radius: 8px !important; width: 100% !important; justify-content: center !important;}
+        .answer-reveal-area { padding: 6px !important; margin-bottom: 4px !important; border-radius: 8px !important; }
+        .answer-text { font-size: 13px !important; margin-bottom: 4px !important; }
+        .team-btns { flex-direction: row !important; gap: 6px !important; }
+        .team-btns button { padding: 6px !important; font-size: 11px !important; border-radius: 6px !important; }
+        .qr-img { width: 70px !important; height: 70px !important; margin-bottom: 5px !important;}
     }
   </style>
 </head>
@@ -551,6 +550,14 @@
     let currentWinPoints = 1;
     let currentHostMode = 'auto';
 
+    // 💡 التعديل: كود لمعالجة انقطاع الاتصال عند الخروج لليوتيوب أو غيره
+    socket.on('connect', () => {
+        // إذا رجعنا ولقينا إن اللعبة شغالة (الغرفة موجودة)، نسحب التحديثات فوراً
+        if (currentRoomID) {
+            socket.emit('request-game-state');
+        }
+    });
+
     setInterval(() => { socket.emit('ping'); }, 25000);
 
     const mainMenu = document.getElementById('main-menu');
@@ -567,7 +574,6 @@
 
     let currentSelectedCellIndex = null;
 
-    /* 💡 التعديل: تقليل مدة عرض الجرس الكبير عشان التايمر يكون ظاهر بوضوح بدون ما يغطيه */
     function showGiantBellEffect(playerName) {
         const overlay = document.getElementById('bell-overlay');
         const nameEl = document.getElementById('bell-player-name');
@@ -577,7 +583,7 @@
         
         setTimeout(() => {
             overlay.style.setProperty('display', 'none', 'important');
-        }, 1200); /* تعديل لـ 1.2 ثانية بدلاً من 3 ثواني */
+        }, 1200); 
     }
 
     function adjustTimer(id, delta) {
