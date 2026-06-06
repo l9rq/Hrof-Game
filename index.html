@@ -27,11 +27,11 @@
     .main-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 100; background-color: #6b439b; background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.923' viewBox='0 0 60 103.923' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 103.923L0 86.603V51.962L30 34.641l30 17.321v34.641L30 103.923zM30 34.641L0 17.321V-17.321L30-34.641l30 17.321V17.321L30 34.641z' stroke='rgba(255,255,255,0.05)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-size: 80px 138px; }
     .menu-content { display: flex; flex-direction: column; align-items: center; gap: 40px; }
     
-    /* 💡 التعديل: توحيد حجم الكلمات "حروف"، "مع"، "اسمك" لتكون متناسقة */
+    /* 💡 التعديل: إطالة الكلمات وتنزيل اسمك في الشاشة الرئيسية */
     .game-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); padding: 10px; }
-    .word-huroof { font-family: 'Lalezar', sans-serif; font-size: 130px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.9; margin: 0; z-index: 3; display: inline-block; }
-    .word-m3 { font-family: 'Lalezar', sans-serif; font-size: 130px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.7; margin: 0; margin-top: -10px; z-index: 2; display: inline-block; }
-    .word-name { font-family: 'Lalezar', sans-serif; font-size: 130px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin-top: 10px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
+    .word-huroof { font-family: 'Lalezar', sans-serif; font-size: 130px; transform: scaleY(1.25); color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.9; margin: 0; z-index: 3; display: inline-block; }
+    .word-m3 { font-family: 'Lalezar', sans-serif; font-size: 130px; transform: scaleY(1.1); color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 0.7; margin: 0; margin-top: 5px; z-index: 2; display: inline-block; }
+    .word-name { font-family: 'Lalezar', sans-serif; font-size: 130px; transform: scaleY(1.1); color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin-top: 25px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
     
     .menu-btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; }
     .main-btn { font-family: 'Cairo', sans-serif; font-size: 24px; font-weight: 900; padding: 12px 60px; border: none; border-radius: 50px; cursor: pointer; color: #6b439b; background-color: #ffffff; width: 320px; max-width: 90vw; white-space: nowrap; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: all 0.3s; }
@@ -65,11 +65,11 @@
     .sidebar-section { width: 24%; height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 25px 18px; z-index: 20; }
     .board-section { flex-grow: 1; width: 76%; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
     
-    /* 💡 التعديل: تعديل اللوجو الجانبي ليكون بحجم موحد ومربع */
+    /* 💡 التعديل: إطالة الكلمات وتنزيل اسمك في القائمة الجانبية (الخلية) */
     .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); }
-    .sidebar-logo .word-huroof { font-size: 100px; line-height: 0.9; margin: 0; text-shadow: 4px 4px 0 var(--dark-shadow); }
-    .sidebar-logo .word-m3 { font-size: 100px; line-height: 0.7; margin: 0; margin-top: -10px; text-shadow: 3px 3px 0 var(--dark-shadow); }
-    .sidebar-logo .word-name { font-size: 100px; margin-top: 10px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow); white-space: nowrap; }
+    .sidebar-logo .word-huroof { font-size: 100px; transform: scaleY(1.25); line-height: 0.9; margin: 0; text-shadow: 4px 4px 0 var(--dark-shadow); display: inline-block; }
+    .sidebar-logo .word-m3 { font-size: 100px; transform: scaleY(1.1); line-height: 0.7; margin: 0; margin-top: 5px; text-shadow: 3px 3px 0 var(--dark-shadow); display: inline-block; }
+    .sidebar-logo .word-name { font-size: 100px; transform: scaleY(1.1); margin-top: 20px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow); white-space: nowrap; display: inline-block; }
 
     .sidebar-dynamic-area {
         display: flex;
@@ -88,21 +88,23 @@
     .sidebar-round-text { font-family: 'Lalezar', sans-serif; font-size: 75px; color: #ff5252; margin: 0; line-height: 0.9; text-shadow: 3px 3px 0 var(--dark-shadow); }
     .sidebar-round-num { font-family: 'Lalezar', sans-serif; font-size: 95px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 4px 4px 0 var(--dark-shadow); }
     
+    /* 💡 التعديل: تصغير مربع الجرس في البي سي */
     #sidebar-buzzer-display:not(.hidden) { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
-    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.65); border: 4px solid #ffca28; border-radius: 15px; padding: 25px 15px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.5); }
+    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.65); border: 4px solid #ffca28; border-radius: 15px; padding: 12px 10px; text-align: center; width: 85%; margin: 0 auto; animation: fadeIn 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.5); }
     
-    .buzzer-player-name { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; margin-bottom: 5px; word-break: break-word; }
-    .buzzer-timer-label { font-family: 'Cairo'; font-size: 16px; font-weight: bold; color: #ffca28; }
-    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 85px; line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 5px 0; }
+    .buzzer-player-name { font-family: 'Cairo'; font-size: 20px; font-weight: 900; color: white; margin-bottom: 2px; word-break: break-word; }
+    .buzzer-timer-label { font-family: 'Cairo'; font-size: 14px; font-weight: bold; color: #ffca28; }
+    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 60px; line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 2px 0; }
     .timer-phase-other { color: #ff5252 !important; }
 
     .sidebar-scores { display: flex; justify-content: space-between; align-items: center; width: 100%; }
     .team-score-col { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 48%; }
-    .team-name-text { font-family: 'Lalezar', sans-serif; font-size: 28px; line-height: 1; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+    /* 💡 التعديل: تكبير أرقام ومربعات الفرق في البي سي */
+    .team-name-text { font-family: 'Lalezar', sans-serif; font-size: 32px; line-height: 1; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
     #team1-name-display { color: var(--team1-color); } #team2-name-display { color: var(--team2-color); }
-    .score-box { width: 100%; height: 80px; border-radius: 15px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .score-box { width: 100%; height: 100px; border-radius: 15px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     #score1-box { background-color: var(--team1-color); } #score2-box { background-color: var(--team2-color); }
-    .score-number { font-family: 'Lalezar', sans-serif; font-size: 60px; font-weight: 900; color: white; line-height: 1; margin-top: 8px;}
+    .score-number { font-family: 'Lalezar', sans-serif; font-size: 80px; font-weight: 900; color: white; line-height: 1; margin-top: 10px;}
 
     .board { 
         position: relative; 
@@ -213,11 +215,11 @@
         100% { transform: rotate(0deg); }
     }
 
-    /* 💡 التعديل: توحيد الخطوط في قائمة الجوال (Portrait) */
+    /* 💡 التعديل: المحافظة على تناسق التعديلات في الجوال (Portrait) */
     @media screen and (max-width: 992px) {
-        .word-huroof { font-size: 90px !important; line-height: 1 !important; }
-        .word-m3 { font-size: 90px !important; line-height: 0.7 !important; margin-top: -5px !important;}
-        .word-name { font-size: 90px !important; margin-top: 10px !important; margin-bottom: 15px !important; transform: none !important; }
+        .word-huroof { font-size: 90px !important; transform: scaleY(1.25) !important; line-height: 1 !important; }
+        .word-m3 { font-size: 90px !important; transform: scaleY(1.1) !important; line-height: 0.7 !important; margin-top: -5px !important;}
+        .word-name { font-size: 90px !important; transform: scaleY(1.1) !important; margin-top: 20px !important; margin-bottom: 15px !important; }
         
         .main-btn { font-size: 20px; padding: 10px 20px; }
         .settings-overlay { padding: 15px; }
@@ -269,7 +271,6 @@
     /* --- التعديلات المخصصة لشاشة الجوال بالعرض (Landscape) --- */
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
-        /* 💡 تصغير وتضييق المسافات الجانبية */
         .sidebar-section { width: 35% !important; padding: 5px !important; justify-content: flex-start !important; gap: 2px !important; }
         .board-section { width: 65% !important; }
         
@@ -283,14 +284,14 @@
             transition: all 0.3s ease !important; 
         }
         
-        /* 💡 التعديل: تعديل خطوط الجوال لتكون متناسقة وغير ممسوسة بنفس المقاس للجميع */
-        .sidebar-logo .word-huroof { font-size: 55px !important; line-height: 0.9 !important; transform: none !important;}
-        .sidebar-logo .word-m3 { font-size: 55px !important; line-height: 0.7 !important; margin-top: -5px !important; transform: none !important;}
+        /* 💡 التعديل: إطالة الكلمات للجوال بالعرض */
+        .sidebar-logo .word-huroof { font-size: 55px !important; transform: scaleY(1.25) !important; line-height: 0.9 !important; }
+        .sidebar-logo .word-m3 { font-size: 55px !important; transform: scaleY(1.1) !important; line-height: 0.7 !important; margin-top: 5px !important; }
         .sidebar-logo .word-name { 
             font-size: 55px !important; 
-            margin-top: 5px !important;
+            transform: scaleY(1.1) !important;
+            margin-top: 15px !important;
             margin-bottom: 0px !important;
-            transform: none !important; 
             display: inline-block !important;
         }
         
@@ -299,24 +300,25 @@
         .sidebar-round-text { font-size: 38px !important; margin: 0 !important; line-height: 0.9 !important; }
         .sidebar-round-num { font-size: 48px !important; margin: 0 !important; line-height: 1 !important; }
         
-        /* 💡 التعديل: تصغير مستطيل التايمر بشكل كبير عشان يجي بصفحة وحدة وما يتسبب في السكرول */
+        /* 💡 التعديل: تصغير مستطيل التايمر بشكل كبير عشان يجي بصفحة وحدة وما يتسبب في السكرول بالجوال */
         #sidebar-buzzer-display { 
-            padding: 4px 8px !important; 
-            margin: 0 !important; 
+            padding: 2px 6px !important; 
+            margin: 0 auto !important; 
             border-width: 2px !important;
             background: rgba(0, 0, 0, 0.85) !important;
             border-radius: 8px !important;
             box-shadow: 0 0 10px rgba(255, 202, 40, 0.3) !important;
-            width: 100% !important;
+            width: 90% !important;
         }
-        .buzzer-player-name { font-size: 14px !important; color: white !important; margin-bottom: 0 !important; line-height: 1.1 !important; }
-        .buzzer-timer-value { font-size: 38px !important; line-height: 1 !important; margin: 0 !important; text-shadow: 0 2px 5px rgba(0,0,0,0.8) !important; } 
-        .buzzer-timer-label { font-size: 11px !important; margin-bottom: 0 !important; }
+        .buzzer-player-name { font-size: 12px !important; color: white !important; margin-bottom: 0 !important; line-height: 1.1 !important; }
+        .buzzer-timer-value { font-size: 28px !important; line-height: 1 !important; margin: 0 !important; text-shadow: 0 2px 5px rgba(0,0,0,0.8) !important; } 
+        .buzzer-timer-label { font-size: 10px !important; margin-bottom: 0 !important; }
         
+        /* 💡 التعديل: إرجاع حجم النقاط لفوق للجوال بالعرض */
         .sidebar-scores { margin-top: auto !important; }
-        .team-name-text { font-size: 13px !important; }
-        .score-box { height: 30px !important; border-radius: 8px !important; }
-        .score-number { font-size: 20px !important; margin-top: 2px !important;}
+        .team-name-text { font-size: 15px !important; }
+        .score-box { height: 45px !important; border-radius: 10px !important; }
+        .score-number { font-size: 35px !important; margin-top: 5px !important;}
 
         .floating-options-wrapper { top: 5px; right: 5px; }
         .options-btn { font-size: 13px; padding: 4px 8px; }
