@@ -394,7 +394,33 @@
 #t1-name,
 #t2-name {
     font-family: 'Galaxy', sans-serif !important;
-    color: white !important;
+   
+   
+   /* ===================================================
+   ضبط المسافات والمقاسات لشعار (حروف مع اسمك)
+=================================================== */
+
+/* 1. ضبط كلمة "حروف" */
+.word-huroof, .sidebar-logo .word-huroof {
+    font-size: 125px !important;
+    line-height: 1 !important;
+    margin-bottom: 0px !important;
+}
+
+/* 2. ضبط كلمة "مــــع" (تكبيرها وفك اللصقة) */
+.word-m3, .sidebar-logo .word-m3 {
+    font-size: 155px !important;    /* كبرناها عشان تعرض وتوصل للحدين يمين ويسار */
+    line-height: 1 !important;
+    margin-top: 20px !important;    /* نزلناها شوي عن كلمة حروف */
+    margin-bottom: 20px !important; /* رفعناها شوي عن كلمة اسمك */
+}
+
+/* 3. ضبط كلمة "اسمك" (تصغيرها لتتساوى مع المسطرة) */
+.word-name, .sidebar-logo .word-name {
+    font-size: 115px !important;    /* صغرناها حبة عشان ما تطلع برا المسطرة */
+    line-height: 1 !important;
+    margin-top: 0px !important;
+} color: white !important;
 }
   </style>
 </head>
