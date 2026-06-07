@@ -418,6 +418,14 @@
     margin-top: 0px !important;      /* شلنا السالب */
     margin-bottom: 0px !important;
 }
+/* تعديل كلمة "مــــع" (تصغير الحروف ومط الخط بالعرض) */
+.word-m3, .sidebar-logo .word-m3 {
+    font-size: 80px !important;        /* 1. هنا صغرنا حجم الميم والعين */
+    transform: scaleX(1.7) !important; /* 2. هنا مطينا الكلمة بالعرض (تمسها) */
+    display: inline-block !important;  /* ضروري عشان يشتغل كود المط */
+    margin-top: 5px !important;        /* وزنية المسافة اللي فوقها */
+    margin-bottom: 5px !important;     /* وزنية المسافة اللي تحتها */
+}
   </style>
 </head>
 <body>
