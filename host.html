@@ -7,19 +7,58 @@
   <script src="/socket.io/socket.io.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Lalezar&display=swap');
+    
+    @font-face {
+        font-family: 'Galaxy';
+        src: url('ArbFONTS-AA-GALAXY.otf'); 
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-    body { background-color: #2b164d; color: white; padding: 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-    .header-logo { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 10px 30px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-    .header-logo h1 { font-family: 'Lalezar'; margin: 0; line-height: 1; }
-    .title-huroof { color: #ffca28; font-size: 35px; text-shadow: 2px 2px 0 #1d0b33; }
-    .title-host { color: #ff5252; font-size: 22px; text-shadow: 2px 2px 0 #1d0b33; margin-top: 8px; }
+    body { background-color: #2b164d; color: white; padding: 0 0 20px 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+    
+    /* الهيدر المطور لشاشة المقدم لتوزيع المساحات بشكل ممتاز وبألوان الشاشة الرئيسية */
+    .header-logo-wrapper {
+        background-color: #392265;
+        width: 100%;
+        padding: 20px 15px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+    }
+    .host-title-main {
+        font-family: 'Lalezar', sans-serif;
+        font-size: 34px;
+        color: #ffca28;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        line-height: 1.1;
+        font-weight: 900;
+        margin-bottom: 5px;
+    }
+    .game-logo-host {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4));
+        transform: scale(0.45);
+        margin: -45px 0 -40px 0;
+    }
+    .game-logo-host .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 80px; color: #ffca28; text-shadow: 3px 3px 0 #1d0b33, -1px -1px 0 #1d0b33, 1px -1px 0 #1d0b33, -1px 1px 0 #1d0b33, 0 4px 0 #1d0b33; line-height: 1; margin: 0; margin-bottom: -8px; z-index: 3; display: inline-block; }
+    .game-logo-host .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 70px; color: #26a69a; text-shadow: 3px 3px 0 #1d0b33, -1px -1px 0 #1d0b33, 1px -1px 0 #1d0b33, -1px 1px 0 #1d0b33, 0 4px 0 #1d0b33; line-height: 1; margin: 0; z-index: 2; display: inline-block; transform: scaleX(1.4); }
+    .game-logo-host .word-name { font-family: 'Galaxy', sans-serif; font-size: 65px; color: #ff5252; text-shadow: 3px 3px 0 #1d0b33, -1px -1px 0 #1d0b33, 1px -1px 0 #1d0b33, -1px 1px 0 #1d0b33, 0 4px 0 #1d0b33; line-height: 1; margin: 0; z-index: 1; display: inline-block; white-space: nowrap; }
 
     .board-container { position: relative; background: conic-gradient(from 315deg, var(--team2-color, #f37021) 25%, var(--team1-color, #12b49c) 0 50%, var(--team2-color, #f37021) 0 75%, var(--team1-color, #12b49c) 0); border-radius: 20px; width: 100%; max-width: 380px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); height: 290px; overflow: hidden; }
     .board { position: absolute; top: 50%; left: 50%; width: 770px; height: 640px; margin-top: -320px; margin-left: -380px; transform: scale(0.40); }
 
     .hex-outer { position: absolute; width: 140px; height: 160px; background: #392265; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
     .hex-outer:active { transform: scale(0.95); z-index: 10; }
-    .hex-inner { width: 100%; height: 100%; background: #ffffff; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; transform: scale(0.85); font-family: 'Lalezar', sans-serif; font-size: 70px; color: #392265; padding-top: 15px; }
+    
+    /* تعديل الخلايا لتستخدم خط الجالكسي لتطابق الشاشة الرئيسية تماماً */
+    .hex-inner { width: 100%; height: 100%; background: #ffffff; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; transform: scale(0.85); font-family: 'Galaxy', sans-serif; font-size: 56px; color: #392265; padding-top: 4px; text-shadow: 2px 2px 0px rgba(0,0,0,0.15); }
     .hex-inner.answered { color: transparent !important; text-shadow: none !important; }
     .hex-inner.highlighted { background: #ffeb3b !important; color: #392265 !important; transform: scale(0.92); box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
 
@@ -55,9 +94,13 @@
 </head>
 <body>
   
-  <div class="header-logo">
-    <h1 class="title-huroof">حروف</h1>
-    <h1 class="title-host">شاشة المقدم</h1>
+  <div class="header-logo-wrapper">
+    <div class="host-title-main">شاشة المقدم</div>
+    <div class="game-logo-host">
+      <h1 class="logo-word word-huroof">حروف</h1>
+      <h1 class="logo-word word-m3">مــــع</h1>
+      <h1 class="logo-word word-name" id="host-comp-name-display">اسمك</h1>
+    </div>
   </div>
   
   <div class="board-container">
@@ -89,7 +132,7 @@
 
   <div id="cancel-modal" class="modal-overlay hidden">
     <div class="modal-box">
-      <div id="cancel-letter-display" style="width: 70px; height: 80px; margin: 0 auto 20px auto; background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Lalezar'; font-size: 40px; border: 2px solid rgba(255,255,255,0.3);"></div>
+      <div id="cancel-letter-display" style="width: 70px; height: 80px; margin: 0 auto 20px auto; background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Galaxy'; font-size: 40px; border: 2px solid rgba(255,255,255,0.3); padding-top: 4px;"></div>
       <h3 style="margin-bottom: 15px; color: #ff5252; font-size: 22px;">إلغاء ملكية الحرف؟</h3>
       <div style="display: flex; gap: 10px;">
         <button onclick="document.getElementById('cancel-modal').classList.add('hidden')" style="flex: 1; padding: 10px; border-radius: 10px; border: none; background: #666; color: white; font-family: 'Cairo'; font-weight: bold; font-size: 16px; cursor: pointer;">تراجع</button>
@@ -121,6 +164,9 @@
       document.documentElement.style.setProperty('--team2-color', settings.team2Color);
       document.getElementById('t1-name').textContent = settings.team1Name || 'الفريق الأول';
       document.getElementById('t2-name').textContent = settings.team2Name || 'الفريق الثاني';
+      if(document.getElementById('host-comp-name-display')) {
+         document.getElementById('host-comp-name-display').textContent = settings.competitionName || 'اسم المسابقة';
+      }
     });
 
     function renderHostBoard(state) {

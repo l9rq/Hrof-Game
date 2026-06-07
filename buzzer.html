@@ -7,51 +7,68 @@
   <script src="/socket.io/socket.io.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;900&family=Lalezar&display=swap');
+    
+    @font-face {
+        font-family: 'Galaxy';
+        src: url('ArbFONTS-AA-GALAXY.otf'); 
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-    body { background-color: #f4f6f9; color: #333; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    body { background-color: #2b164d; color: white; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
 
-    .top-header { background-color: #392265; width: 100%; padding: 20px 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; margin-bottom: 30px; }
-    .top-header h1 { font-family: 'Lalezar'; font-size: 32px; color: #ffca28; margin-bottom: 5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); line-height: 1.2; }
-    .session-badge { background: rgba(255,255,255,0.2); color: white; padding: 5px 20px; border-radius: 50px; font-weight: bold; font-size: 15px; display: inline-block; margin-top: 5px; border: 1px solid rgba(255,255,255,0.3); }
+    .top-header { background-color: #392265; width: 100%; padding: 15px 10px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; margin-bottom: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    
+    /* ستايل الشعار المطور المخصص للجوال */
+    .game-logo-mobile { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4)); transform: scale(0.42); margin: -45px 0 -40px 0; }
+    .game-logo-mobile .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 80px; color: #ffca28; text-shadow: 3px 3px 0 #1d0b33, -1px -1px 0 #1d0b33, 1px -1px 0 #1d0b33, -1px 1px 0 #1d0b33, 0 4px 0 #1d0b33; line-height: 1; margin: 0; margin-bottom: -8px; z-index: 3; display: inline-block; }
+    .game-logo-mobile .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 70px; color: #26a69a; text-shadow: 3px 3px 0 #1d0b33, -1px -1px 0 #1d0b33, 1px -1px 0 #1d0b33, -1px 1px 0 #1d0b33, 0 4px 0 #1d0b33; line-height: 1; margin: 0; z-index: 2; display: inline-block; transform: scaleX(1.4); }
+    .game-logo-mobile .word-name { font-family: 'Galaxy', sans-serif; font-size: 65px; color: #ff5252; text-shadow: 3px 3px 0 #1d0b33, -1px -1px 0 #1d0b33, 1px -1px 0 #1d0b33, -1px 1px 0 #1d0b33, 0 4px 0 #1d0b33; line-height: 1; margin: 0; z-index: 1; display: inline-block; white-space: nowrap; }
 
-    .card-container { background: white; width: 90%; max-width: 400px; border-radius: 20px; padding: 30px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; }
+    .session-badge { background: rgba(255,255,255,0.15); color: white; padding: 4px 18px; border-radius: 50px; font-weight: bold; font-size: 14px; display: inline-block; margin-top: 5px; border: 1px solid rgba(255,255,255,0.2); }
 
-    .instruction-text { font-size: 18px; font-weight: 800; color: #392265; margin-bottom: 25px; line-height: 1.5; }
+    /* تحويل الصندوق المتناغم مع البي سي بنفسجي فخم بحدود مضيئة ساطعة */
+    .card-container { background: rgba(71, 43, 117, 0.9); border: 2px solid rgba(255, 255, 255, 0.15); width: 90%; max-width: 400px; border-radius: 20px; padding: 25px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+
+    .instruction-text { font-size: 18px; font-weight: 800; color: #ffca28; margin-bottom: 25px; line-height: 1.5; }
     .input-group { margin-bottom: 20px; text-align: right; }
-    .input-label { display: block; font-weight: bold; color: #555; margin-bottom: 8px; font-size: 14px; }
-    .input-field { width: 100%; background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 12px; color: #333; padding: 15px; font-size: 16px; font-weight: bold; outline: none; transition: 0.2s; }
-    .input-field:focus { border-color: #392265; background: #fff; }
+    .input-label { display: block; font-weight: bold; color: #ccc; margin-bottom: 8px; font-size: 14px; }
+    .input-field { width: 100%; background: rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; padding: 15px; font-size: 16px; font-weight: bold; outline: none; transition: 0.2s; text-align: center; }
+    .input-field:focus { border-color: #ffca28; background: rgba(0,0,0,0.5); }
 
     .team-selector { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
-    .team-btn { width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; color: #555; background: white; transition: all 0.2s; }
+    .team-btn { width: 100%; padding: 15px; border: 2px solid rgba(255,255,255,0.15); border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; color: #ddd; background: rgba(255,255,255,0.05); transition: all 0.2s; }
     .team-btn.selected { color: white; border-color: transparent; }
 
-    .submit-btn { background: #392265; color: white; font-size: 20px; font-weight: 900; border: none; border-radius: 12px; width: 100%; padding: 15px; cursor: pointer; box-shadow: 0 5px 15px rgba(57, 34, 101, 0.3); transition: 0.2s; }
+    .submit-btn { background: #ffca28; color: #392265; font-size: 20px; font-weight: 900; border: none; border-radius: 12px; width: 100%; padding: 15px; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 202, 40, 0.3); transition: 0.2s; }
     .submit-btn:active { transform: scale(0.97); }
 
-    .player-info-box { display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #eee; }
-    .player-name-val { font-weight: 900; font-size: 18px; color: #392265; }
+    .player-info-box { display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.25); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); }
+    .player-name-val { font-weight: 900; font-size: 18px; color: #ffca28; }
     .player-team-val { font-weight: bold; font-size: 14px; padding: 5px 12px; border-radius: 8px; color: white; }
 
-    .note-text { font-size: 15px; font-weight: 700; color: #666; line-height: 1.6; margin-bottom: 30px; padding: 0 10px; }
+    .note-text { font-size: 14px; font-weight: 700; color: #ccc; line-height: 1.6; margin-bottom: 30px; padding: 0 10px; }
 
     .buzzer-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 25px; }
-    .buzzer-btn { width: 200px; height: 200px; border-radius: 50%; border: 8px solid #f0f0f0; color: white; font-family: 'Lalezar'; font-size: 50px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.1s ease; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    .buzzer-btn { width: 200px; height: 200px; border-radius: 50%; border: 8px solid rgba(255,255,255,0.1); color: white; font-family: 'Lalezar'; font-size: 50px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.1s ease; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
     .buzzer-btn:active { transform: scale(0.92); border-width: 4px; }
     .buzzer-btn.locked { background: #e0e0e0 !important; color: #999 !important; border-color: #ccc !important; box-shadow: none !important; pointer-events: none; text-shadow: none; }
 
     .status-badge { font-size: 18px; font-weight: 900; color: #12b49c; background: rgba(18, 180, 156, 0.1); padding: 8px 20px; border-radius: 50px; margin-top: 20px; border: 1px solid #12b49c; }
     .status-badge.locked-status { color: #f44336; background: rgba(244, 67, 54, 0.1); border-color: #f44336; }
-    .status-badge.winner-status { color: #ffca28; background: #392265; border-color: #392265; }
+    .status-badge.winner-status { color: #ffca28; background: #392265; border-color: #392265; box-shadow: 0 0 15px rgba(255, 202, 40, 0.3); }
 
-    .change-info-link { color: #888; font-weight: bold; cursor: pointer; text-decoration: underline; font-size: 15px; margin-top: 10px; display: inline-block; }
+    .change-info-link { color: #aaa; font-weight: bold; cursor: pointer; text-decoration: underline; font-size: 15px; margin-top: 10px; display: inline-block; }
     .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
   <div class="top-header">
-    <h1 id="bell-title-comp">حروف مع --</h1>
+    <div class="game-logo-mobile">
+      <h1 class="logo-word word-huroof">حروف</h1>
+      <h1 class="logo-word word-m3">مــــع</h1>
+      <h1 class="logo-word word-name" id="bell-title-comp">اسمك</h1>
+    </div>
     <div class="session-badge" id="session-name-display">جلسة رقم: --</div>
   </div>
 
@@ -95,7 +112,7 @@
     let localPlayer = { name: '', team: '', color: '' };
 
     socket.on('settings', (settings) => {
-      document.getElementById('bell-title-comp').textContent = `حروف مع ${settings.competitionName || 'المسابقة'}`;
+      document.getElementById('bell-title-comp').textContent = settings.competitionName || 'المسابقة';
       teamNames[0] = settings.team1Name || "الفريق الأول";
       teamNames[1] = settings.team2Name || "الفريق الثاني";
       t1Color = settings.team1Color || '#12b49c';
@@ -110,8 +127,8 @@
       selectedTeamIndex = index;
       const btn1 = document.getElementById('select-t1-btn');
       const btn2 = document.getElementById('select-t2-btn');
-      btn1.style.background = 'white'; btn1.style.color = '#555'; btn1.style.borderColor = '#e0e0e0';
-      btn2.style.background = 'white'; btn2.style.color = '#555'; btn2.style.borderColor = '#e0e0e0';
+      btn1.style.background = 'rgba(255,255,255,0.05)'; btn1.style.color = '#ddd'; btn1.style.borderColor = 'rgba(255,255,255,0.15)';
+      btn2.style.background = 'rgba(255,255,255,0.05)'; btn2.style.color = '#ddd'; btn2.style.borderColor = 'rgba(255,255,255,0.15)';
 
       if (index === 0) { btn1.style.background = t1Color; btn1.style.color = 'white'; btn1.style.borderColor = t1Color; } 
       else { btn2.style.background = t2Color; btn2.style.color = 'white'; btn2.style.borderColor = t2Color; }
@@ -150,8 +167,6 @@
 
     function triggerBuzzerPress() {
       if (document.getElementById('buzzer-click-btn').classList.contains('locked')) return;
-      
-      // التعديل هنا: استخدام نفس الأمر الموجود بالسيرفر 'buzzer-press' مع إرسال تفاصيل الروم واللاعب
       socket.emit('buzzer-press', {
           roomID: roomID,
           playerName: localPlayer.name,
