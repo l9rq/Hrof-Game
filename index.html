@@ -89,12 +89,16 @@
     }
 
     #round-display-container { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
-    .sidebar-round-text { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #ff5252; margin: 0; margin-bottom: -15px; line-height: 0.9; text-shadow: 3px 3px 0 var(--dark-shadow); }
-    .sidebar-round-num { font-family: 'Galaxy', sans-serif; font-size: 110px; color: #ffca28; margin: 0; line-height: 1; text-shadow: 4px 4px 0 var(--dark-shadow); }
+    .sidebar-round-text { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #ff5252; margin: 0; margin-bottom: 8px; line-height: 1.1; text-shadow: 3px 3px 0 var(--dark-shadow); }
+    .sidebar-round-num { font-family: 'Galaxy', sans-serif; font-size: 110px; color: #ffca28; margin: 0; line-height: 1.1; text-shadow: 4px 4px 0 var(--dark-shadow); }
     
     #sidebar-buzzer-display:not(.hidden) { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
-    #sidebar-buzzer-display { background: rgba(0, 0, 0, 0.65); border: 4px solid #ffca28; border-radius: 15px; padding: 25px 15px; text-align: center; width: 100%; animation: fadeIn 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.5); }
+    /* التعديل الأول: ستايل الجرس الجديد للبي سي (أنيق ومناسب في المنتصف) */
+    #sidebar-buzzer-display { background: rgba(71, 43, 117, 0.9); border: 2px solid rgba(255, 255, 255, 0.15); border-radius: 15px; padding: 15px 10px; text-align: center; width: 95%; margin: 0 auto; animation: fadeIn 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
     
+    /* التعديل الثاني: كود لتصغير الجولة ورفعها في البي سي وقت الجرس */
+    #round-display-container.hide-on-mobile { transform: scale(0.85); margin-bottom: -15px; transition: all 0.3s ease; }
+
     .buzzer-player-name { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; margin-bottom: 5px; word-break: break-word; }
     .buzzer-timer-label { font-family: 'Cairo'; font-size: 16px; font-weight: bold; color: #ffca28; }
     .buzzer-timer-value { font-family: 'Lalezar'; font-size: 85px; line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 5px 0; }
@@ -133,11 +137,12 @@
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); 
         display: flex; align-items: center; justify-content: center; 
         transform: scale(0.88); 
-        font-family: 'Lalezar', sans-serif; 
-        font-size: 70px; 
+        font-family: 'Galaxy', sans-serif; 
+        font-size: 56px; 
         color: var(--main-purple); 
         transition: background-color 0.2s, color 0.2s; 
-        padding-top: 15px; 
+        padding-top: 4px;
+        text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
     }
 
     .hex-outer:hover .hex-inner:not(.answered):not(.highlighted) { background: #e0e0e0; }
@@ -219,11 +224,12 @@
     }
 
     @media screen and (max-width: 992px) {
-        .word-huroof { font-size: 90px !important; line-height: 1 !important; }
-        .word-m3 { font-size: 90px !important; line-height: 1 !important; transform: none !important;}
-        .word-name { font-size: 90px !important; margin-top: 0px !important; margin-bottom: 15px !important; transform: none !important; }
+        .word-huroof { font-size: 70px !important; line-height: 1 !important; }
+        .word-m3 { font-size: 65px !important; line-height: 1 !important; transform: none !important;}
+        .word-name { font-size: 60px !important; margin-top: 0px !important; margin-bottom: 15px !important; transform: none !important; }
         
-        .main-btn { font-size: 20px; padding: 10px 20px; }
+        .main-btn { font-size: 18px; padding: 10px 20px; width: 85vw; max-width: 280px; }
+        .menu-content { gap: 20px; }
         .settings-overlay { padding: 15px; }
         .settings-grid { grid-template-columns: 1fr; gap: 10px; text-align: center; }
         .set-label { font-size: 18px; margin-top: 10px; }
@@ -273,7 +279,7 @@
     /* --- التعديلات المخصصة لشاشة الجوال بالعرض (Landscape) --- */
     @media screen and (max-height: 600px) and (orientation: landscape) {
         .game-layout { flex-direction: row !important; }
-        .sidebar-section { width: 35% !important; padding: 5px !important; justify-content: flex-start !important; gap: 2px !important; }
+        .sidebar-section { width: 35% !important; padding: 8px 6px !important; justify-content: flex-start !important; gap: 4px !important; }
         .board-section { width: 65% !important; }
         
         .board { 
@@ -296,12 +302,11 @@
             display: inline-block !important;
         }
         
-        .sidebar-dynamic-area { margin-top: 2px !important; margin-bottom: 2px !important; flex-grow: 1 !important; display: flex !important; flex-direction: column !important; justify-content: center !important; gap: 2px !important; }
+        .sidebar-dynamic-area { margin-top: 4px !important; margin-bottom: 4px !important; flex-grow: 1 !important; display: flex !important; flex-direction: column !important; justify-content: center !important; gap: 4px !important; }
         
-        .sidebar-round-text { font-size: 38px !important; margin: 0 !important; line-height: 0.9 !important; }
-        .sidebar-round-num { font-size: 48px !important; margin: 0 !important; line-height: 1 !important; }
+        .sidebar-round-text { font-size: 38px !important; margin: 0 !important; margin-bottom: 4px !important; line-height: 1.1 !important; }
+        .sidebar-round-num { font-size: 48px !important; margin: 0 !important; line-height: 1.1 !important; }
         
-        /* 💡 التعديل: إرجاع حجم الجرس لمقاس مناسب (لأنه بيأخذ مساحة الجولة الآن) */
         #sidebar-buzzer-display { 
             padding: 10px !important; 
             margin: 0 !important; 
@@ -317,7 +322,6 @@
         
         .sidebar-scores { margin-top: auto !important; }
         
-        /* 💡 التعديل: تكبير أسماء الفرق ومربع النقاط في الجوال */
         .team-name-text { font-size: 18px !important; }
         .score-box { height: 45px !important; border-radius: 10px !important; }
         .score-number { font-size: 30px !important; margin-top: 3px !important;}
@@ -329,6 +333,9 @@
         
         #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
         #celeb-title { font-size: 35px !important; }
+
+        /* التعديل الثالث: إضافة كلاس يخفي العنصر في الجوال فقط */
+        .hide-on-mobile { display: none !important; }
 
         .modal {
             position: absolute !important;
@@ -350,10 +357,10 @@
             left: auto !important;
             width: 90% !important;
             height: auto !important; 
-            max-height: 90% !important;
+            max-height: 92% !important;
             background: #472b75 !important;
             border-radius: 15px !important;
-            padding: 12px 8px !important;
+            padding: 12px 10px !important;
             border: 2px solid rgba(255,255,255,0.15) !important;
             box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
             justify-content: flex-start !important;
@@ -361,10 +368,10 @@
             flex-direction: column !important;
         }
         
-        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 12px !important; flex-shrink: 0 !important;}
-        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; padding-top: 6px !important; border-radius: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 8px !important; flex-shrink: 0 !important;}
+        .modal-letter-box { width: 55px !important; height: 55px !important; font-size: 30px !important; padding-top: 4px !important; border-radius: 10px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
         
-        .question-wrapper { margin-bottom: 10px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
+        .question-wrapper { margin-bottom: 8px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
         .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
         .close-modal-x { width: 30px !important; height: 30px !important; font-size: 18px !important; top: 10px !important; left: 10px !important; border-radius: 8px !important; }
         .btn-wide-toggle { padding: 8px !important; font-size: 13px !important; border-radius: 10px !important; margin-bottom: 8px !important; }
@@ -860,8 +867,8 @@
       buzzerTimerValue.classList.remove('timer-phase-other');
       
       sidebarBuzzerDisplay.classList.remove('hidden'); 
-      // 💡 التعديل: إخفاء الجولة لإعطاء التايمر مساحة كاملة
-      roundDisplayContainer.classList.add('hidden'); 
+      // التعديل الرابع: استبدال hidden بـ hide-on-mobile
+      roundDisplayContainer.classList.add('hide-on-mobile'); 
       
       showGiantBellEffect(data.winner.name);
     });
@@ -879,8 +886,8 @@
 
     socket.on('buzzer-reset', () => {
       sidebarBuzzerDisplay.classList.add('hidden'); 
-      // 💡 التعديل: إظهار الجولة بعد الانتهاء من الإجابة أو انتهاء الوقت
-      roundDisplayContainer.classList.remove('hidden'); 
+      // التعديل الخامس: استبدال hidden بـ hide-on-mobile
+      roundDisplayContainer.classList.remove('hide-on-mobile'); 
     });
 
     socket.on('new-question', (data) => {
@@ -892,8 +899,8 @@
     socket.on('question-cleared', () => { 
         document.getElementById('modal').classList.add('hidden'); 
         sidebarBuzzerDisplay.classList.add('hidden');
-        // 💡 التعديل: إظهار الجولة عند تقفيل السؤال
-        roundDisplayContainer.classList.remove('hidden'); 
+        // التعديل السادس: استبدال hidden بـ hide-on-mobile
+        roundDisplayContainer.classList.remove('hide-on-mobile'); 
     });
 
     function renderQuestionModal(data) {
