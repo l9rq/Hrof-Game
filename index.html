@@ -369,13 +369,13 @@
         .team-btns button { padding: 8px !important; font-size: 12px !important; border-radius: 8px !important; }
         .qr-img { width: 80px !important; height: 80px !important; margin-bottom: 5px !important;}
     }
-/* 1. استدعاء الخط باسم الملف الصحيح الموجود عندك بالمجلد */
+/* 1. استدعاء الخط */
 @font-face {
     font-family: 'Galaxy';
     src: url('ArbFONTS-AA-GALAXY.otf'); 
 }
 
-/* 2. تطبيق الخط على (حروف مع اسمك) و (الجولات) سادة من الملف */
+/* 2. تطبيق الخط على الشعار والجولات */
 .word-huroof, 
 .word-m3, 
 .word-name,
@@ -389,39 +389,32 @@
     font-family: 'Galaxy', sans-serif !important;
 }
 
-/* 3. تطبيق الخط على (أسماء الأفرقة) وتكون باللون الأبيض زي ما طلبت */
+/* 3. أسماء الأفرقة (خط + لون أبيض) */
 .team-name-text,
 #t1-name,
 #t2-name {
     font-family: 'Galaxy', sans-serif !important;
-   
-   
     color: white !important;
 }
-/* ===================================================
-   ضبط المسافات والمقاسات لشعار (حروف مع اسمك)
-=================================================== */
 
-/* 1. ضبط كلمة "حروف" */
+/* 4. المقاسات الجديدة: صغيرة، ملمومة ومضغوطة زي الصورة بالضبط */
 .word-huroof, .sidebar-logo .word-huroof {
-    font-size: 125px !important;
-    line-height: 1 !important;
-    margin-bottom: 0px !important;
+    font-size: 85px !important;      /* صغرنا الخط */
+    line-height: 0.8 !important;     /* ضغطنا المساحة الداخلية */
+    margin-bottom: -10px !important; /* سحبنا الكلمة اللي تحتها لفوق */
 }
 
-/* 2. ضبط كلمة "مــــع" (تكبيرها وفك اللصقة) */
 .word-m3, .sidebar-logo .word-m3 {
-    font-size: 155px !important;    /* كبرناها عشان تعرض وتوصل للحدين يمين ويسار */
-    line-height: 1 !important;
-    margin-top: 20px !important;    /* نزلناها شوي عن كلمة حروف */
-    margin-bottom: 20px !important; /* رفعناها شوي عن كلمة اسمك */
+    font-size: 110px !important;     /* أكبر شوي عشان توصل للحد يمين ويسار */
+    line-height: 0.7 !important;
+    margin-top: -10px !important;    /* لزقناها في كلمة حروف */
+    margin-bottom: -15px !important; /* لزقناها في كلمة اسمك */
 }
 
-/* 3. ضبط كلمة "اسمك" (تصغيرها لتتساوى مع المسطرة) */
 .word-name, .sidebar-logo .word-name {
-    font-size: 115px !important;    /* صغرناها حبة عشان ما تطلع برا المسطرة */
-    line-height: 1 !important;
-    margin-top: 0px !important;
+    font-size: 80px !important;      /* صغرناها عشان تتساوى مع المسطرة */
+    line-height: 0.8 !important;
+    margin-top: -15px !important;    /* سحبناها لفوق عشان تلصق */
 }
 
   </style>
