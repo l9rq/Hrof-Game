@@ -16,7 +16,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --dark-shadow: #1d0b33; }
     
-    /* خلفية اللعبة الأصلية الخاصة بك بالضبط */
+    /* خلفية اللعبة الأصلية الفخمة بنقش الخلايا ممتدة على كامل الشاشة وبدون أي كروت مقيدة */
     body { 
       font-family: 'Cairo', sans-serif;
       background-color: #6b439b; 
@@ -28,52 +28,132 @@
       align-items: center; 
       min-height: 100vh; 
       overflow-x: hidden;
-      padding: 15px;
+      padding: 30px 15px;
     }
 
-    /* الشعار الأصلي بنفس الأحجام والظلال الخاصة بك نسخ/لصق */
-    .game-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); padding: 10px; margin-top: 10px; margin-bottom: 20px; }
-    .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 100px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: -10px; z-index: 3; display: inline-block; }
-    .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 90px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: 0px; z-index: 2; display: inline-block; transform: scaleX(1.4); }
-    .word-name { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
+    /* الشعار الأصلي بأحجامه وظلاله الفخمة الخماسية المتداخلة من شاشتك الرئيسية */
+    .game-logo { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); 
+      padding: 10px; 
+      margin-bottom: 25px; 
+      width: 100%;
+    }
+    .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 95px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-bottom: -10px; z-index: 3; display: inline-block; }
+    .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; z-index: 2; display: inline-block; transform: scaleX(1.4); }
+    .word-name { font-family: 'Galaxy', sans-serif; font-size: 80px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 5px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
 
-    /* ميديا كويري الأصلية للجوال عشان الشعار يكون مضبوط بالملي زي شاشتك */
-    @media screen and (max-width: 992px) {
-        .word-huroof { font-size: 70px !important; line-height: 1 !important; margin-bottom: -5px !important;}
-        .word-m3 { font-size: 65px !important; line-height: 1 !important; transform: none !important;}
-        .word-name { font-size: 60px !important; margin-top: 0px !important; margin-bottom: 15px !important; transform: none !important; }
+    /* ضبط الحجم التلقائي للشعار على شاشات الجوال المختلفة لمنع التداخل */
+    @media screen and (max-width: 480px) {
+        .word-huroof { font-size: 75px !important; }
+        .word-m3 { font-size: 65px !important; }
+        .word-name { font-size: 60px !important; }
     }
 
-    .screen-content { width: 100%; max-width: 380px; display: flex; flex-direction: column; align-items: center; gap: 20px; z-index: 10;}
+    /* حاوية المحتوى المفتوحة والموزعة عمودياً بوزن مثالي متناسق مع الإعدادات */
+    .main-content-wrapper { 
+      width: 100%; 
+      max-width: 420px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 20px; 
+      z-index: 10;
+    }
     
-    /* الحقول والأزرار البيضاوية (Pills) الأصلية الخاصة بك */
-    .set-label { font-size: 22px; font-weight: 900; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); margin-bottom: 10px; width: 100%; text-align: center;}
+    /* العناوين الكبيرة الفخمة نفس تصميم صفحة الإعدادات حقتك */
+    .set-label { 
+      font-size: 22px; 
+      font-weight: 900; 
+      color: white; 
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+      margin-bottom: 10px; 
+      width: 100%; 
+      text-align: center;
+    }
     
-    .pill-input { width: 100%; background: transparent; border: 2px solid white; border-radius: 50px; color: white; padding: 12px 20px; font-size: 20px; font-weight: bold; font-family: 'Cairo'; text-align: center; outline: none; transition: 0.2s; }
-    .pill-input::placeholder { color: rgba(255,255,255,0.6); }
-    .pill-input:focus { background: rgba(255,255,255,0.15); }
+    .input-row { width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+    /* حقول الإدخال الدائرية المفتوحة (Pills) المتطابقة مع الإعدادات بالملي */
+    .pill-input { 
+      width: 100%; 
+      background: transparent; 
+      border: 2px solid white; 
+      border-radius: 50px; 
+      color: white; 
+      padding: 14px 20px; 
+      font-size: 20px; 
+      font-weight: bold; 
+      font-family: 'Cairo'; 
+      text-align: center; 
+      outline: none; 
+      transition: 0.2s; 
+    }
+    .pill-input::placeholder { color: rgba(255,255,255,0.5); }
+    .pill-input:focus { background: rgba(255,255,255,0.12); }
     
-    .pill-group { display: flex; border: 2px solid white; border-radius: 50px; overflow: hidden; width: 100%; }
-    .pill-btn { flex: 1; background: transparent; color: white; border: none; padding: 12px 0; font-size: 20px; font-weight: bold; font-family: 'Cairo'; cursor: pointer; transition: 0.2s; border-left: 1px solid rgba(255,255,255,0.3); }
+    /* مجموعات الأزرار الدائرية الفخمة */
+    .pill-group { display: flex; border: 2px solid white; border-radius: 50px; overflow: hidden; width: 100%; background: transparent; }
+    .pill-btn { flex: 1; background: transparent; color: white; border: none; padding: 14px 0; font-size: 20px; font-weight: bold; font-family: 'Cairo'; cursor: pointer; transition: 0.2s; border-left: 1px solid rgba(255,255,255,0.3); }
     .pill-btn:last-child { border-left: none; }
     
-    .main-btn { font-family: 'Cairo', sans-serif; font-size: 24px; font-weight: 900; padding: 12px 60px; border: none; border-radius: 50px; cursor: pointer; color: #6b439b; background-color: #ffffff; width: 100%; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: all 0.3s; margin-top: 15px; }
-    .main-btn:hover, .main-btn:active { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.3); background-color: #ffca28; color: #392265; }
+    /* الزر الأبيض الأصلي الكبير الفخم ذو الظل الاحترافي */
+    .main-btn { 
+      font-family: 'Cairo', sans-serif; 
+      font-size: 24px; 
+      font-weight: 900; 
+      padding: 12px 60px; 
+      border: none; 
+      border-radius: 50px; 
+      cursor: pointer; 
+      color: #6b439b; 
+      background-color: #ffffff; 
+      width: 100%; 
+      box-shadow: 0 6px 0px rgba(0,0,0,0.2); 
+      transition: all 0.2s; 
+      margin-top: 15px; 
+    }
+    .main-btn:hover, .main-btn:active { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); background-color: #ffca28; color: #392265; }
 
-    /* تصميم الجرس المحيطي والمفرغ كأنه جزء من الشاشة */
-    .buzzer-btn { width: 230px; height: 230px; border-radius: 50%; border: 12px solid white; color: white; font-family: 'Lalezar', sans-serif; font-size: 65px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); -webkit-tap-highlight-color: transparent; text-shadow: 0 4px 8px rgba(0,0,0,0.4); transition: transform 0.1s; background: transparent; }
-    .buzzer-btn:active { transform: scale(0.95); }
-    .buzzer-btn.locked { border-color: rgba(255,255,255,0.2) !important; color: rgba(255,255,255,0.3) !important; box-shadow: none !important; text-shadow: none !important; background: transparent !important; pointer-events: none;}
+    /* تصميم زر الجرس الدائري المهيب المفرغ والمضيء المتناسق مع الشاشة */
+    .buzzer-btn { 
+      width: 230px; 
+      height: 230px; 
+      border-radius: 50%; 
+      border: 12px solid white; 
+      color: white; 
+      font-family: 'Lalezar', sans-serif; 
+      font-size: 65px; 
+      font-weight: 900;
+      cursor: pointer; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5); 
+      -webkit-tap-highlight-color: transparent; 
+      text-shadow: 0 4px 8px rgba(0,0,0,0.4); 
+      transition: transform 0.1s, border-color 0.2s; 
+      background: transparent; 
+      margin: 15px 0;
+    }
+    .buzzer-btn:active { transform: scale(0.94); }
+    .buzzer-btn.locked { border-color: rgba(255,255,255,0.25) !important; color: rgba(255,255,255,0.3) !important; box-shadow: none !important; text-shadow: none !important; background: transparent !important; pointer-events: none;}
 
-    .status-badge { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; padding: 10px 30px; border-radius: 50px; border: 2px solid white; background: rgba(255,255,255,0.1); text-align: center; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin-top: 10px;}
-    .status-badge.winner-status { background: #ffca28; color: #392265; border-color: #ffca28; }
-    .status-badge.locked-status { background: #ff5252; color: white; border-color: #ff5252; }
-
-    .player-info-pill { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.5); padding: 10px 20px; border-radius: 50px; display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 20px; font-weight: 900; width: 100%; margin-bottom: 20px;}
-    .change-info-link { color: rgba(255,255,255,0.7); font-weight: bold; cursor: pointer; text-decoration: underline; font-size: 16px; margin-top: 15px; transition: 0.2s; }
+    /* شارات الحالة والاسم الدائرية المتناسقة مع كامل النظام البصري */
+    .player-info-pill { background: rgba(255,255,255,0.12); border: 2px solid white; padding: 12px 20px; border-radius: 50px; display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 22px; font-weight: 900; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
     
-    #session-name-display { position: absolute; bottom: 10px; color: rgba(255,255,255,0.3); font-size: 12px; font-weight: bold; }
+    .status-badge { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; padding: 12px 30px; border-radius: 50px; border: 2px solid white; background: rgba(255,255,255,0.12); text-align: center; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin-top: 15px; }
+    .status-badge.winner-status { background: #76ff03; color: #392265; border-color: #76ff03; box-shadow: 0 0 20px #76ff03; text-shadow: none; }
+    .status-badge.locked-status { background: #ff5252; color: white; border-color: #ff5252; box-shadow: 0 0 20px #ff5252; text-shadow: none; }
+
+    .change-info-link { color: rgba(255,255,255,0.7); font-weight: bold; cursor: pointer; text-decoration: underline; font-size: 16px; margin-top: 15px; transition: 0.2s; text-align: center; width: 100%; display: inline-block; }
+    .change-info-link:hover { color: #ffca28; }
     
+    #session-name-display { position: absolute; bottom: 15px; color: rgba(255,255,255,0.25); font-size: 13px; font-weight: bold; }
+    .instruction-text { font-size: 18px; font-weight: bold; color: rgba(255,255,255,0.8); line-height: 1.6; text-align: center; margin-bottom: 5px; }
+
     .hidden { display: none !important; }
   </style>
 </head>
@@ -85,13 +165,13 @@
     <h1 class="logo-word word-name" id="bell-title-comp">اسمك</h1>
   </div>
 
-  <div id="login-screen" class="screen-content">
-    <div style="width: 100%;">
+  <div id="login-screen" class="main-content-wrapper">
+    <div class="input-row">
       <div class="set-label">اسم اللاعب:</div>
       <input type="text" id="player-name-input" class="pill-input" placeholder="اكتب اسمك هنا..." autocomplete="off">
     </div>
     
-    <div style="width: 100%; margin-top: 10px;">
+    <div class="input-row" style="margin-top: 5px;">
       <div class="set-label">اختر فريقك:</div>
       <div class="pill-group">
         <button class="pill-btn" id="select-t1-btn" onclick="pickTeam(0)">الفريق الأول</button>
@@ -102,16 +182,16 @@
     <button class="main-btn" onclick="enterBuzzerSession()">دخول الجرس</button>
   </div>
 
-  <div id="buzzer-screen" class="screen-content hidden">
+  <div id="buzzer-screen" class="main-content-wrapper hidden">
     <div class="player-info-pill">
-      <span id="lbl-player-name" style="color: #ffca28; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">--</span>
-      <span>|</span>
+      <span id="lbl-player-name" style="color: #ffca28; text-shadow: 0 2px 4px rgba(0,0,0,0.4);">--</span>
+      <span style="color: rgba(255,255,255,0.4);">|</span>
       <span id="lbl-player-team">--</span>
     </div>
     
-    <div style="margin: 20px 0;">
-      <button class="buzzer-btn" id="buzzer-click-btn" ontouchstart="triggerBuzzerPress()" onmousedown="triggerBuzzerPress()">اضغط !</button>
-    </div>
+    <div class="instruction-text">اضغط فور معرفتك للإجابة لحجز دورك.</div>
+    
+    <button class="buzzer-btn" id="buzzer-click-btn" ontouchstart="triggerBuzzerPress()" onmousedown="triggerBuzzerPress()">اضغط !</button>
 
     <div class="status-badge" id="buzzer-status-lbl">الجرس جاهز</div>
     <div class="change-info-link" onclick="backToLoginProfile()">تغيير الاسم والفريق</div>
@@ -152,7 +232,6 @@
       btn1.style.background = 'transparent'; btn1.style.color = 'white';
       btn2.style.background = 'transparent'; btn2.style.color = 'white';
 
-      // تعبئة الزر بلون الفريق للتميز
       if (index === 0) { 
           btn1.style.background = t1Color; 
           btn1.style.color = 'white'; 
@@ -182,10 +261,10 @@
 
     function applyBuzzerColor(color) {
       const buzzerBtn = document.getElementById('buzzer-click-btn');
-      // لون الجرس يصير بلون فريق اللاعب كخلفية شفافة خفيفة
       buzzerBtn.style.background = `radial-gradient(circle, ${color} 0%, rgba(0,0,0,0.1) 100%)`;
       buzzerBtn.style.backgroundColor = color;
       buzzerBtn.style.borderColor = "white";
+      buzzerBtn.style.boxShadow = `0 12px 35px ${color}80, inset 0 -8px 0 rgba(0,0,0,0.2)`;
     }
 
     function backToLoginProfile() {
