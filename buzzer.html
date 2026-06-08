@@ -6,252 +6,205 @@
   <title>جهاز الجرس - حروف</title>
   <script src="/socket.io/socket.io.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;900&family=Lalezar&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Lalezar&display=swap');
     
     @font-face {
         font-family: 'Galaxy';
         src: url('ArbFONTS-AA-GALAXY.otf'); 
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-    :root { --main-purple: #392265; --dark-shadow: #1d0b33; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --dark-shadow: #1d0b33; }
     
-    /* خلفية اللعبة البنفسجية الفخمة مضاف إليها نقش خلايا النحل المطور نفس البي سي */
+    /* خلفية اللعبة الأصلية الفخمة بنقش الخلايا ممتدة على كامل الشاشة وبدون أي كروت مقيدة */
     body { 
-      background-color: #2b164d; 
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.923' viewBox='0 0 60 103.923' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 103.923L0 86.603V51.962L30 34.641l30 17.321v34.641L30 103.923zM30 34.641L0 17.321V-17.321L30-34.641l30 17.321V17.321L30 34.641z' stroke='rgba(255,255,255,0.04)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); 
-      background-size: 70px 121px;
+      font-family: 'Cairo', sans-serif;
+      background-color: #6b439b; 
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='103.923' viewBox='0 0 60 103.923' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 103.923L0 86.603V51.962L30 34.641l30 17.321v34.641L30 103.923zM30 34.641L0 17.321V-17.321L30-34.641l30 17.321V17.321L30 34.641z' stroke='rgba(255,255,255,0.05)' stroke-width='2' fill='none'/%3E%3C/svg%3E"); 
+      background-size: 80px 138px;
       color: white; 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
       min-height: 100vh; 
-      overflow-x: hidden; 
-      padding-bottom: 30px;
+      overflow-x: hidden;
+      padding: 30px 15px;
     }
 
-    /* منطقة الشعار العلوي - كأنها منقولة نسخ لصق من الشاشة الرئيسية */
-    .top-logo-container { 
-      width: 100%; 
-      padding: 25px 10px 10px 10px; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center;
-    }
-    
+    /* الشعار الأصلي بأحجامه وظلاله الفخمة الخماسية المتداخلة من شاشتك الرئيسية */
     .game-logo { 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
-      filter: drop-shadow(0 12px 15px rgba(0,0,0,0.4)); 
+      filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); 
       padding: 10px; 
-      position: relative; 
+      margin-bottom: 25px; 
+      width: 100%;
     }
-    
-    /* مقاسات الشعار الكبيرة والمهيبة مع الظلال الثلاثية الأصلية */
-    .word-huroof { 
-      font-family: 'Galaxy', sans-serif; 
-      font-size: 80px; 
-      color: #ffca28; 
-      text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); 
-      line-height: 1; 
-      margin: 0; 
-      margin-bottom: -8px; 
-      z-index: 3; 
-      display: inline-block; 
-    }
-    
-    .word-m3 { 
-      font-family: 'Galaxy', sans-serif; 
-      font-size: 72px; 
-      color: #26a69a; 
-      text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); 
-      line-height: 1; 
-      margin: 0; 
-      z-index: 2; 
-      display: inline-block; 
-      transform: scaleX(1.4); 
-    }
-    
-    .word-name { 
-      font-family: 'Galaxy', sans-serif; 
-      font-size: 68px; 
-      color: #ff5252; 
-      text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); 
-      line-height: 1; 
-      margin: 0; 
-      margin-top: 5px;
-      margin-bottom: 15px; 
-      z-index: 1; 
-      display: inline-block; 
-      white-space: nowrap; 
+    .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 95px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-bottom: -10px; z-index: 3; display: inline-block; }
+    .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; z-index: 2; display: inline-block; transform: scaleX(1.4); }
+    .word-name { font-family: 'Galaxy', sans-serif; font-size: 80px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 5px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
+
+    /* ضبط الحجم التلقائي للشعار على شاشات الجوال المختلفة لمنع التداخل */
+    @media screen and (max-width: 480px) {
+        .word-huroof { font-size: 75px !important; }
+        .word-m3 { font-size: 65px !important; }
+        .word-name { font-size: 60px !important; }
     }
 
-    .session-badge { 
-      background: #392265; 
-      color: #ffca28; 
-      padding: 5px 22px; 
-      border-radius: 50px; 
-      font-weight: 900; 
-      font-size: 15px; 
-      display: inline-block; 
-      margin-top: 5px; 
-      border: 2px solid rgba(255,255,255,0.1); 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    /* حاويات البطاقات بتصميم بنفسجي داكن فخم مقتبس من ستايل البي سي */
-    .card-container { 
-      background: rgba(57, 34, 101, 0.9); 
-      border: 2px solid rgba(255, 255, 255, 0.15); 
-      width: 90%; 
-      max-width: 400px; 
-      border-radius: 24px; 
-      padding: 30px 20px; 
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6); 
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .instruction-text { font-size: 19px; font-weight: 900; color: #ffca28; margin-bottom: 25px; line-height: 1.5; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
-    .input-group { margin-bottom: 25px; text-align: right; }
-    .input-label { display: block; font-weight: 900; color: #fff; margin-bottom: 10px; font-size: 15px; padding-right: 5px; }
-    
-    .input-field { 
+    /* حاوية المحتوى المفتوحة والموزعة عمودياً بوزن مثالي متناسق مع الإعدادات */
+    .main-content-wrapper { 
       width: 100%; 
-      background: rgba(0,0,0,0.3); 
-      border: 2px solid rgba(255,255,255,0.2); 
-      border-radius: 15px; 
-      color: #fff; 
-      padding: 15px; 
-      font-size: 17px; 
-      font-weight: bold; 
-      outline: none; 
-      transition: 0.2s; 
-      text-align: center; 
+      max-width: 420px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 20px; 
+      z-index: 10;
     }
-    .input-field:focus { border-color: #ffca28; background: rgba(0,0,0,0.5); box-shadow: 0 0 10px rgba(255,202,40,0.2); }
-
-    .team-selector { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
-    .team-btn { 
-      width: 100%; 
-      padding: 15px; 
-      border: 2px solid rgba(255,255,255,0.15); 
-      border-radius: 15px; 
-      font-size: 18px; 
-      font-weight: 900; 
-      cursor: pointer; 
-      color: #eee; 
-      background: rgba(255,255,255,0.05); 
-      transition: all 0.2s; 
-      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-    }
-
-    .submit-btn { 
-      background: linear-gradient(45deg, #ffca28, #ffb300); 
-      color: #392265; 
+    
+    /* العناوين الكبيرة الفخمة نفس تصميم صفحة الإعدادات حقتك */
+    .set-label { 
       font-size: 22px; 
       font-weight: 900; 
-      border: none; 
-      border-radius: 15px; 
+      color: white; 
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+      margin-bottom: 10px; 
       width: 100%; 
-      padding: 15px; 
-      cursor: pointer; 
-      box-shadow: 0 6px 20px rgba(255, 202, 40, 0.4); 
+      text-align: center;
+    }
+    
+    .input-row { width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+    /* حقول الإدخال الدائرية المفتوحة (Pills) المتطابقة مع الإعدادات بالملي */
+    .pill-input { 
+      width: 100%; 
+      background: transparent; 
+      border: 2px solid white; 
+      border-radius: 50px; 
+      color: white; 
+      padding: 14px 20px; 
+      font-size: 20px; 
+      font-weight: bold; 
+      font-family: 'Cairo'; 
+      text-align: center; 
+      outline: none; 
       transition: 0.2s; 
     }
-    .submit-btn:active { transform: scale(0.97); }
-
-    .player-info-box { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      background: rgba(0,0,0,0.3); 
-      padding: 15px; 
-      border-radius: 15px; 
-      margin-bottom: 25px; 
-      border: 1px solid rgba(255,255,255,0.1); 
+    .pill-input::placeholder { color: rgba(255,255,255,0.5); }
+    .pill-input:focus { background: rgba(255,255,255,0.12); }
+    
+    /* مجموعات الأزرار الدائرية الفخمة */
+    .pill-group { display: flex; border: 2px solid white; border-radius: 50px; overflow: hidden; width: 100%; background: transparent; }
+    .pill-btn { flex: 1; background: transparent; color: white; border: none; padding: 14px 0; font-size: 20px; font-weight: bold; font-family: 'Cairo'; cursor: pointer; transition: 0.2s; border-left: 1px solid rgba(255,255,255,0.3); }
+    .pill-btn:last-child { border-left: none; }
+    
+    /* الزر الأبيض الأصلي الكبير الفخم ذو الظل الاحترافي */
+    .main-btn { 
+      font-family: 'Cairo', sans-serif; 
+      font-size: 24px; 
+      font-weight: 900; 
+      padding: 12px 60px; 
+      border: none; 
+      border-radius: 50px; 
+      cursor: pointer; 
+      color: #6b439b; 
+      background-color: #ffffff; 
+      width: 100%; 
+      box-shadow: 0 6px 0px rgba(0,0,0,0.2); 
+      transition: all 0.2s; 
+      margin-top: 15px; 
     }
-    .player-name-val { font-weight: 900; font-size: 20px; color: #ffca28; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-    .player-team-val { font-weight: 900; font-size: 15px; padding: 6px 16px; border-radius: 10px; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+    .main-btn:hover, .main-btn:active { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); background-color: #ffca28; color: #392265; }
 
-    .note-text { font-size: 15px; font-weight: bold; color: #ddd; line-height: 1.6; margin-bottom: 30px; padding: 0 5px; }
-
-    /* روعة تصميم الجرس المحيطي والمضيء */
-    .buzzer-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px; }
+    /* تصميم زر الجرس الدائري المهيب المفرغ والمضيء المتناسق مع الشاشة */
     .buzzer-btn { 
-      width: 210px; 
-      height: 210px; 
+      width: 230px; 
+      height: 230px; 
       border-radius: 50%; 
-      border: 10px solid rgba(255,255,255,0.12); 
+      border: 12px solid white; 
       color: white; 
       font-family: 'Lalezar', sans-serif; 
-      font-size: 52px; 
+      font-size: 65px; 
+      font-weight: 900;
       cursor: pointer; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-      -webkit-user-select: none; user-select: none; 
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5); 
       -webkit-tap-highlight-color: transparent; 
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.5); 
+      text-shadow: 0 4px 8px rgba(0,0,0,0.4); 
+      transition: transform 0.1s, border-color 0.2s; 
+      background: transparent; 
+      margin: 15px 0;
     }
-    .buzzer-btn:active { transform: scale(0.90); border-width: 5px; }
-    .buzzer-btn.locked { background: #555555 !important; color: #888 !important; border-color: #444 !important; box-shadow: none !important; pointer-events: none; text-shadow: none; }
+    .buzzer-btn:active { transform: scale(0.94); }
+    .buzzer-btn.locked { border-color: rgba(255,255,255,0.25) !important; color: rgba(255,255,255,0.3) !important; box-shadow: none !important; text-shadow: none !important; background: transparent !important; pointer-events: none;}
 
-    .status-badge { font-size: 19px; font-weight: 900; color: #12b49c; background: rgba(18, 180, 156, 0.15); padding: 10px 24px; border-radius: 50px; margin-top: 25px; border: 2px solid #12b49c; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-    .status-badge.locked-status { color: #ff5252; background: rgba(255, 82, 82, 0.15); border-color: #ff5252; }
-    .status-badge.winner-status { color: #ffca28; background: #392265; border-color: #ffca28; box-shadow: 0 0 20px rgba(255, 202, 40, 0.4); }
+    /* شارات الحالة والاسم الدائرية المتناسقة مع كامل النظام البصري */
+    .player-info-pill { background: rgba(255,255,255,0.12); border: 2px solid white; padding: 12px 20px; border-radius: 50px; display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 22px; font-weight: 900; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+    
+    .status-badge { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; padding: 12px 30px; border-radius: 50px; border: 2px solid white; background: rgba(255,255,255,0.12); text-align: center; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin-top: 15px; }
+    .status-badge.winner-status { background: #76ff03; color: #392265; border-color: #76ff03; box-shadow: 0 0 20px #76ff03; text-shadow: none; }
+    .status-badge.locked-status { background: #ff5252; color: white; border-color: #ff5252; box-shadow: 0 0 20px #ff5252; text-shadow: none; }
 
-    .change-info-link { color: #bbb; font-weight: bold; cursor: pointer; text-decoration: underline; font-size: 15px; margin-top: 15px; display: inline-block; transition: 0.2s; }
+    .change-info-link { color: rgba(255,255,255,0.7); font-weight: bold; cursor: pointer; text-decoration: underline; font-size: 16px; margin-top: 15px; transition: 0.2s; text-align: center; width: 100%; display: inline-block; }
     .change-info-link:hover { color: #ffca28; }
+    
+    #session-name-display { position: absolute; bottom: 15px; color: rgba(255,255,255,0.25); font-size: 13px; font-weight: bold; }
+    .instruction-text { font-size: 18px; font-weight: bold; color: rgba(255,255,255,0.8); line-height: 1.6; text-align: center; margin-bottom: 5px; }
+
     .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
-  <div class="top-logo-container">
-    <div class="game-logo">
-      <h1 class="logo-word word-huroof">حروف</h1>
-      <h1 class="logo-word word-m3">مــــع</h1>
-      <h1 class="logo-word word-name" id="bell-title-comp">اسمك</h1>
-    </div>
-    <div class="session-badge" id="session-name-display">جلسة رقم: --</div>
+  <div class="game-logo">
+    <h1 class="logo-word word-huroof">حروف</h1>
+    <h1 class="logo-word word-m3">مــــع</h1>
+    <h1 class="logo-word word-name" id="bell-title-comp">اسمك</h1>
   </div>
 
-  <div class="card-container" id="login-screen">
-    <div class="instruction-text">ادخل اسمك واختر فريقك لتفعيل الجرس!</div>
-    <div class="input-group">
-      <label class="input-label">اسم اللاعب:</label>
-      <input type="text" id="player-name-input" class="input-field" placeholder="اكتب اسمك هنا..." autocomplete="off">
+  <div id="login-screen" class="main-content-wrapper">
+    <div class="input-row">
+      <div class="set-label">اسم اللاعب:</div>
+      <input type="text" id="player-name-input" class="pill-input" placeholder="اكتب اسمك هنا..." autocomplete="off">
     </div>
-    <div class="team-selector">
-      <button class="team-btn" id="select-t1-btn" onclick="pickTeam(0)">الفريق الأول</button>
-      <button class="team-btn" id="select-t2-btn" onclick="pickTeam(1)">الفريق الثاني</button>
+    
+    <div class="input-row" style="margin-top: 5px;">
+      <div class="set-label">اختر فريقك:</div>
+      <div class="pill-group">
+        <button class="pill-btn" id="select-t1-btn" onclick="pickTeam(0)">الفريق الأول</button>
+        <button class="pill-btn" id="select-t2-btn" onclick="pickTeam(1)">الفريق الثاني</button>
+      </div>
     </div>
-    <button class="submit-btn" onclick="enterBuzzerSession()">دخول الجرس</button>
+
+    <button class="main-btn" onclick="enterBuzzerSession()">دخول الجرس</button>
   </div>
 
-  <div class="card-container hidden" id="buzzer-screen">
-    <div class="player-info-box">
-      <div class="player-name-val" id="lbl-player-name">--</div>
-      <div class="player-team-val" id="lbl-player-team">--</div>
+  <div id="buzzer-screen" class="main-content-wrapper hidden">
+    <div class="player-info-pill">
+      <span id="lbl-player-name" style="color: #ffca28; text-shadow: 0 2px 4px rgba(0,0,0,0.4);">--</span>
+      <span style="color: rgba(255,255,255,0.4);">|</span>
+      <span id="lbl-player-team">--</span>
     </div>
-    <div class="note-text">اضغط فور معرفتك للإجابة.<br>الجرس سيقفل ويفتح تلقائياً حسب الوقت.</div>
-    <div class="buzzer-wrapper">
-      <button class="buzzer-btn" id="buzzer-click-btn" ontouchstart="triggerBuzzerPress()" onmousedown="triggerBuzzerPress()">اضغط !</button>
-      <div class="status-badge" id="buzzer-status-lbl">الجرس جاهز</div>
-    </div>
+    
+    <div class="instruction-text">اضغط فور معرفتك للإجابة لحجز دورك.</div>
+    
+    <button class="buzzer-btn" id="buzzer-click-btn" ontouchstart="triggerBuzzerPress()" onmousedown="triggerBuzzerPress()">اضغط !</button>
+
+    <div class="status-badge" id="buzzer-status-lbl">الجرس جاهز</div>
     <div class="change-info-link" onclick="backToLoginProfile()">تغيير الاسم والفريق</div>
   </div>
+
+  <div id="session-name-display">جلسة: --</div>
 
   <script>
     const socket = io();
     const urlParams = new URLSearchParams(window.location.search);
     const roomID = urlParams.get('room');
     
-    document.getElementById('session-name-display').textContent = `الجلسة: ${roomID}`;
+    document.getElementById('session-name-display').textContent = `جلسة: ${roomID}`;
     socket.emit('join-room', { roomID: roomID, playerName: 'لاعب' });
 
     let selectedTeamIndex = null; 
@@ -275,11 +228,17 @@
       selectedTeamIndex = index;
       const btn1 = document.getElementById('select-t1-btn');
       const btn2 = document.getElementById('select-t2-btn');
-      btn1.style.background = 'rgba(255,255,255,0.05)'; btn1.style.color = '#ddd'; btn1.style.borderColor = 'rgba(255,255,255,0.15)';
-      btn2.style.background = 'rgba(255,255,255,0.05)'; btn2.style.color = '#ddd'; btn2.style.borderColor = 'rgba(255,255,255,0.15)';
+      
+      btn1.style.background = 'transparent'; btn1.style.color = 'white';
+      btn2.style.background = 'transparent'; btn2.style.color = 'white';
 
-      if (index === 0) { btn1.style.background = t1Color; btn1.style.color = 'white'; btn1.style.borderColor = t1Color; } 
-      else { btn2.style.background = t2Color; btn2.style.color = 'white'; btn2.style.borderColor = t2Color; }
+      if (index === 0) { 
+          btn1.style.background = t1Color; 
+          btn1.style.color = 'white'; 
+      } else { 
+          btn2.style.background = t2Color; 
+          btn2.style.color = 'white'; 
+      }
     }
 
     function enterBuzzerSession() {
@@ -292,9 +251,8 @@
       localPlayer.color = selectedTeamIndex === 0 ? t1Color : t2Color;
 
       document.getElementById('lbl-player-name').textContent = localPlayer.name;
-      const teamBadge = document.getElementById('lbl-player-team');
-      teamBadge.textContent = localPlayer.team;
-      teamBadge.style.background = localPlayer.color;
+      document.getElementById('lbl-player-team').textContent = localPlayer.team;
+      document.getElementById('lbl-player-team').style.color = localPlayer.color;
 
       applyBuzzerColor(localPlayer.color);
       document.getElementById('login-screen').classList.add('hidden');
@@ -303,9 +261,10 @@
 
     function applyBuzzerColor(color) {
       const buzzerBtn = document.getElementById('buzzer-click-btn');
-      buzzerBtn.style.background = `radial-gradient(circle, ${color} 0%, rgba(0,0,0,0.3) 100%)`;
+      buzzerBtn.style.background = `radial-gradient(circle, ${color} 0%, rgba(0,0,0,0.1) 100%)`;
       buzzerBtn.style.backgroundColor = color;
-      buzzerBtn.style.boxShadow = `0 15px 40px ${color}90, inset 0 -8px 25px rgba(0,0,0,0.3)`;
+      buzzerBtn.style.borderColor = "white";
+      buzzerBtn.style.boxShadow = `0 12px 35px ${color}80, inset 0 -8px 0 rgba(0,0,0,0.2)`;
     }
 
     function backToLoginProfile() {
@@ -328,8 +287,7 @@
 
       if (state.buzzerLocked) {
         buzzerBtn.classList.add('locked');
-        buzzerBtn.style.background = ''; 
-        buzzerBtn.style.boxShadow = 'none';
+        buzzerBtn.style.background = 'transparent'; 
 
         if (state.buzzerWinner && state.buzzerWinner.name === localPlayer.name) {
           statusLbl.textContent = `أنت الأسرع! جاوب ⏱️ ${state.timeLeft}`;
