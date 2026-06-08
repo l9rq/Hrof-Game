@@ -14,7 +14,6 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --dark-shadow: #1d0b33; }
     
     /* خلفية اللعبة الأصلية الفخمة بنقش الخلايا ممتدة على كامل الشاشة */
     body { 
@@ -31,20 +30,20 @@
       padding: 20px 15px;
     }
 
-    /* الشعار الأصلي وبجودة الهوية البصرية حقتك */
+    /* الشعار الأصلي بدون الخطوط الكرتونية السوداء (شفافة تماماً) */
     .game-logo { 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
-      filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); 
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3)); 
       padding: 10px; 
-      margin-bottom: 10px; 
+      margin-bottom: 5px; 
       width: 100%;
     }
-    .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 95px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-bottom: -10px; z-index: 3; display: inline-block; }
-    .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; z-index: 2; display: inline-block; transform: scaleX(1.4); }
-    .word-name { font-family: 'Galaxy', sans-serif; font-size: 80px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 5px; margin-bottom: -5px; z-index: 1; display: inline-block; white-space: nowrap; }
-    .word-buzzer-title { font-family: 'Galaxy', sans-serif; font-size: 65px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 15px 0 10px 0; z-index: 1; display: inline-block; white-space: nowrap; }
+    .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 95px; color: #ffca28; text-shadow: 0 4px 10px rgba(0,0,0,0.2); line-height: 1; margin: 0; margin-bottom: -10px; z-index: 3; display: inline-block; }
+    .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #26a69a; text-shadow: 0 4px 10px rgba(0,0,0,0.2); line-height: 1; margin: 0; z-index: 2; display: inline-block; transform: scaleX(1.4); }
+    .word-name { font-family: 'Galaxy', sans-serif; font-size: 80px; color: #ff5252; text-shadow: 0 4px 10px rgba(0,0,0,0.2); line-height: 1; margin: 0; margin-top: 5px; margin-bottom: -5px; z-index: 1; display: inline-block; white-space: nowrap; }
+    .word-buzzer-title { font-family: 'Galaxy', sans-serif; font-size: 65px; color: #ffca28; text-shadow: 0 4px 10px rgba(0,0,0,0.2); line-height: 1; margin: 15px 0 5px 0; z-index: 1; display: inline-block; white-space: nowrap; }
 
     @media screen and (max-width: 480px) {
         .word-huroof { font-size: 75px !important; }
@@ -63,6 +62,22 @@
       z-index: 10;
     }
     
+    /* تصميم الجلسة البيضاوي الأنيق (بديل النص العادي) */
+    .session-oval-badge {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50px;
+      padding: 10px 35px;
+      font-size: 20px;
+      font-weight: 900;
+      color: white;
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      backdrop-filter: blur(5px);
+    }
+
     .set-label { 
       font-size: 22px; 
       font-weight: 900; 
@@ -75,48 +90,6 @@
     
     .input-row { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
 
-    /* التعديل الجديد: تصميم المربع البنفسجي المحيط بالجرس الثابت بالملي */
-    .bell-box {
-      background: #472b75;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
-      padding: 12px 25px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 5px;
-      margin-bottom: 5px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    .bell-icon-deco {
-      font-size: 45px;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-    }
-
-    /* ستايل نص اسم ورقم الجلسة المحدث */
-    .session-header-badge {
-      font-size: 24px;
-      font-weight: 900;
-      color: white;
-      text-align: center;
-      margin-top: 10px;
-      margin-bottom: 2px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-    }
-
-    /* ستايل نص التوجيه الحماسي الجديد */
-    .instruction-text-fakhma {
-      font-size: 17px;
-      font-weight: bold;
-      color: #ffca28;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-      text-align: center;
-      margin-top: 0px;
-      margin-bottom: 20px;
-      line-height: 1.5;
-      width: 90%;
-    }
-    
     .pill-input { 
       width: 100%; 
       background: transparent; 
@@ -201,12 +174,7 @@
 
   <div id="login-screen" class="main-content-wrapper">
     
-    <div class="bell-box">
-      <div class="bell-icon-deco">🔔</div>
-    </div>
-
-    <div class="session-header-badge" id="session-name-display">الجلسة: --</div>
-    <div class="instruction-text-fakhma">ادخل اسمك واختر فريقك وابقَ جاهزاً للحظة الحسم.</div>
+    <div class="session-oval-badge" id="session-name-display">الجلسة: --</div>
 
     <div class="input-row">
       <div class="set-label">اسم اللاعب:</div>
