@@ -93,10 +93,8 @@
     .sidebar-round-num { font-family: 'Galaxy', sans-serif; font-size: 110px; color: #ffca28; margin: 0; line-height: 1.1; text-shadow: 4px 4px 0 var(--dark-shadow); }
     
     #sidebar-buzzer-display:not(.hidden) { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
-    /* التعديل الأول: ستايل الجرس الجديد للبي سي (أنيق ومناسب في المنتصف) */
     #sidebar-buzzer-display { background: rgba(71, 43, 117, 0.9); border: 2px solid rgba(255, 255, 255, 0.15); border-radius: 15px; padding: 15px 10px; text-align: center; width: 95%; margin: 0 auto; animation: fadeIn 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
     
-    /* التعديل الثاني: كود لتصغير الجولة ورفعها في البي سي وقت الجرس */
     #round-display-container.hide-on-mobile { transform: scale(0.85); margin-bottom: -15px; transition: all 0.3s ease; }
 
     .buzzer-player-name { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; margin-bottom: 5px; word-break: break-word; }
@@ -149,6 +147,7 @@
     .hex-inner.answered { color: transparent !important; text-shadow: none !important; }
     .hex-inner.highlighted { background: #ffeb3b !important; color: var(--main-purple) !important; transform: scale(0.92); box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
 
+    /* الكود الذي تم إصلاحه: استعادة كوردينات الخلية 14 بالملي */
     .hex-outer:nth-child(1) { top: 0px; left: 0px; } .hex-outer:nth-child(2) { top: 0px; left: 140px; } .hex-outer:nth-child(3) { top: 0px; left: 280px; } .hex-outer:nth-child(4) { top: 0px; left: 420px; } .hex-outer:nth-child(5) { top: 0px; left: 560px; }
     .hex-outer:nth-child(6) { top: 120px; left: 70px; } .hex-outer:nth-child(7) { top: 120px; left: 210px; } .hex-outer:nth-child(8) { top: 120px; left: 350px; } .hex-outer:nth-child(9) { top: 120px; left: 490px; } .hex-outer:nth-child(10) { top: 120px; left: 630px; }
     .hex-outer:nth-child(11) { top: 240px; left: 0px; } .hex-outer:nth-child(12) { top: 240px; left: 140px; } .hex-outer:nth-child(13) { top: 240px; left: 280px; } .hex-outer:nth-child(14) { top: 240px; left: 420px; } .hex-outer:nth-child(15) { top: 240px; left: 560px; }
@@ -157,9 +156,8 @@
 
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 200; }
     .modal-content-custom { background: #5a3b8c; padding: 40px; border-radius: 25px; max-width: 650px; width: 90%; color: white; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); position: relative; display: flex; flex-direction: column; max-height: 90vh; }
-    
     .modal-letter-wrapper { display: flex; justify-content: center; width: 100%; flex-shrink: 0; margin-bottom: 15px; }
-    .modal-letter-box { width: 80px; height: 80px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 18px; display: flex; justify-content: center; align-items: center; font-size: 55px; font-family: 'Lalezar'; color: white; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); line-height: 1; padding-top: 8px; }
+    .modal-letter-box { width: 85px; height: 85px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 18px; display: flex; justify-content: center; align-items: center; font-size: 55px; font-family: 'Galaxy', sans-serif; color: white; box-shadow: inset 0 0 10px rgba(255,255,255,0.1); line-height: 1; padding-top: 14px; }
     
     .question-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; flex-grow: 1; overflow-y: auto; margin-bottom: 20px; padding: 0 10px; }
     .question-wrapper::-webkit-scrollbar { width: 5px; }
@@ -238,7 +236,7 @@
         
         .modal-content-custom { padding: 15px; width: 96%; max-height: 95vh; border-radius: 12px; }
         .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 12px !important; flex-shrink: 0 !important; }
-        .modal-letter-box { width: 65px !important; height: 65px !important; font-size: 35px !important; border-radius: 14px !important; line-height: 1 !important; padding-top: 6px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        .modal-letter-box { width: 70px !important; height: 70px !important; font-size: 38px !important; border-radius: 14px !important; line-height: 1 !important; padding-top: 12px !important; display: flex !important; justify-content: center !important; align-items: center !important; font-family: 'Galaxy' !important; }
         
         .modal-question { font-size: 18px; margin-bottom: 10px; line-height: 1.4; } 
         .question-wrapper { max-height: 45vh; margin-bottom: 10px; padding: 0 5px; }
@@ -334,7 +332,6 @@
         #celeb-team { font-size: 50px !important; margin: 10px 0 !important; }
         #celeb-title { font-size: 35px !important; }
 
-        /* التعديل الثالث: إضافة كلاس يخفي العنصر في الجوال فقط */
         .hide-on-mobile { display: none !important; }
 
         .modal {
@@ -369,7 +366,7 @@
         }
         
         .modal-letter-wrapper { display: flex !important; justify-content: center !important; width: 100% !important; margin-bottom: 8px !important; flex-shrink: 0 !important;}
-        .modal-letter-box { width: 55px !important; height: 55px !important; font-size: 30px !important; padding-top: 4px !important; border-radius: 10px !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+        .modal-letter-box { width: 55px !important; height: 55px !important; font-size: 30px !important; padding-top: 10px !important; border-radius: 10px !important; display: flex !important; justify-content: center !important; align-items: center !important; font-family: 'Galaxy' !important; }
         
         .question-wrapper { margin-bottom: 8px !important; padding: 0 5px !important; flex-grow: 1 !important; overflow-y: auto !important;}
         .modal-question { font-size: 16px !important; margin-bottom: 5px !important; line-height: 1.4 !important; }
@@ -585,9 +582,7 @@
         const overlay = document.getElementById('bell-overlay');
         const nameEl = document.getElementById('bell-player-name');
         if(nameEl && playerName) nameEl.textContent = playerName;
-        
         overlay.style.setProperty('display', 'flex', 'important'); 
-        
         setTimeout(() => {
             overlay.style.setProperty('display', 'none', 'important');
         }, 1200); 
@@ -668,7 +663,6 @@
 
     function showQrModal(title, urlStr) {
       const modalBody = document.getElementById('modal-body');
-      
       modalBody.innerHTML = `
         <div class="close-modal-x" id="close-qr-btn">✖</div>
         <div class="question-wrapper" style="margin-bottom: 5px; max-height: none; overflow: hidden;">
@@ -795,7 +789,7 @@
                 modalBody.innerHTML = `
                   <div class="close-modal-x" id="close-cancel-btn">✖</div>
                   <div class="modal-letter-wrapper">
-                    <div class="modal-letter-box" style="background: ${cell.color}; color: white; border-color: white;">${cell.letter}</div>
+                    <div class="modal-letter-box" style="background: ${cell.color}; color: white; border-color: white; font-family: 'Galaxy' !important; padding-top: 14px;">${cell.letter}</div>
                   </div>
                   <div class="question-wrapper">
                     <div class="modal-question" style="color: #ff5252; font-size: 26px; margin-top: 15px; margin-bottom: 10px;">إلغاء ملكية الخلية؟</div>
@@ -823,11 +817,10 @@
 
             if (currentHostMode !== 'auto') {
                 const modalBody = document.getElementById('modal-body');
-                
                 modalBody.innerHTML = `
                   <div class="close-modal-x" id="close-host-alert-btn">✖</div>
                   <div class="modal-letter-wrapper">
-                    <div class="modal-letter-box">${cell.letter}</div>
+                    <div class="modal-letter-box" style="font-family: 'Galaxy' !important; padding-top: 14px;">${cell.letter}</div>
                   </div>
                   <div class="question-wrapper">
                     <div class="modal-question" style="color: #ffca28; font-size: 26px; margin-top: 15px; margin-bottom: 15px;">السؤال مخصص للمقدم البشري</div>
@@ -867,7 +860,6 @@
       buzzerTimerValue.classList.remove('timer-phase-other');
       
       sidebarBuzzerDisplay.classList.remove('hidden'); 
-      // التعديل الرابع: استبدال hidden بـ hide-on-mobile
       roundDisplayContainer.classList.add('hide-on-mobile'); 
       
       showGiantBellEffect(data.winner.name);
@@ -886,7 +878,6 @@
 
     socket.on('buzzer-reset', () => {
       sidebarBuzzerDisplay.classList.add('hidden'); 
-      // التعديل الخامس: استبدال hidden بـ hide-on-mobile
       roundDisplayContainer.classList.remove('hide-on-mobile'); 
     });
 
@@ -899,7 +890,6 @@
     socket.on('question-cleared', () => { 
         document.getElementById('modal').classList.add('hidden'); 
         sidebarBuzzerDisplay.classList.add('hidden');
-        // التعديل السادس: استبدال hidden بـ hide-on-mobile
         roundDisplayContainer.classList.remove('hide-on-mobile'); 
     });
 
@@ -910,7 +900,7 @@
       
       modalBody.innerHTML = `
         <div class="modal-letter-wrapper">
-          <div class="modal-letter-box">${data.letter}</div>
+          <div class="modal-letter-box" style="font-family: 'Galaxy' !important; padding-top: 14px;">${data.letter}</div>
         </div>
         <div class="question-wrapper">
           <div class="modal-question">${data.question}</div>
