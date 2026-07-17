@@ -113,22 +113,11 @@
         margin: auto; 
     }
 
-    /* مقاسات اللابتوب الكبيرة */
-@media screen and (min-width: 993px) and (max-width: 1440px), screen and (min-width: 993px) and (max-height: 950px) { 
-    .board { transform: scale(1.0); } 
-}
-/* مقاسات اللابتوب المتوسطة (مثل 1366) */
-@media screen and (min-width: 993px) and (max-width: 1366px), screen and (min-width: 993px) and (max-height: 850px) { 
-    .board { transform: scale(0.9); } 
-}
-/* مقاسات اللابتوب الصغيرة */
-@media screen and (min-width: 993px) and (max-width: 1150px), screen and (min-width: 993px) and (max-height: 750px) { 
-    .board { transform: scale(0.8); } 
-}
-/* شاشات اللابتوب الصغيرة جداً بالعرض */
-@media screen and (min-width: 993px) and (max-width: 1024px), screen and (min-width: 993px) and (max-height: 650px) { 
-    .board { transform: scale(0.7); } 
-}
+    /* تطبيق تصغير بنسبة 67% تلقائياً لشاشات اللابتوب لمحاكاة المتصفح كما طلبت */
+    @media screen and (min-width: 993px) and (max-width: 1440px), screen and (min-width: 993px) and (max-height: 950px) { 
+        body { zoom: 0.67; } 
+    }
+    
     .hex-outer { position: absolute; width: 140px; height: 160px; background: var(--main-purple); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
     .hex-outer:hover { transform: scale(1.08); z-index: 10; }
     
@@ -424,7 +413,7 @@
         <div class="counter-wrapper">
           <button type="button" class="counter-btn" onclick="adjustTimer('ans-time', -1)">-</button>
           <span id="ans-time-val" class="counter-value-span">3</span>
-          <button type="button" class="counter-btn" onclick="adjustTimer('ans-time', 1)">+</button>
+          <button type="button" class="counter-btn" onclick="adjustTimer('other-time', 1)">+</button>
         </div>
         
         <div class="set-label">وقت الفريق الآخر (ث):</div>
