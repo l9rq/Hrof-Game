@@ -35,9 +35,9 @@
     
     /* استعادة الظلال والحدود السوداء للشعار في الشاشة الرئيسية */
     .game-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); padding: 10px; position: relative; top: 20px; right: 0px; }
-    .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 100px; color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: -10px; z-index: 3; display: inline-block; }
-    .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 90px; color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: 0px; z-index: 2; display: inline-block; transform: scaleX(1.4); }
-    .word-name { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
+    .word-huroof { font-family: 'Galaxy', sans-serif; font-size: clamp(50px, 7vw, 100px); color: #ffca28; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: -10px; z-index: 3; display: inline-block; }
+    .word-m3 { font-family: 'Galaxy', sans-serif; font-size: clamp(45px, 6vw, 90px); color: #26a69a; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: 0px; z-index: 2; display: inline-block; transform: scaleX(1.4); }
+    .word-name { font-family: 'Galaxy', sans-serif; font-size: clamp(40px, 5.5vw, 85px); color: #ff5252; text-shadow: 4px 4px 0 var(--dark-shadow), -2px -2px 0 var(--dark-shadow), 2px -2px 0 var(--dark-shadow), -2px 2px 0 var(--dark-shadow), 0 6px 0 var(--dark-shadow); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: 20px; z-index: 1; display: inline-block; white-space: nowrap; }
     
     .menu-btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; position: relative; top: -40px; right: 0px; }
     .main-btn { font-family: 'Cairo', sans-serif; font-size: 24px; font-weight: 900; padding: 12px 60px; border: none; border-radius: 50px; cursor: pointer; color: #6b439b; background-color: #ffffff; width: 320px; max-width: 90vw; white-space: nowrap; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: all 0.3s; }
@@ -68,19 +68,19 @@
     #game-board-container { height: 100vh; width: 100vw; display: flex; position: relative; }
     .game-layout { display: flex; flex-direction: row; width: 100%; height: 100%; }
     
-    .sidebar-section { width: 32%; height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 25px 18px; z-index: 20; }
-    .board-section { flex-grow: 1; width: 68%; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
+    .sidebar-section {width: clamp(260px, 32%, 400px); height: 100%; background: var(--main-purple); box-shadow: -15px 0 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; padding: 25px 18px; z-index: 20; }
+    .board-section { flex-grow: 1; width: auto; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: conic-gradient(from 315deg, var(--team2-color) 25%, var(--team1-color) 0 50%, var(--team2-color) 0 75%, var(--team1-color) 0); overflow: hidden; }
     
     /* استعادة الظلال للشعار في الجنب */
     .sidebar-logo { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.3)); transform: scale(1.2); margin-top: 15px; }
-    .sidebar-logo .word-huroof { font-family: 'Galaxy', sans-serif; font-size: 100px; line-height: 1; margin: 0; margin-top: 0px; margin-bottom: -10px; text-shadow: 4px 4px 0 var(--dark-shadow); }
-    .sidebar-logo .word-m3 { font-family: 'Galaxy', sans-serif; font-size: 90px; line-height: 1; margin: 0; margin-top: 0px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow); transform: scaleX(1.4); display: inline-block; }
-    .sidebar-logo .word-name { font-family: 'Galaxy', sans-serif; font-size: 85px; margin: 0; margin-top: 0px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow); white-space: nowrap; line-height: 1; }
+    .sidebar-logo .word-huroof { font-family: 'Galaxy', sans-serif; font-size: clamp(50px, 7vw, 100px); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: -10px; text-shadow: 4px 4px 0 var(--dark-shadow); }
+    .sidebar-logo .word-m3 { font-family: 'Galaxy', sans-serif; font-size: clamp(45px, 6vw, 90px); line-height: 1; margin: 0; margin-top: 0px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow); transform: scaleX(1.4); display: inline-block; }
+    .sidebar-logo .word-name { font-family: 'Galaxy', sans-serif; font-size: clamp(40px, 5.5vw, 85px); margin: 0; margin-top: 0px; margin-bottom: 0px; text-shadow: 4px 4px 0 var(--dark-shadow); white-space: nowrap; line-height: 1; }
 
     .sidebar-dynamic-area { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; flex-grow: 1; margin-top: 15px; margin-bottom: 15px; gap: 15px; position: relative; }
 
     #round-display-container { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
-    .sidebar-round-text { font-family: 'Galaxy', sans-serif; font-size: 85px; color: #ff5252; margin: 0; margin-bottom: 8px; line-height: 1.1; text-shadow: 4px 4px 0 var(--dark-shadow); }
+    .sidebar-round-text { font-family: 'Galaxy', sans-serif; font-size: clamp(40px, 5.5vw, 85px); color: #ff5252; margin: 0; margin-bottom: 8px; line-height: 1.1; text-shadow: 4px 4px 0 var(--dark-shadow); }
     .sidebar-round-num { font-family: 'Galaxy', sans-serif; font-size: 110px; color: #ffca28; margin: 0; line-height: 1.1; text-shadow: 4px 4px 0 var(--dark-shadow); }
     
     #sidebar-buzzer-display:not(.hidden) { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
@@ -90,7 +90,7 @@
 
     .buzzer-player-name { font-family: 'Cairo'; font-size: 22px; font-weight: 900; color: white; margin-bottom: 5px; word-break: break-word; }
     .buzzer-timer-label { font-family: 'Cairo'; font-size: 16px; font-weight: bold; color: #ffca28; }
-    .buzzer-timer-value { font-family: 'Lalezar'; font-size: 85px; line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 5px 0; }
+    .buzzer-timer-value { font-family: 'Lalezar'; font-size: clamp(40px, 5.5vw, 85px); line-height: 1; color: #76ff03; text-shadow: 0 4px 8px rgba(0,0,0,0.6); margin: 5px 0; }
     .timer-phase-other { color: #ff5252 !important; }
 
     .sidebar-scores { display: flex; justify-content: space-between; align-items: center; width: 100%; }
@@ -113,10 +113,6 @@
         margin: auto; 
     }
 
-    /* تطبيق تصغير بنسبة 67% تلقائياً لشاشات اللابتوب لمحاكاة المتصفح كما طلبت */
-    @media screen and (min-width: 993px) and (max-width: 1440px), screen and (min-width: 993px) and (max-height: 950px) { 
-        body { zoom: 0.67; } 
-    }
     
     .hex-outer { position: absolute; width: 140px; height: 160px; background: var(--main-purple); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
     .hex-outer:hover { transform: scale(1.08); z-index: 10; }
@@ -413,7 +409,7 @@
         <div class="counter-wrapper">
           <button type="button" class="counter-btn" onclick="adjustTimer('ans-time', -1)">-</button>
           <span id="ans-time-val" class="counter-value-span">3</span>
-          <button type="button" class="counter-btn" onclick="adjustTimer('other-time', 1)">+</button>
+          <button type="button" class="counter-btn" onclick="adjustTimer('ans-time', 1)">+</button>
         </div>
         
         <div class="set-label">وقت الفريق الآخر (ث):</div>
@@ -908,7 +904,19 @@
     }
 
     socket.on('round-winner', (data) => { showCelebration(`الفائز بالجولة`, data.teamName, data.teamColor, false); });
-    socket.on('match-winner', (data) => { showCelebration(`الفائز بالمباراة 🏆`, data.teamName, data.teamColor, true); });
+     socket.on('match-winner', (data) => { showCelebration(`الفائز بالمباراة 🏆`, data.teamName, data.teamColor, true); });
+
+     // نظام التحجيم التلقائي للوحة
+    function autoScaleBoard() {
+        const boardSection = document.querySelector('.board-section');
+        const board = document.getElementById('hex-board');
+        if (boardSection && board) {
+            const scale = Math.min(boardSection.clientWidth / 750, boardSection.clientHeight / 700);
+            board.style.transform = `scale(${scale})`;
+        }
+    }
+    window.addEventListener('resize', autoScaleBoard);
+    socket.on('game-state', () => { setTimeout(autoScaleBoard, 50); });
   </script>
 </body>
 </html>
